@@ -1,0 +1,16 @@
+{
+    "name": "speedrun-race-bot",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js"
+    },
+    "devDependencies": {
+        "nodemon": "^1.19.2"
+    },
+    "dependencies": {
+        "discord.js": "^11.5.1",
+        "dotenv": "^8.1.0"
+    }
+}

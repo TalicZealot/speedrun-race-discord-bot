@@ -1,6 +1,7 @@
 const config = require('../config.json');
 const seed = require('../commands/seed');
 const join = require('../commands/join');
+const leave = require('../commands/leave');
 const ready = require('../commands/ready');
 const unready = require('../commands/unready');
 const done = require('../commands/done');
@@ -16,6 +17,9 @@ module.exports = (client, race, message) => {
     }
     if (message.channel === channel && message.content === '.join' || message.content === '!join') {
         return join(message, race, channel);
+    }
+    if (message.channel === channel && message.content === '.leave' || message.content === '!leave') {
+        return leave(message, race, channel);
     }
     if (message.channel === channel && message.content === '.ready' || message.content === '!ready') {
         return ready(message, race, channel);

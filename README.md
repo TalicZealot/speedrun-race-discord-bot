@@ -1,12 +1,14 @@
 # Speedrun Race Bot for Discord
 A simple bot that helps discord users coordinate speedrun races.
-## Version 1.0.1
+## Version 1.0.2
 
 ## Commands: 
 * .offset / !offset
     * Sets the starting time offset.
 * .join / !join 
     * Joins the current race.
+* .leave / !leave 
+    * Leaves the current race.
 * .ready / !ready
     * Sets player status to ready to start.
 * .unready / !unready
@@ -19,7 +21,9 @@ A simple bot that helps discord users coordinate speedrun races.
     * Resets the race status and joined players.
 
 ### changelog
+#### 1.0.2
+* Added leave command
 #### 1.0.1
-* commands need to be in required channel
+* Commands need to be in required channel
 #### 1.0.0
 * Release

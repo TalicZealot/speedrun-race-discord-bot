@@ -7,7 +7,7 @@ module.exports = (message, race, channel) => {
         player.ready = true;
 
         var allReady = race.players.every(x => x.ready == true);
-        if (allReady && race.players.length > 0) {
+        if (allReady && race.players.length > 1) {
             startRace(race, channel);
         }
 

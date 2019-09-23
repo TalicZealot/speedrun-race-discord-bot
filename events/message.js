@@ -11,28 +11,28 @@ const reset = require('../commands/reset');
 module.exports = (client, race, message) => {
     const channel = client.channels.find(x => x.name === config.channel);
 
-    if (message.content === '.seed' || message.content === '!seed') {
+    if (message.channel === channel && message.content === '.seed' || message.content === '!seed') {
         return seed(channel);
     }
-    if (message.content === '.join' || message.content === '!join') {
+    if (message.channel === channel && message.content === '.join' || message.content === '!join') {
         return join(message, race, channel);
     }
-    if (message.content === '.ready' || message.content === '!ready') {
+    if (message.channel === channel && message.content === '.ready' || message.content === '!ready') {
         return ready(message, race, channel);
     }
-    if (message.content === '.unready' || message.content === '!unready') {
+    if (message.channel === channel && message.content === '.unready' || message.content === '!unready') {
         return unready(message, race, channel);
     }
-    if (message.content === '.done' || message.content === '!done' || message.content === '.time' || message.content === '!time') {
+    if (message.channel === channel && message.content === '.done' || message.content === '!done' || message.content === '.time' || message.content === '!time') {
         return done(message, race, channel);
     }
-    if (message.content === '.forfeit' || message.content === '!forfeit') {
+    if (message.channel === channel && message.content === '.forfeit' || message.content === '!forfeit') {
         return forfeit(message, race, channel);
     }
-    if (message.content.startsWith('.offset') || message.content.startsWith('!offset')) {
+    if (message.channel === channel && message.content.startsWith('.offset') || message.content.startsWith('!offset')) {
         return offset(message, race, channel);
     }
-    if (message.content.startsWith('.reset') || message.content.startsWith('!reset')) {
+    if (message.channel === channel && message.content.startsWith('.reset') || message.content.startsWith('!reset')) {
         return reset(message, race, channel);
     }
 };

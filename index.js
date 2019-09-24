@@ -10,7 +10,7 @@ var race = {
     initiatedAt: null,
     remainingPlayers: 0,
     players: [],
-    offset: config.defaultOffset
+    offset: parseInt(config.defaultOffset)
 };
 
 fs.readdir('./events/', (err, files) => {

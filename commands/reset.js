@@ -7,7 +7,7 @@ module.exports = (message, race, channel) => {
     race.initiatedAt = null;
     race.remainingPlayers = 0;
     race.players = [];
-    race.offset = config.defaultOffset;
+    race.offset = parseInt(config.defaultOffset);
 
     channel.send('New race initiated.').then().catch(console.error);
     return;

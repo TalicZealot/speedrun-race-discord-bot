@@ -8,13 +8,13 @@ module.exports = (message, race, channel) => {
         if (race.players.length === 0) {
             channel.send('New race initiated.').then().catch(console.error);
             race.initiatedAt = new Date().getTime();
-        } else if (((Math.floor(((new Date().getTime()) - race.initiatedAt)) / (1000 * 60)) >= config.timeoutMinutes)) {
+        } else if (((Math.floor(((new Date().getTime()) - race.initiatedAt)) / (1000 * 60)) >= parseInt(config.timeoutMinutes))) {
             race.started = false;
             race.startedAt = null;
             race.initiatedAt = null;
             race.remainingPlayers = 0;
             race.players = [];
-            race.offset = config.defaultOffset;
+            race.offset = parseInt(config.defaultOffset);
             channel.send('New race initiated.').then().catch(console.error);
             race.initiatedAt = new Date().getTime();
         }

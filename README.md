@@ -1,10 +1,10 @@
 # Speedrun Race Bot for Discord
 A simple bot that helps discord users coordinate speedrun races.
-## Version 1.0.2
+## Version 1.0.3
 
 ## Commands: 
-* .offset / !offset
-    * Sets the starting time offset.
+* .seed / !seed
+    * Generates a random seed link for the randomizer.
 * .join / !join 
     * Joins the current race.
 * .leave / !leave 
@@ -19,8 +19,22 @@ A simple bot that helps discord users coordinate speedrun races.
     * Forfeits the race for the player.
 * .reset / !reset
     * Resets the race status and joined players.
+* .offset / !offset
+    * Sets the starting time offset.
+
+## Requirements
+* Node.js 12.10.0 +
+
+## Setup:
+* npm install
+* create a .env file for a discord authentication token
+* create a new Discord application and bot
+* configure from config.json
 
 ### changelog
+#### 1.0.3
+* Added default offset
+* Added automatic race timeout and reset
 #### 1.0.2
 * Added leave command
 #### 1.0.1

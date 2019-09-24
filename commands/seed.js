@@ -124,8 +124,8 @@ module.exports = channel => {
         "Controller"
     ];
 
-    var adjective = adjectives[Math.floor(Math.random() * Math.floor(59))];
-    var noun = nouns[Math.floor(Math.random() * Math.floor(59))];
+    var adjective = adjectives[Math.floor(Math.random() * Math.floor(adjectives.length - 1))];
+    var noun = nouns[Math.floor(Math.random() * Math.floor(nouns.length - 1))];
     var number = Math.floor(Math.random() * Math.floor(99));
 
     var seed = 'https://sotn.io/?' + adjective + noun + number;

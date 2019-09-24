@@ -1,4 +1,5 @@
 require('dotenv').config();
+const config = require('./config.json');
 const fs = require('fs');
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -9,7 +10,7 @@ var race = {
     initiatedAt: null,
     remainingPlayers: 0,
     players: [],
-    offset: 0
+    offset: config.defaultOffset
 };
 
 fs.readdir('./events/', (err, files) => {

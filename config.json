@@ -1,4 +1,6 @@
 {
     "channel": "race-channel",
-    "maxOffsetSeconds": "15"
+    "maxOffsetSeconds": "15",
+    "timeoutMinutes": "30",
+    "defaultOffset": "10"
 }

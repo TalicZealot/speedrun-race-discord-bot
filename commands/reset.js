@@ -1,3 +1,5 @@
+const config = require('../config.json');
+
 module.exports = (message, race, channel) => {
 
     race.started = false;
@@ -5,7 +7,7 @@ module.exports = (message, race, channel) => {
     race.initiatedAt = null;
     race.remainingPlayers = 0;
     race.players = [];
-    race.offset = 0;
+    race.offset = config.defaultOffset;
 
     channel.send('New race initiated.').then().catch(console.error);
     return;

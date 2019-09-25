@@ -19,8 +19,6 @@ module.exports = (message, race, channel) => {
             race.initiatedAt = new Date().getTime();
         }
 
-        var minutes = Math.floor((time / (1000 * 60)));
-
         var newPlayer = {
             username: message.author.username,
             finished: false,

@@ -1,6 +1,6 @@
 # Speedrun Race Bot for Discord
 A simple bot that helps discord users coordinate speedrun races.
-## Version 1.0.3
+## Version 1.0.4
 
 ## Commands: 
 * .seed / !seed
@@ -32,6 +32,8 @@ A simple bot that helps discord users coordinate speedrun races.
 * configure from config.json
 
 ### changelog
+#### 1.0.4
+* Output adjustments
 #### 1.0.3
 * Added default offset
 * Added automatic race timeout and reset

@@ -1,5 +1,5 @@
 module.exports = (message, race, channel) => {
-    var player = race.players.find(x => x.username === message.author.username);
+    let player = race.players.find(x => x.username === message.author.username);
 
     if (!race.started && player) {
         race.players.splice(race.players.indexOf(player), 1);

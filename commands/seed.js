@@ -1,5 +1,5 @@
 module.exports = channel => {
-    var adjectives = [
+    let adjectives = [
         "Boring",
         "Sorry",
         "Hot",
@@ -59,10 +59,72 @@ module.exports = channel => {
         "Mint",
         "Fuzzy",
         "Squishy",
-        "Corrupted"
+        "Corrupted",
+        "Super",
+        "Sharp",
+        "Junior",
+        "Riveting",
+        "Perfect",
+        "EX",
+        "Supreme",
+        "Dark",
+        "Colorful",
+        "Flimsy",
+        "Silly",
+        "Shin",
+        "Denjin",
+        "Surprising",
+        "Optimal",
+        "Suboptimal",
+        "Ultra",
+        "Powerful",
+        "Cowardly",
+        "Hairy",
+        "Rage",
+        "Vegan",
+        "Epic",
+        "Turbo",
+        "Undead",
+        "Chill",
+        "True",
+        "Moody",
+        "Frozen",
+        "Flawless",
+        "Pointless"
     ];
-    var nouns = [
-        "Woman",
+    let nouns = [
+        "Zerg",
+        "Terran",
+        "Protoss",
+        "Spark",
+        "Steel",
+        "Rage",
+        "Connection",
+        "Radiator",
+        "Alien",
+        "Dog",
+        "Cat",
+        "Setup",
+        "Shoryuken",
+        "Fireball",
+        "Fist",
+        "Force",
+        "Star",
+        "Bug",
+        "Beard",
+        "Moustache",
+        "Junior",
+        "Planet",
+        "Mist",
+        "Wolf",
+        "Bat",
+        "Armor",
+        "Axe",
+        "Sword",
+        "Boss",
+        "Seed",
+        "Alien",
+        "Cable",
         "Soup",
         "Poem",
         "Cheek",
@@ -121,14 +183,15 @@ module.exports = channel => {
         "Apple",
         "Button",
         "Monitor",
-        "Controller"
+        "Controller",
+        "Potential"
     ];
 
-    var adjective = adjectives[Math.floor(Math.random() * Math.floor(adjectives.length - 1))];
-    var noun = nouns[Math.floor(Math.random() * Math.floor(nouns.length - 1))];
-    var number = Math.floor(Math.random() * Math.floor(99));
+    let adjective = adjectives[Math.floor(Math.random() * Math.floor(adjectives.length - 1))];
+    let noun = nouns[Math.floor(Math.random() * Math.floor(nouns.length - 1))];
+    let number = Math.floor(Math.random() * Math.floor(99));
 
-    var seed = 'https://sotn.io/?' + adjective + noun + number;
+    let seed = 'https://sotn.io/?' + adjective + noun + number;
 
     return channel.send(seed).then().catch(console.error);
 };

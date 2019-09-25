@@ -1,6 +1,6 @@
 module.exports = (race, channel) => {
 
-    var output = 'Race completed!';
+    let output = 'Race completed!';
     race.players.sort((a, b) => (a.time > b.time) ? 1 : -1);
 
     for (let i = 0; i < race.players.length; i++) {
@@ -18,12 +18,12 @@ module.exports = (race, channel) => {
                 output += '\n       ';
         }
 
-        output += race.players[i].username + ' : ';
-        var time = race.players[i].time;
-        var seconds = Math.floor((time / 1000) % 60);
-        var minutes = Math.floor((time / (1000 * 60)) % 60);
-        var hours = Math.floor((time / (1000 * 60 * 60)) % 24);
-        output += (race.players[i].forfeited) ? 'forfeited' : ((hours < 10) ? '0' + hours : hours) + ':' + ((minutes < 10) ? '0' + minutes : minutes) + ':' + ((seconds < 10) ? '0' + seconds : seconds);
+        output += ('**' + race.players[i].username + '**' + ' : ').padEnd(16, " ");
+        let time = race.players[i].time;
+        let seconds = Math.floor((time / 1000) % 60);
+        let minutes = Math.floor((time / (1000 * 60)) % 60);
+        let hours = Math.floor((time / (1000 * 60 * 60)) % 24);
+        output += (race.players[i].forfeited) ? 'forfeited' : hours.toString().padStart(2, "0") + ':' + minutes.toString().padStart(2, "0") + ':' + seconds.toString().padStart(2, "0");
     }
 
     channel.send(output).then().catch(console.error);

@@ -2,5 +2,7 @@
     "channel": "race-channel",
     "maxOffsetSeconds": "15",
     "timeoutMinutes": "30",
-    "defaultOffset": "10000"
+    "defaultOffset": "10000",
+    "rematchTimeoutSeconds": "8000",
+    "voiceChannelPrefix": "Race-Channel"
 }

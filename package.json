@@ -1,6 +1,6 @@
 {
     "name": "speedrun-race-bot",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
@@ -10,7 +10,10 @@
         "nodemon": "^1.19.2"
     },
     "dependencies": {
+        "@ffmpeg-installer/ffmpeg": "^1.0.20",
         "discord.js": "^11.5.1",
-        "dotenv": "^8.1.0"
+        "dotenv": "^8.1.0",
+        "ffmpeg-static": "^2.6.0",
+        "opusscript": "0.0.7"
     }
 }

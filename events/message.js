@@ -8,6 +8,7 @@ const done = require('../commands/done');
 const forfeit = require('../commands/forfeit');
 const offset = require('../commands/offset');
 const reset = require('../commands/reset');
+const rematch = require('../commands/rematch');
 
 module.exports = (client, race, message) => {
     const channel = client.channels.find(x => x.name === config.channel);
@@ -33,10 +34,14 @@ module.exports = (client, race, message) => {
     if (message.channel === channel && message.content === '.forfeit' || message.content === '!forfeit') {
         return forfeit(message, race, channel);
     }
+    if (message.channel === channel && message.content === '.rematch' || message.content === '!rematch') {
+        return rematch(message, race, channel);
+    }
     if (message.channel === channel && message.content.startsWith('.offset') || message.content.startsWith('!offset')) {
         return offset(message, race, channel);
     }
     if (message.channel === channel && message.content.startsWith('.reset') || message.content.startsWith('!reset')) {
         return reset(message, race, channel);
     }
+    //change reset to keep players and add a different reset(new race)
 };

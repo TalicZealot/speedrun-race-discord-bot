@@ -1,6 +1,6 @@
 # Speedrun Race Bot for Discord
 A simple bot that helps discord users coordinate speedrun races.
-## Version 1.0.5
+## Version 1.1.0
 
 ## Commands: 
 * .seed / !seed
@@ -30,8 +30,13 @@ A simple bot that helps discord users coordinate speedrun races.
 * create a .env file for a discord authentication token
 * create a new Discord application and bot
 * configure from config.json
+* add countdown audio file to root folder or remove audio playback from startRace.js
 
 ### changelog
+#### 1.1.0
+* Added rematch command
+* Added audio countdown
+* More output adjustments
 #### 1.0.5
 * More output adjustments
 * Kinda forgot that let exists

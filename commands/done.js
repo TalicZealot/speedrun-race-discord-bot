@@ -6,6 +6,9 @@ module.exports = (message, race, channel) => {
     if (race.started && player && !player.finished && !player.forfeited) {
         player.finished = true;
         let time = new Date().getTime() - race.startedAt;
+        if (time < 0) {
+            time = 0;
+        }
         player.time = time;
         race.remainingPlayers -= 1;
         let seconds = Math.floor((time / 1000) % 60);

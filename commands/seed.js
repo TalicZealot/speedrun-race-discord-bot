@@ -1,5 +1,6 @@
-module.exports = channel => {
+module.exports = (message, channel) => {
     let adjectives = [
+        "SuperDuper",
         "Boring",
         "Sorry",
         "Hot",
@@ -93,6 +94,14 @@ module.exports = channel => {
         "Pointless"
     ];
     let nouns = [
+        "Saiyan",
+        "Turtle",
+        "Ranger",
+        "Whip",
+        "Slayer",
+        "Vampire",
+        "Zombie",
+        "Skeleton",
         "Zerg",
         "Terran",
         "Protoss",
@@ -193,5 +202,11 @@ module.exports = channel => {
 
     let seed = 'https://sotn.io/?' + adjective + noun + number;
 
-    return channel.send(seed).then().catch(console.error);
+    if (channel) {
+        channel.send(seed).then().catch(console.error);
+    }
+    if (message) {
+        message.delete().then().catch(console.error);
+    }
+    return seed;
 };

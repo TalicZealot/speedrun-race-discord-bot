@@ -1,4 +1,5 @@
 const startRace = require('../common/startRace');
+const updateRaceMessage = require('../common/updateRaceMessage');
 
 module.exports = (message, race, channel) => {
     let player = race.players.find(x => x.username === message.author.username);
@@ -11,10 +12,12 @@ module.exports = (message, race, channel) => {
             startRace(race, channel);
         } else {
             let playersReady = race.players.filter(x => x.ready == true).length;
-            channel.send(playersReady + '/' + race.players.length + ' players ready').then().catch(console.error);
+            //channel.send(playersReady + '/' + race.players.length + ' players ready').then().catch(console.error);
+            updateRaceMessage(race, channel);
         }
-        return;
     }
-
+    if (message) {
+        message.delete().then().catch(console.error);
+    }
     return;
 };

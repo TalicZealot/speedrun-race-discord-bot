@@ -5,5 +5,6 @@ module.exports = (message, race, channel) => {
     if (offset > 0 && offset < parseInt(config.maxOffsetSeconds)) {
         race.offset = offset * 1000;
     }
+    message.delete().then().catch(console.error);
     return;
 };

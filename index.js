@@ -6,11 +6,16 @@ const client = new Discord.Client();
 
 var race = {
     started: false,
+    finished: false,
     startedAt: null,
     initiatedAt: null,
     remainingPlayers: 0,
     players: [],
-    offset: parseInt(config.defaultOffset)
+    offset: parseInt(config.defaultOffset),
+    category: config.defaultCategory,
+    messageId: null,
+    seed: null,
+    status: ''
 };
 
 fs.readdir('./events/', (err, files) => {

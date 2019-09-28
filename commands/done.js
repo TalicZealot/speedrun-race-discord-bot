@@ -1,4 +1,4 @@
-const finishRace = require('../common/finishRace');
+const updateRaceMessage = require('../common/updateRaceMessage');
 
 module.exports = (message, race, channel) => {
     let player = race.players.find(x => x.username === message.author.username);
@@ -15,13 +15,14 @@ module.exports = (message, race, channel) => {
         let minutes = Math.floor((time / (1000 * 60)) % 60);
         let hours = Math.floor((time / (1000 * 60 * 60)) % 24);
         let outputTime = hours.toString().padStart(2, "0") + ':' + minutes.toString().padStart(2, "0") + ':' + seconds.toString().padStart(2, "0");
-        channel.send(message.author.username + ' has finished the race in: ' + outputTime).then().catch(console.error);
         if (race.remainingPlayers < 1) {
-            finishRace(race, channel);
+            race.finished = true;
+            race.status = 'RACE FINISHED';
         }
-
-        return;
+        updateRaceMessage(race, channel);
     }
-
+    if (message) {
+        message.delete().then().catch(console.error);
+    }
     return;
 };

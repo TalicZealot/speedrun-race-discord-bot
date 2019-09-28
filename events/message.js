@@ -14,7 +14,7 @@ module.exports = (client, race, message) => {
     const channel = client.channels.find(x => x.name === config.channel);
 
     if (message.channel === channel && message.content === '.seed' || message.content === '!seed') {
-        return seed(channel);
+        return seed(message, channel);
     }
     if (message.channel === channel && message.content === '.join' || message.content === '!join') {
         return join(message, race, channel);
@@ -40,7 +40,7 @@ module.exports = (client, race, message) => {
     if (message.channel === channel && message.content.startsWith('.offset') || message.content.startsWith('!offset')) {
         return offset(message, race, channel);
     }
-    if (message.channel === channel && message.content.startsWith('.reset') || message.content.startsWith('!reset')) {
+    if (message.channel === channel && message.content === '.reset' || message.content === '!reset') {
         return reset(message, race, channel);
     }
     //change reset to keep players and add a different reset(new race)

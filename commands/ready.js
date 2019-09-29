@@ -1,8 +1,8 @@
 const startRace = require('../common/startRace');
 const updateRaceMessage = require('../common/updateRaceMessage');
 
-module.exports = (message, race, channel) => {
-    let player = race.players.find(x => x.username === message.author.username);
+module.exports = (race, channel, username, message) => {
+    let player = race.players.find(x => x.username === username);
 
     if (!race.started && player) {
         player.ready = true;

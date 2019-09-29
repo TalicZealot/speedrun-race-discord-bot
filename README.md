@@ -1,26 +1,22 @@
 # Speedrun Race Bot for Discord
 A simple bot that helps discord users coordinate speedrun races.
-## Version 1.2.0
+## Version 1.2.1
 
 ## Commands: 
-* .seed / !seed
-    * Generates a random seed link for the randomizer.
-* .join / !join 
-    * Joins the current race.
-* .leave / !leave 
-    * Leaves the current race.
-* .ready / !ready
-    * Sets player status to ready to start.
-* .unready / !unready
-    * Sets player status to not ready to start.
-* .done / !done / .time / !time
-    * Finishes the race for the player.
-* .forfeit / !forfeit
-    * Forfeits the race for the player.
-* .reset / !reset
-    * Resets the race status and joined players.
-* .offset / !offset
-    * Sets the starting time offset.
+   ```css
+ .prefixes :       both '.' and '!' are acceptable prefixes
+ .startrace /.new: Initiates a new race without joining.
+ .seed:            Generates a random seed link for the randomizer.
+ .join /.enter:    Joins the current race or starts a new one.
+ .leave:           Leaves the current race.
+ .ready:           Sets player status to ready to start.
+ .unready:         Sets player status to not ready to start.
+ .done /.time:     Finishes the race for the player.
+ .forfeit:         Forfeits the race for the player.
+ .reset:           Resets the race status and joined players.
+ .rematch:         Starts new race with the same players.
+ .offset:          Sets the starting time offset.
+ ```
 
 ## Requirements
 * Node.js 12.10.0 +
@@ -33,6 +29,8 @@ A simple bot that helps discord users coordinate speedrun races.
 * add countdown audio file to root folder or remove audio playback from startRace.js
 
 ### changelog
+#### 1.2.1
+* Added emoji reaction-based buttons as an alternate method of triggering the commands
 #### 1.2.0
 * Changed output from individual messages to a continuously updated status message
 #### 1.1.0

@@ -1,7 +1,7 @@
 const updateRaceMessage = require('../common/updateRaceMessage');
 
-module.exports = (message, race, channel) => {
-    let player = race.players.find(x => x.username === message.author.username);
+module.exports = (race, channel, username, message) => {
+    let player = race.players.find(x => x.username === username);
 
     if (race.started && player && !player.finished && !player.forfeited) {
         player.finished = true;
@@ -18,6 +18,10 @@ module.exports = (message, race, channel) => {
         if (race.remainingPlayers < 1) {
             race.finished = true;
             race.status = 'RACE FINISHED';
+            const raceMessage = channel.fetchMessage(race.messageId).then(x =>
+                x.clearReactions().then(y => {
+                    x.react('♻️').then().catch(console.error);
+                }).catch(console.error)).catch(console.error);
         }
         updateRaceMessage(race, channel);
     }

@@ -1,8 +1,8 @@
 const config = require('../config.json');
 const seed = require('../commands/seed');
 
-module.exports = (message, race, channel) => {
-    let player = race.players.find(x => x.username === message.author.username);
+module.exports = (race, channel, username, message) => {
+    let player = race.players.find(x => x.username === username);
 
     if (player) {
         race.seed = seed();

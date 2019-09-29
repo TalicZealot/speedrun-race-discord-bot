@@ -1,29 +1,20 @@
 const config = require('../config.json');
 const seed = require('../commands/seed');
 const updateRaceMessage = require('../common/updateRaceMessage');
+const startrace = require('../commands/startrace');
 
-module.exports = (message, race, channel) => {
-    let player = race.players.find(x => x.username === message.author.username);
+module.exports = (race, channel, username, message) => {
+    let player = race.players.find(x => x.username === username);
     const sleep = m => new Promise(r => setTimeout(r, m));
 
     if (!race.started && !player) {
 
         if (race.finished || ((Math.floor(((new Date().getTime()) - race.initiatedAt)) / (1000 * 60)) >= parseInt(config.timeoutMinutes))) {
-            race.started = false;
-            race.finished = false;
-            race.startedAt = null;
-            race.initiatedAt = null;
-            race.remainingPlayers = 0;
-            race.players = [];
-            race.offset = parseInt(config.defaultOffset);
-            race.status = 'PRE-RACE: WAITING FOR PLAYERS';
-            race.seed = seed();
-            channel.send('Race initiated! ' + race.seed).then(x => race.messageId = x.id).catch(console.error);
-            race.initiatedAt = new Date().getTime();
+            startrace(race, channel);
         }
 
         let newPlayer = {
-            username: message.author.username,
+            username: username,
             finished: false,
             forfeited: false,
             ready: false,
@@ -36,7 +27,7 @@ module.exports = (message, race, channel) => {
             updateRaceMessage(race, channel);
         } else {
             (async() => {
-                await sleep(1000);
+                await sleep(2000);
                 if (race.messageId) {
                     updateRaceMessage(race, channel);
                 }

@@ -6,7 +6,7 @@ const client = new Discord.Client();
 
 var race = {
     started: false,
-    finished: false,
+    finished: true,
     startedAt: null,
     initiatedAt: null,
     remainingPlayers: 0,

@@ -1,22 +1,33 @@
 # Speedrun Race Bot for Discord
 A simple bot that helps discord users coordinate speedrun races.
-## Version 1.2.1
+## Version 1.2.2
 
 ## Commands: 
    ```css
- .prefixes :       both . and ! are acceptable prefixes
- .startrace /.new: Initiates a new race without joining.
- .seed:            Generates a random seed link for the randomizer.
- .join /.enter:    Joins the current race or starts a new one.
- .leave:           Leaves the current race.
- .ready:           Sets player status to ready to start.
- .unready:         Sets player status to not ready to start.
- .done /.time:     Finishes the race for the player.
- .forfeit:         Forfeits the race for the player.
- .reset:           Resets the race status and joined players.
- .rematch:         Starts new race with the same players.
- .offset:          Sets the starting time offset.
+ .prefixes :     both '.' and '!' are acceptable prefixes
+ .seed:          Generates a random seed link for the randomizer.
+ .startrace/.new Starts a new race. Optional category and offset ".new rab xb"
+ .category       Changes the category for the current race.
+ .join:          Joins the current race or starts a new one ".join aab psx"
+ .leave:         Leaves the current race.
+ .ready:         Sets player status to ready to start.
+ .unready:       Sets player status to not ready to start.
+ .done / .time:  Finishes the race for the player.
+ .forfeit:       Forfeits the race for the player.
+ .reset:         Resets the race status and joined players.
+ .rematch:       Starts new race with the same players.
+ .offset:        Sets the starting time offset ".offset 4/.offset psx/.offset xb"
  ```
+
+ ## Reactions: 
+➕:   Join
+✅:   Ready
+🏁:   Done
+❌ :   Forfeit
+↩:   Rematch
+
+## Category aliases: 
+gsb, rando, randomizer, any%, alucard, aab, glitchless, ps4, requiem, abrsr, richter, rich, rab, maria, mab
 
 ## Requirements
 * Node.js 12.10.0 +

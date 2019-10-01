@@ -94,6 +94,8 @@ module.exports = (message, channel) => {
         "Pointless"
     ];
     let nouns = [
+        "Axelord",
+        "Fleaman",
         "Saiyan",
         "Turtle",
         "Ranger",
@@ -198,7 +200,10 @@ module.exports = (message, channel) => {
 
     let adjective = adjectives[Math.floor(Math.random() * Math.floor(adjectives.length - 1))];
     let noun = nouns[Math.floor(Math.random() * Math.floor(nouns.length - 1))];
-    let number = Math.floor(Math.random() * Math.floor(99));
+    let number = Math.floor(Math.random() * Math.floor(100));
+    if (number == 100) {
+        number = 420;
+    }
 
     let seed = 'https://sotn.io/?' + adjective + noun + number;
 

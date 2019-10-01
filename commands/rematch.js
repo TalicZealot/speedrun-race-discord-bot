@@ -1,14 +1,15 @@
 const config = require('../config.json');
 const seed = require('../commands/seed');
+const updateRaceMessage = require('../common/updateRaceMessage');
 
 module.exports = (race, channel, username, message) => {
     let player = race.players.find(x => x.username === username);
 
-    if (player) {
-        race.seed = seed();
+    if (player && race.finished) {
+        if (race.category == "Randomizer GSB") {
+            race.seed = seed();
+        }
         race.started = false;
-        race.startedAt = null;
-        race.initiatedAt = null;
         race.remainingPlayers = race.players.length;
         race.players.forEach((player) => {
             player.finished = false;
@@ -19,14 +20,21 @@ module.exports = (race, channel, username, message) => {
         race.offset = parseInt(config.defaultOffset);
         race.initiatedAt = new Date().getTime();
         if (((new Date().getTime() - race.startedAt) / 1000) > parseInt(config.rematchTimeoutSeconds)) {
+            console.log((new Date().getTime() - race.startedAt) / 1000);
+            race.startedAt = null;
             race.players = [];
             channel.send('Too late for rematch, new race initiated instead.').then(x => {
                 race.messageId = x.id;
+                x.react('➕').then().catch(console.error);
+                x.react('✅').then().catch(console.error);
                 updateRaceMessage(race, channel);
             }).catch(console.error);
         } else {
             channel.send('Rematch initiated.').then(x => {
+                race.startedAt = null;
                 race.messageId = x.id;
+                x.react('➕').then().catch(console.error);
+                x.react('✅').then().catch(console.error);
                 updateRaceMessage(race, channel);
             }).catch(console.error);
         }

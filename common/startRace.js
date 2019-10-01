@@ -11,6 +11,7 @@ module.exports = (race, channel) => {
         const broadcast = channel.client.createVoiceBroadcast();
         const voiceChannel = channel.client.channels.find(x => x.name.startsWith(config.voiceChannelPrefix)); //&& x.members.find(y => y.username == race.players[0].username)
         if (voiceChannel) {
+            //console.log(voiceChannel.members);
             voiceChannel.join().then(connection => {
                 broadcast.playFile('../countdown.mp3');
                 const dispatcher = connection.playBroadcast(broadcast);
@@ -52,7 +53,7 @@ module.exports = (race, channel) => {
         const raceMessage = channel.fetchMessage(race.messageId).then(x =>
             x.clearReactions().then(y => {
                 x.react('🏁').then().catch(console.error);
-                x.react('🏳️').then().catch(console.error);
+                x.react('❌').then().catch(console.error);
             }).catch(console.error)).catch(console.error);
         if (voiceChannel) {
             voiceChannel.leave();

@@ -1,4 +1,4 @@
-const config = require('../config.json');
+﻿const config = require('../config.json');
 const join = require('../commands/join');
 const ready = require('../commands/ready');
 const done = require('../commands/done');
@@ -23,10 +23,10 @@ module.exports = (client, race, reaction, user) => {
     if (reaction.message.id === race.messageId && reactingUser && reaction.message.channel === channel && reaction.emoji.name === '🏁') {
         return done(race, channel, user.username);
     }
-    if (reaction.message.id === race.messageId && reactingUser && reaction.message.channel === channel && reaction.emoji.name === '🏳️') {
+    if (reaction.message.id === race.messageId && reactingUser && reaction.message.channel === channel && reaction.emoji.name === '❌') {
         return forfeit(race, channel, user.username);
     }
-    if (reaction.message.id === race.messageId && reactingUser && reaction.message.channel === channel && reaction.emoji.name === '♻️') {
+    if (reaction.message.id === race.messageId && reactingUser && reaction.message.channel === channel && reaction.emoji.name === '↩') {
         return rematch(race, channel, user.username);
     }
 };

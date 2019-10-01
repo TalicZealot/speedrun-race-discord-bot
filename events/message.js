@@ -1,5 +1,5 @@
 const config = require('../config.json');
-const startrace = require('../commands/startrace');
+const startrace = require('../commands/new');
 const seed = require('../commands/seed');
 const join = require('../commands/join');
 const leave = require('../commands/leave');
@@ -14,38 +14,40 @@ const rematch = require('../commands/rematch');
 module.exports = (client, race, message) => {
     const channel = client.channels.find(x => x.name === config.channel);
 
-    if (message.channel === channel && message.content === '.seed' || message.content === '!seed') {
+    if (message.channel === channel && message.content.match(/^[.!](\bseed\b)/i)) {
         return seed(message, channel);
     }
-    if (message.channel === channel && message.content === '.startrace' || message.content === '!startrace' || message.content === '.new' || message.content === '!new') {
+    if (message.channel === channel && message.content.match(/^[.!]((\bstartrace\b)|(\bnew\b))([ ]{0,1})([a-zA-Z0-9%]{0,20})((\b psx\b)|(\b xb\b)){0,1}/i)) {
         return startrace(race, channel, message);
     }
-    if (message.channel === channel && message.content === '.join' || message.content === '!join' || message.content === '.enter' || message.content === '!enter') {
+    if (message.channel === channel && message.content.match(/^[.!](\bcategory\b) ([a-zA-Z0-9%]{3,20})/i)) {
+        return category(race, message);
+    }
+    if (message.channel === channel && message.content.match(/^[.!]((\bjoin\b)|(\benter\b))/i)) {
         return join(race, channel, message.author.username, message);
     }
-    if (message.channel === channel && message.content === '.leave' || message.content === '!leave') {
+    if (message.channel === channel && message.content.match(/^[.!](\bleave\b)/i)) {
         return leave(race, channel, message.author.username, message);
     }
-    if (message.channel === channel && message.content === '.ready' || message.content === '!ready') {
+    if (message.channel === channel && message.content.match(/^[.!](\bready\b)/i)) {
         return ready(race, channel, message.author.username, message);
     }
-    if (message.channel === channel && message.content === '.unready' || message.content === '!unready') {
+    if (message.channel === channel && message.content.match(/^[.!](\bunready\b)/i)) {
         return unready(race, channel, message.author.username, message);
     }
-    if (message.channel === channel && message.content === '.done' || message.content === '!done' || message.content === '.time' || message.content === '!time') {
+    if (message.channel === channel && message.content.match(/^[.!]((\bdone\b)|(\btime\b))/i)) {
         return done(race, channel, message.author.username, message);
     }
-    if (message.channel === channel && message.content === '.forfeit' || message.content === '!forfeit') {
+    if (message.channel === channel && message.content.match(/^[.!](\bforfeit\b)/i)) {
         return forfeit(race, channel, message.author.username, message);
     }
-    if (message.channel === channel && message.content === '.rematch' || message.content === '!rematch') {
+    if (message.channel === channel && message.content.match(/^[.!](\brematch\b)/i)) {
         return rematch(race, channel, message.author.username, message);
     }
-    if (message.channel === channel && message.content.startsWith('.offset') || message.content.startsWith('!offset')) {
-        return offset(race, channel);
+    if (message.channel === channel && message.content.match(/^[.!](\boffset\b) (([0-9]+)|(\bpsx\b)|(\bxb\b))/i)) {
+        return offset(race, channel, message);
     }
-    if (message.channel === channel && message.content === '.reset' || message.content === '!reset') {
+    if (message.channel === channel && message.content.match(/^[.!](\breset\b)/i)) {
         return reset(race, channel, message.author.username, message);
     }
-    //change reset to keep players and add a different reset(new race)
 };

@@ -1,7 +1,6 @@
 const config = require('../config.json');
-const seed = require('../commands/seed');
 const updateRaceMessage = require('../common/updateRaceMessage');
-const startrace = require('../commands/startrace');
+const startrace = require('../commands/new');
 
 module.exports = (race, channel, username, message) => {
     let player = race.players.find(x => x.username === username);
@@ -10,7 +9,7 @@ module.exports = (race, channel, username, message) => {
     if (!race.started && !player) {
 
         if (race.finished || ((Math.floor(((new Date().getTime()) - race.initiatedAt)) / (1000 * 60)) >= parseInt(config.timeoutMinutes))) {
-            startrace(race, channel);
+            startrace(race, channel, message);
         }
 
         let newPlayer = {

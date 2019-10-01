@@ -5,5 +5,46 @@
     "defaultOffset": "10400",
     "rematchTimeoutSeconds": "8000",
     "voiceChannelPrefix": "Race-Channel",
-    "defaultCategory": "Randomizer GSB"
+    "defaultCategory": "Randomizer GSB",
+    "categories": [{
+            "name": "Randomizer GSB",
+            "aliases": ["gsb", "rando", "randomizer"]
+        },
+        {
+            "name": "Alucard Any%",
+            "aliases": ["any%", "alucard"]
+        },
+        {
+            "name": "Alucard All Bosses",
+            "aliases": ["aab"]
+        },
+        {
+            "name": "Alucard Glitchless",
+            "aliases": ["glitchless"]
+        },
+        {
+            "name": "Requiem Any%",
+            "aliases": ["requiem", "ps4"]
+        },
+        {
+            "name": "ABRSR",
+            "aliases": ["abrsr"]
+        },
+        {
+            "name": "Richter Any%",
+            "aliases": ["richter", "rich"]
+        },
+        {
+            "name": "Richter All Bosses",
+            "aliases": ["rab"]
+        },
+        {
+            "name": "Maria Any%",
+            "aliases": ["maria"]
+        },
+        {
+            "name": "Maria All Bosses",
+            "aliases": ["mab"]
+        }
+    ]
 }

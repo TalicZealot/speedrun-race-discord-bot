@@ -4,7 +4,7 @@ A simple bot that helps discord users coordinate speedrun races.
 
 ## Commands: 
    ```css
- .prefixes :       both '.' and '!' are acceptable prefixes
+ .prefixes :       both . and ! are acceptable prefixes
  .startrace /.new: Initiates a new race without joining.
  .seed:            Generates a random seed link for the randomizer.
  .join /.enter:    Joins the current race or starts a new one.
@@ -20,6 +20,7 @@ A simple bot that helps discord users coordinate speedrun races.
 
 ## Requirements
 * Node.js 12.10.0 +
+* FFmpeg
 
 ## Setup:
 * npm install
@@ -29,6 +30,10 @@ A simple bot that helps discord users coordinate speedrun races.
 * add countdown audio file to root folder or remove audio playback from startRace.js
 
 ### changelog
+#### 1.2.2
+* Regex for command matching.
+* Extended command functionality.
+* Numerous small fixes.
 #### 1.2.1
 * Added emoji reaction-based buttons as an alternate method of triggering the commands
 #### 1.2.0

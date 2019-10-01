@@ -12,7 +12,6 @@ module.exports = (race, channel, username, message) => {
             startRace(race, channel);
         } else {
             let playersReady = race.players.filter(x => x.ready == true).length;
-            //channel.send(playersReady + '/' + race.players.length + ' players ready').then().catch(console.error);
             updateRaceMessage(race, channel);
         }
     }

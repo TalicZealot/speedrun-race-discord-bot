@@ -3,7 +3,7 @@ const updateRaceMessage = require('../common/updateRaceMessage');
 module.exports = (race, channel, username, message) => {
     let player = race.players.find(x => x.username === username);
 
-    if (!race.started && player) {
+    if (!race.finished && player) {
         race.players.splice(race.players.indexOf(player), 1);
         race.remainingPlayers -= 1;
 

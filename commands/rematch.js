@@ -17,24 +17,23 @@ module.exports = (race, channel, username, message) => {
             player.ready = false;
             player.time = null;
         });
-        race.offset = parseInt(config.defaultOffset);
         race.initiatedAt = new Date().getTime();
         if (((new Date().getTime() - race.startedAt) / 1000) > parseInt(config.rematchTimeoutSeconds)) {
             console.log((new Date().getTime() - race.startedAt) / 1000);
             race.startedAt = null;
             race.players = [];
             channel.send('Too late for rematch, new race initiated instead.').then(x => {
+                race.status = 'PRE-RACE: WAITING FOR PLAYERS';
                 race.messageId = x.id;
-                x.react('➕').then().catch(console.error);
-                x.react('✅').then().catch(console.error);
+                x.react('➕').then(y => { x.react('✅').then().catch(console.error); }).catch(console.error);
                 updateRaceMessage(race, channel);
             }).catch(console.error);
         } else {
             channel.send('Rematch initiated.').then(x => {
+                race.status = 'REMATCH PRE-RACE: WAITING FOR PLAYERS';
                 race.startedAt = null;
                 race.messageId = x.id;
-                x.react('➕').then().catch(console.error);
-                x.react('✅').then().catch(console.error);
+                x.react('➕').then(y => { x.react('✅').then().catch(console.error); }).catch(console.error);
                 updateRaceMessage(race, channel);
             }).catch(console.error);
         }

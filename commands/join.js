@@ -9,6 +9,10 @@ module.exports = (race, channel, username, message) => {
     if (!race.started && !player) {
 
         if (race.finished || ((Math.floor(((new Date().getTime()) - race.initiatedAt)) / (1000 * 60)) >= parseInt(config.timeoutMinutes))) {
+            if (race.messageId) {
+                channel.fetchMessage(race.messageId).then(x =>
+                    x.clearReactions().then().catch(console.error)).catch(console.error);
+            }
             startrace(race, channel, message);
         }
 

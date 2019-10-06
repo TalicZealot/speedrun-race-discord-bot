@@ -1,22 +1,23 @@
 # Speedrun Race Bot for Discord
 A simple bot that helps discord users coordinate speedrun races.
-## Version 1.2.2
+## Version 1.3.0
 
 ## Commands: 
    ```css
- .prefixes :     both '.' and '!' are acceptable prefixes
- .seed:          Generates a random seed link for the randomizer.
- .startrace/.new Starts a new race. Optional category and offset ".new rab xb"
- .category       Changes the category for the current race.
- .join:          Joins the current race or starts a new one ".join aab psx"
- .leave:         Leaves the current race.
- .ready:         Sets player status to ready to start.
- .unready:       Sets player status to not ready to start.
- .done / .time:  Finishes the race for the player.
- .forfeit:       Forfeits the race for the player.
- .reset:         Resets the race status and joined players.
- .rematch:       Starts new race with the same players.
- .offset:        Sets the starting time offset ".offset 4/.offset psx/.offset xb"
+ .prefixes :        both . and ! are acceptable prefixes
+ .seed:             Generates a random seed link for the randomizer.
+ .leaderboard       Shows the current rankings for a category ".leaderboard gsb"
+ .new / .startrace  Starts a new race. Optional category and offset ".new rab xb"
+ .category          Changes the category for the current race.
+ .join:             Joins the current race or starts a new one ".join aab psx"
+ .leave:            Leaves the current race.
+ .ready:            Sets player status to ready to start.
+ .unready:          Sets player status to not ready to start.
+ .done / .time:     Finishes the race for the player.
+ .forfeit:          Forfeits the race for the player.
+ .reset:            Resets the race status and joined players.
+ .rematch:          Starts new race with the same players.
+ .offset:           Sets the starting time offset ".offset 4/.offset psx/.offset xb"
  ```
 
  ## Reactions: 
@@ -39,8 +40,11 @@ gsb, rando, randomizer, any%, alucard, aab, glitchless, ps4, requiem, abrsr, ric
 * create a new Discord application and bot
 * configure from config.json
 * add countdown audio file to root folder or remove audio playback from startRace.js
+* ELO uses a json storage file. Good enough for small servers, but I would replace it with MongoDB or another db server for a large population. Data handling is abstracted in ../data/data.js for easy swapping.
 
 ### changelog
+#### 1.3.0
+* Added ELO ranking system.
 #### 1.2.2
 * Regex for command matching.
 * Extended command functionality.

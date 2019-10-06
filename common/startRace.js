@@ -51,10 +51,12 @@ module.exports = (race, channel) => {
         race.status = 'RACE STARTED';
         updateRaceMessage(race, channel);
         const raceMessage = channel.fetchMessage(race.messageId).then(x =>
-            x.clearReactions().then(y => {
-                x.react('🏁').then().catch(console.error);
-                x.react('❌').then().catch(console.error);
-            }).catch(console.error)).catch(console.error);
+            (async() => {
+                await x.clearReactions().then().catch(console.error);
+                await x.react('🏁').then().catch(console.error);
+                await x.react('❌').then().catch(console.error);
+            })()
+        ).catch(console.error);
         if (voiceChannel) {
             voiceChannel.leave();
         }

@@ -4,17 +4,27 @@ const updateRaceMessage = require('../common/updateRaceMessage');
 
 module.exports = (race, channel, message) => {
     if (!race.finished) {
+        if (race.category == "Randomizer GSB") {
+            race.seed = seed();
+        }
         race.started = false;
         race.startedAt = null;
-        race.initiatedAt = null;
-        race.remainingPlayers = 0;
-        race.players = [];
-        race.offset = parseInt(config.defaultOffset);
-        race.category = config.defaultCategory;
-        race.messageId = null;
-        race.seed = seed();
-        race.status = 'PRE-RACE: WAITING FOR PLAYERS';
-
+        race.initiatedAt = new Date().getTime();
+        race.remainingPlayers = race.players.lenght;
+        race.players.forEach(x => {
+            x.finished = false;
+            x.forfeited = false;
+            x.ready = false;
+            x.time = null;
+        });
+        race.status = 'RESTARTED PRE-RACE: WAITING FOR PLAYERS';
+        raceMessage = channel.fetchMessage(race.messageId).then(x => {
+            (async() => {
+                await x.clearReactions().then().catch(console.error);
+                await x.react('➕').then().catch(console.error);
+                await x.react('✅').then().catch(console.error);
+            })();
+        }).catch(console.error);
         updateRaceMessage(race, channel);
     }
     if (message) {

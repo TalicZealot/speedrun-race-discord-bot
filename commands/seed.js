@@ -213,5 +213,6 @@ module.exports = (message, channel) => {
     if (message) {
         message.delete().then().catch(console.error);
     }
+
     return seed;
 };

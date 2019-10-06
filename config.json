@@ -2,10 +2,20 @@
     "channel": "race-channel",
     "maxOffsetSeconds": "15",
     "timeoutMinutes": "30",
+    "defaultLeaderboardSize": "25",
     "defaultOffset": "10400",
     "rematchTimeoutSeconds": "8000",
     "voiceChannelPrefix": "Race-Channel",
     "defaultCategory": "Randomizer GSB",
+    "offsets": [{
+            "alias": "psx",
+            "value": 10
+        },
+        {
+            "alias": "xb",
+            "value": 3
+        }
+    ],
     "categories": [{
             "name": "Randomizer GSB",
             "aliases": ["gsb", "rando", "randomizer"]

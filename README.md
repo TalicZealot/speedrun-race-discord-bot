@@ -1,6 +1,6 @@
 # Speedrun Race Bot for Discord
 A simple bot that helps discord users coordinate speedrun races.
-## Version 1.3.1
+## Version 1.3.2
 
 ## Commands: 
    ```css
@@ -8,6 +8,7 @@ A simple bot that helps discord users coordinate speedrun races.
  .seed:             Generates a random seed link for the randomizer.
  .leaderboard:      Shows the current rankings for a category ".leaderboard gsb"
  .rank:             Shows the player's rank for a category ".rank maria"
+ .stream:           Sets the Twitch username for the player and saves it. ".stream Alucard"
  .new / .startrace  Starts a new race. Optional category and offset ".new rab xb"
  .close /end/exit    Ends the current race with no result.
  .category          Changes the category for the current race.
@@ -49,6 +50,8 @@ gsb, rando, randomizer, any%, alucard, aab, glitchless, ps4, requiem, abrsr, ric
 * Pager
 
 ### changelog
+#### 1.3.2
+* Added an automatic kadgar link. Unfortunately Discord does not allow bots to see people's linked social media accounts, even though they put them there publically, so if a user's Twitch has a different username it has to be set with the ".stream" command.
 #### 1.3.1
 * Fixed scores being calculated before final player array sort.
 * Added rank command to check player standings without showing the whole leaderboard.

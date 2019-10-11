@@ -5,6 +5,10 @@ module.exports = (race, channel) => {
         output += ' Seed: ' + race.seed;
     }
 
+    if (race.kadgar) {
+        output += '\n' + race.kadgar;
+    }
+
     const centerPad = (str, length, char = ' ') => str.padStart((str.length + length) / 2, char).padEnd(length, char);
     output += '\n       `' + centerPad((race.status), 33) + '`';
     output += '\n       `' + centerPad(('Category: ' + race.category), 33) + '`';

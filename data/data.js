@@ -42,6 +42,21 @@ module.exports = {
         }
         return (players[playerIndex][category].matches > placementMatches);
     },
+    getPlayerTwitch: function(username) {
+        let playerIndex = getPlayerIndexByName(username);
+        if (!players[playerIndex]) {
+            return players[playerIndex].twitch;
+        } else {
+            return null;
+        }
+    },
+    setPlayerTwitch: function(username, twitch) {
+        let playerIndex = getPlayerIndexByName(username);
+        if (!players[playerIndex]) {
+            players[playerIndex].twitch = twitch;
+            savePlayer(players[playerIndex]);
+        }
+    },
     getPlayerElo: function(username, category) {
         let playerIndex = getPlayerIndexByName(username);
         if (!players[playerIndex][category]) {

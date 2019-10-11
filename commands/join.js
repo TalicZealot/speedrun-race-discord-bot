@@ -1,6 +1,7 @@
 const config = require('../config.json');
 const updateRaceMessage = require('../common/updateRaceMessage');
 const startrace = require('../commands/new');
+const data = require('../data/data.js');
 
 module.exports = (race, channel, username, message) => {
     let player = race.players.find(x => x.username === username);
@@ -25,6 +26,16 @@ module.exports = (race, channel, username, message) => {
         };
         race.players.push(newPlayer);
         race.remainingPlayers += 1;
+
+        if (!race.kadgar) {
+            race.kadgar = 'https://kadgar.net/live/';
+        }
+        let userTwitch = data.getPlayerTwitch(username);
+        if (userTwitch) {
+            race.kadgar += userTwitch + '/';
+        } else {
+            race.kadgar += username + '/';
+        }
 
         if (race.messageId) {
             updateRaceMessage(race, channel);

@@ -1,6 +1,5 @@
 ﻿const updateRaceMessage = require('../common/updateRaceMessage');
 const elo = require('../elo/elo.js');
-const playersDb = require('../data/players.json');
 
 module.exports = (race, channel, username, message) => {
     let player = race.players.find(x => x.username === username);

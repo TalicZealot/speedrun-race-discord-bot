@@ -1,8 +1,6 @@
 const config = require('../config.json');
 const data = require('../data/data.js');
 
-const updateRaceMessage = require('../common/updateRaceMessage');
-
 module.exports = (channel, message, username) => {
     const centerPad = (str, length, char = ' ') => str.padStart((str.length + length) / 2, char).padEnd(length, char);
     let match = message.content.match(/^[.!](\brank\b) ([ a-zA-Z0-9%]{0,20})/i);

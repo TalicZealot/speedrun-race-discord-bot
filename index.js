@@ -15,6 +15,7 @@ var race = {
     category: config.defaultCategory,
     messageId: null,
     seed: null,
+    kadgar: null,
     status: ''
 };
 

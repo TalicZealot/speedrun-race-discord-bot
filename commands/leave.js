@@ -6,6 +6,7 @@ module.exports = (race, channel, username, message) => {
     if (!race.finished && player) {
         race.players.splice(race.players.indexOf(player), 1);
         race.remainingPlayers -= 1;
+        race.kadgar = race.kadgar.replace(new RegExp(username + '/', 'i'), "");
 
         let allReady = race.players.every(x => x.ready == true);
         if (allReady && race.players.length > 1) {
@@ -15,6 +16,7 @@ module.exports = (race, channel, username, message) => {
             updateRaceMessage(race, channel);
         }
     }
+
     if (message) {
         message.delete().then().catch(console.error);
     }

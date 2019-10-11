@@ -22,6 +22,7 @@ function roundToFive(x) {
     }
 }
 
+//result: 1-win, 0-loss, 0.5-draw
 function calculatePoints(eloA, eloB, Kvalue, result) {
     let eloDifference = eloA - eloB;
     let exponent = -(eloDifference / N);
@@ -31,7 +32,7 @@ function calculatePoints(eloA, eloB, Kvalue, result) {
 }
 
 module.exports = {
-    resolveMatch: function(matchPlayers, category) {
+    resolveMatch: function(matchPlayers, category, local) {
         let adjustments = [];
         for (let i = 0; i < matchPlayers.length; i++) {
             let adjustment = 0;
@@ -54,12 +55,13 @@ module.exports = {
                 }
             }
             adjustments.push(adjustment);
-            console.log(matchPlayers[i].username + ' elo adjustment');
-            console.log(adjustment);
         }
 
         for (let i = 0; i < matchPlayers.length; i++) {
             data.adjustElo(matchPlayers[i].username, category, adjustments[i]);
+            if (local) {
+                console.log(matchPlayers[i].username + ' ' + adjustments[i]);
+            }
         }
         return adjustments;
     }

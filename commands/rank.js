@@ -3,9 +3,9 @@ const data = require('../data/data.js');
 
 const updateRaceMessage = require('../common/updateRaceMessage');
 
-module.exports = (channel, message) => {
+module.exports = (channel, message, username) => {
     const centerPad = (str, length, char = ' ') => str.padStart((str.length + length) / 2, char).padEnd(length, char);
-    let match = message.content.match(/^[.!](\bleaderboard\b) ([ a-zA-Z0-9%]{0,20})/i);
+    let match = message.content.match(/^[.!](\brank\b) ([ a-zA-Z0-9%]{0,20})/i);
     let category = match[2];
     let categories = config.categories;
     for (let i = 0; i < categories.length; i++) {
@@ -20,16 +20,15 @@ module.exports = (channel, message) => {
     let board = data.getCategoryLeaderboard(category);
 
     if (board) {
-        let output = 'Leaderboard';
-        output += '\n   `' + centerPad(('Category: ' + category), 34) + '`';
-
-        let outputSize = (board.length > parseInt(config.defaultLeaderboardSize)) ? parseInt(config.defaultLeaderboardSize) : board.length;
-
-        for (let i = 0; i < outputSize; i++) {
-            output += '\n   `' + ((i + 1) + '. ' + board[i].username).padEnd(24, " ");
-            output += (board[i].elo + ' ').padEnd(10, " ") + '`';
+        let playerRank = board.map(function(e) { return e.username; }).indexOf(username);
+        let output = '`Rank in ' + category + ': ';
+        if (playerRank > -1) {
+            output += (playerRank + 1) + '`';
+        } else {
+            output += 'unranked `';
         }
-        channel.send(output).then().catch(console.error);
+
+        channel.send(centerPad(output, 24)).then().catch(console.error);
     }
 
     if (message) {

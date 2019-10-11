@@ -25,7 +25,7 @@ function submitMatch() {
         if (!category) {
             category = input;
         } else if (input == "end") {
-            elo.resolveMatch(players, category);
+            elo.resolveMatch(players, category, true);
         } else if (input.match(/^[.](\bforfeit\b) ([a-zA-Z0-9% ]{3,20})/i)) {
             let split = input.match(/^[.](\bforfeit\b) ([a-zA-Z0-9% ]{3,20})/i);
             players.push({ username: split[2], forfeited: true });

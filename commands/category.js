@@ -1,14 +1,19 @@
 const updateRaceMessage = require('../common/updateRaceMessage');
+const config = require('../config.json');
 
 module.exports = (race, message, category) => {
-    if (category && !message) {
+    if (category) {
         race.category = category;
-        updateRaceMessage(race, channel);
-        return;
+        for (let i = 0; i < categories.length; i++) {
+            for (let j = 0; j < categories[i].aliases.length; j++) {
+                if (category.toLowerCase() == categories[i].aliases[j]) {
+                    race.category = categories[i].name;
+                    break;
+                }
+            }
+        }
     }
 
-    let messageCategory = message.content.split('category')[1].trim();
-    race.category = messageCategory;
     updateRaceMessage(race, channel);
 
     if (message) {

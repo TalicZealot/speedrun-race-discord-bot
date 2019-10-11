@@ -60,7 +60,7 @@ module.exports = (race, channel) => {
             let seconds = Math.floor((time / 1000) % 60);
             let minutes = Math.floor((time / (1000 * 60)) % 60);
             let hours = Math.floor((time / (1000 * 60 * 60)) % 24);
-            let rightCol = (race.players[i].forfeited) ? 'forfeited' : hours.toString().padStart(2, "0") + ':' + minutes.toString().padStart(2, "0") + ':' + seconds.toString().padStart(2, "0");
+            let rightCol = (race.players[i].forfeited) ? 'forfeited' : hours.toString().padStart(2, "0") + ':' + minutes.toString().padStart(2, "0") + ':' + seconds.toString().padStart(2, "0") + ' ';
             if (race.finished && race.players[i].adjustment) {
                 rightCol += ' ' + ((race.players[i].adjustment > 0) ? '+' + race.players[i].adjustment : race.players[i].adjustment);
             }

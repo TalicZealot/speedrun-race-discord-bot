@@ -18,7 +18,7 @@ module.exports = (race, channel, message) => {
         race.category = category;
         for (let i = 0; i < categories.length; i++) {
             for (let j = 0; j < categories[i].aliases.length; j++) {
-                if (category == categories[i].aliases[j]) {
+                if (category.toLowerCase() == categories[i].aliases[j]) {
                     race.category = categories[i].name;
                     break;
                 }

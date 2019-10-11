@@ -1,13 +1,15 @@
 # Speedrun Race Bot for Discord
 A simple bot that helps discord users coordinate speedrun races.
-## Version 1.3.0
+## Version 1.3.1
 
 ## Commands: 
    ```css
  .prefixes :        both . and ! are acceptable prefixes
  .seed:             Generates a random seed link for the randomizer.
- .leaderboard       Shows the current rankings for a category ".leaderboard gsb"
+ .leaderboard:      Shows the current rankings for a category ".leaderboard gsb"
+ .rank:             Shows the player's rank for a category ".rank maria"
  .new / .startrace  Starts a new race. Optional category and offset ".new rab xb"
+ .close /end/exit    Ends the current race with no result.
  .category          Changes the category for the current race.
  .join:             Joins the current race or starts a new one ".join aab psx"
  .leave:            Leaves the current race.
@@ -42,7 +44,15 @@ gsb, rando, randomizer, any%, alucard, aab, glitchless, ps4, requiem, abrsr, ric
 * add countdown audio file to root folder or remove audio playback from startRace.js
 * ELO uses a json storage file. Good enough for small servers, but I would replace it with MongoDB or another db server for a large population. Data handling is abstracted in ../data/data.js for easy swapping.
 
+## TODO
+* Spam prevention
+* Pager
+
 ### changelog
+#### 1.3.1
+* Fixed scores being calculated before final player array sort.
+* Added rank command to check player standings without showing the whole leaderboard.
+* Refactoring.
 #### 1.3.0
 * Added ELO ranking system.
 #### 1.2.2

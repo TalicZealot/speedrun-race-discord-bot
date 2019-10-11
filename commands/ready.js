@@ -11,7 +11,6 @@ module.exports = (race, channel, username, message) => {
         if (allReady && race.players.length > 1) {
             startRace(race, channel);
         } else {
-            let playersReady = race.players.filter(x => x.ready == true).length;
             updateRaceMessage(race, channel);
         }
     }

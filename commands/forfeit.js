@@ -13,14 +13,46 @@ module.exports = (race, channel, username, message) => {
         if (race.remainingPlayers < 1) {
             race.finished = true;
             race.status = 'RACE FINISHED';
+            race.players.sort(function(a, b) {
+                if (a.time == null) {
+                    if (b.time) {
+                        return 1;
+                    }
+                }
+                if (b.time == null) {
+                    if (a.time) {
+                        return -1;
+                    }
+                }
+                if (b.forfeited == true) {
+                    if (!a.forfeited) {
+                        return 1;
+                    }
+                }
+                if (a.forfeited == true) {
+                    if (!b.forfeited) {
+                        return -1;
+                    }
+                }
+                if (a.time > b.time) {
+                    return 1;
+                }
+                if (a.time == b.time) {
+                    return 0;
+                }
+                if (a.time < b.time) {
+                    return -1;
+                }
+                return 0;
+            });
             let adjustments = elo.resolveMatch(race.players, race.category);
             for (let i = 0; i < race.players.length; i++) {
                 race.players[i].adjustment = adjustments[i];
             }
-            const raceMessage = channel.fetchMessage(race.messageId).then(x =>
+            channel.fetchMessage(race.messageId).then(x =>
                 (async() => {
                     await x.clearReactions().then().catch(console.error);
-                    await x.react('↩').then().catch(console.error);
+                    await x.react('➰').then().catch(console.error);
                 })()
             ).catch(console.error);
         }

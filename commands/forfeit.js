@@ -50,8 +50,8 @@ module.exports = (race, channel, username, message) => {
             }
             channel.fetchMessage(race.messageId).then(x =>
                 (async() => {
-                    await x.clearReactions().then().catch(console.error);
-                    await x.react('➰').then().catch(console.error);
+                    await x.clearReactions().then(console.log).catch(console.error);
+                    await x.react('➰').then(console.log).catch(console.error);
                 })()
             ).catch(console.error);
         }

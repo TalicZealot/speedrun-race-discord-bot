@@ -1,10 +1,20 @@
 # Speedrun Race Bot for Discord
-A simple bot that helps discord users coordinate speedrun races.
-## Version 1.3.2
+A Discord bot for coordinating speedrun races.
+#### features
+* categories
+* automatic text and audio countdown
+* race timing
+* timing offset
+* elo ranking
+* category leaderboards
+* buttons and commands for ease of use
+
+## Version 1.3.3
 
 ## Commands: 
    ```css
  .prefixes :        both . and ! are acceptable prefixes
+ .toggle /pager:    Grants or removes the RacePager role.
  .seed:             Generates a random seed link for the randomizer.
  .leaderboard:      Shows the current rankings for a category ".leaderboard gsb"
  .rank:             Shows the player's rank for a category ".rank maria"
@@ -23,7 +33,7 @@ A simple bot that helps discord users coordinate speedrun races.
  .offset:           Sets the starting time offset ".offset 4/.offset psx/.offset xb"
  ```
 
- ## Reactions: 
+## Reactions: 
 ➕:   Join
 ✅:   Ready
 🏁:   Done
@@ -41,15 +51,17 @@ gsb, rando, randomizer, any%, alucard, aab, glitchless, ps4, requiem, abrsr, ric
 * npm install
 * create a .env file for a discord authentication token
 * create a new Discord application and bot
-* configure from config.json
+* configure from config.json and eloConfig.json
 * add countdown audio file to root folder or remove audio playback from startRace.js
 * ELO uses a json storage file. Good enough for small servers, but I would replace it with MongoDB or another db server for a large population. Data handling is abstracted in ../data/data.js for easy swapping.
 
 ## TODO
 * Spam prevention
-* Pager
 
 ### changelog
+#### 1.3.3
+* Added a command to toggle a race pager role for dedicated race pinging.
+* Refactoring.
 #### 1.3.2
 * Added an automatic kadgar link. Unfortunately Discord does not allow bots to see people's linked social media accounts, even though they put them there publically, so if a user's Twitch has a different username it has to be set with the ".stream" command.
 #### 1.3.1

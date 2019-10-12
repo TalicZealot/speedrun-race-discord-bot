@@ -1,5 +1,6 @@
 {
     "channel": "race-channel",
+    "pagerRoleId": "632571703398105098",
     "maxOffsetSeconds": "15",
     "timeoutMinutes": "30",
     "defaultLeaderboardSize": "25",

@@ -1,5 +1,6 @@
 const config = require('../config.json');
 const startrace = require('../commands/new');
+const togglePager = require('../commands/togglePager');
 const seed = require('../commands/seed');
 const leaderboard = require('../commands/leaderboard');
 const rank = require('../commands/rank');
@@ -18,13 +19,16 @@ const rematch = require('../commands/rematch');
 module.exports = (client, race, message) => {
     const channel = client.channels.find(x => x.name === config.channel);
 
+    if (message.content.match(/^^[.!]((\btoggle\b)|(\btogglePager\b)|(\bpager\b))/i)) {
+        return togglePager(message);
+    }
     if (message.channel === channel && message.content.match(/^[.!](\bseed\b)/i)) {
         return seed(message, channel);
     }
-    if (message.channel === channel && message.content.match(/^[.!](\bleaderboard\b) ([ a-zA-Z0-9%]{0,20})/i)) {
+    if (message.channel === channel && message.content.match(/^[.!](\bleaderboard\b) ([ a-zA-Z0-9%]{3,20})/i)) {
         return leaderboard(channel, message);
     }
-    if (message.channel === channel && message.content.match(/^[.!](\brank\b) ([ a-zA-Z0-9%]{0,20})/i)) {
+    if (message.channel === channel && message.content.match(/^[.!](\brank\b) ([ a-zA-Z0-9%]{3,20})/i)) {
         return rank(channel, message, message.author.username);
     }
     if (message.channel === channel && message.content.match(/^[.!](\bstream\b) ([a-zA-Z0-9_]{4,20})/i)) {
@@ -36,7 +40,7 @@ module.exports = (client, race, message) => {
     if (message.channel === channel && message.content.match(/^[.!]((\bclose\b)|(\bend\b)|(\bexit\b))/i)) {
         return close(race, message, channel);
     }
-    if (message.channel === channel && message.content.match(/^[.!](\bcategory\b) ([a-zA-Z0-9%]{3,20})/i)) {
+    if (message.channel === channel && message.content.match(/^[.!](\bcategory\b) ([ a-zA-Z0-9%]{3,20})/i)) {
         return category(race, message);
     }
     if (message.channel === channel && message.content.match(/^[.!]((\bjoin\b)|(\benter\b))/i)) {

@@ -40,22 +40,16 @@ module.exports = {
             players[playerIndex][category].matches = 0;
             return false;
         }
-        return (players[playerIndex][category].matches > placementMatches);
+        return (players[playerIndex][category].matches >= placementMatches);
     },
     getPlayerTwitch: function(username) {
         let playerIndex = getPlayerIndexByName(username);
-        if (!players[playerIndex]) {
-            return players[playerIndex].twitch;
-        } else {
-            return null;
-        }
+        return players[playerIndex].twitch;
     },
     setPlayerTwitch: function(username, twitch) {
         let playerIndex = getPlayerIndexByName(username);
-        if (!players[playerIndex]) {
-            players[playerIndex].twitch = twitch;
-            savePlayer(players[playerIndex]);
-        }
+        players[playerIndex].twitch = twitch;
+        savePlayer(players[playerIndex]);
     },
     getPlayerElo: function(username, category) {
         let playerIndex = getPlayerIndexByName(username);

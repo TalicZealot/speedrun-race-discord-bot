@@ -28,6 +28,9 @@ module.exports = (race, channel) => {
         if (!allReady) {
             race.status = 'INTERRUPTED: WAITING FOR PLAYERS';
             updateRaceMessage(race, channel);
+            if (voiceChannel) {
+                voiceChannel.leave();
+            }
             return;
         }
         await sleep(1000);
@@ -41,6 +44,9 @@ module.exports = (race, channel) => {
         if (!allReady) {
             race.status = 'INTERRUPTED: WAITING FOR PLAYERS';
             updateRaceMessage(race, channel);
+            if (voiceChannel) {
+                voiceChannel.leave();
+            }
             return;
         }
         race.status = 'PLAY!';
@@ -50,7 +56,7 @@ module.exports = (race, channel) => {
         await sleep(1000);
         race.status = 'RACE STARTED';
         updateRaceMessage(race, channel);
-        const raceMessage = channel.fetchMessage(race.messageId).then(x =>
+        channel.fetchMessage(race.messageId).then(x =>
             (async() => {
                 await x.clearReactions().then().catch(console.error);
                 await x.react('🏁').then().catch(console.error);

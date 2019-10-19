@@ -1,5 +1,6 @@
 ﻿const updateRaceMessage = require('../common/updateRaceMessage');
 const elo = require('../elo/elo.js');
+const sleep = m => new Promise(r => setTimeout(r, m));
 
 module.exports = (race, channel, username, message) => {
     let player = race.players.find(x => x.username === username);
@@ -57,13 +58,17 @@ module.exports = (race, channel, username, message) => {
             }
             channel.fetchMessage(race.messageId).then(x =>
                 (async() => {
-                    await x.clearReactions().then(console.log).catch(console.error);
-                    await x.react('➰').then(console.log).catch(console.error);
+                    await x.clearReactions().then().catch(console.error);
+                    await x.react('↩').then().catch(console.error);
                 })()
             ).catch(console.error);
         }
         updateRaceMessage(race, channel);
+    } else {
+        let time = new Date();
+        console.log(time.toLocaleString('en-GB') + ' done: ' + username + ' is not in the race!');
     }
+
     if (message) {
         message.delete().then().catch(console.error);
     }

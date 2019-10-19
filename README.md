@@ -9,7 +9,7 @@ A Discord bot for coordinating speedrun races.
 * category leaderboards
 * buttons and commands for ease of use
 
-## Version 1.3.3
+## Version 1.4.0
 
 ## Commands: 
    ```css
@@ -55,10 +55,12 @@ gsb, rando, randomizer, any%, alucard, aab, glitchless, ps4, requiem, abrsr, ric
 * add countdown audio file to root folder or remove audio playback from startRace.js
 * ELO uses a json storage file. Good enough for small servers, but I would replace it with MongoDB or another db server for a large population. Data handling is abstracted in ../data/data.js for easy swapping.
 
-## TODO
-* Spam prevention
-
 ### changelog
+#### 1.4.0
+* Error handling
+* Spam prevention
+* Fixed forfeit draw elo calculation.
+* Other small bugfixes and refactoring.
 #### 1.3.3
 * Added a command to toggle a race pager role for dedicated race pinging.
 * Refactoring.

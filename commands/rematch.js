@@ -10,6 +10,7 @@ module.exports = (race, channel, username, message) => {
             race.seed = seed();
         }
         race.started = false;
+        race.finished = false;
         race.remainingPlayers = race.players.length;
         race.players.forEach((player) => {
             player.finished = false;
@@ -25,7 +26,10 @@ module.exports = (race, channel, username, message) => {
             channel.send('Too late for rematch, new race initiated instead.').then(x => {
                 race.status = 'PRE-RACE: WAITING FOR PLAYERS';
                 race.messageId = x.id;
-                x.react('➕').then(y => { x.react('✅').then().catch(console.error); }).catch(console.error);
+                (async() => {
+                    await x.react('➕').then().catch(console.error);
+                    await x.react('✅').then().catch(console.error);
+                })();
                 updateRaceMessage(race, channel);
             }).catch(console.error);
         } else {
@@ -33,7 +37,10 @@ module.exports = (race, channel, username, message) => {
                 race.status = 'REMATCH PRE-RACE: WAITING FOR PLAYERS';
                 race.startedAt = null;
                 race.messageId = x.id;
-                x.react('➕').then(y => { x.react('✅').then().catch(console.error); }).catch(console.error);
+                (async() => {
+                    await x.react('➕').then().catch(console.error);
+                    await x.react('✅').then().catch(console.error);
+                })();
                 updateRaceMessage(race, channel);
             }).catch(console.error);
         }

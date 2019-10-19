@@ -1,5 +1,8 @@
 module.exports = (message, channel) => {
     let adjectives = [
+        "Invincible",
+        "Burning",
+        "Grumpy",
         "SuperDuper",
         "Boring",
         "Sorry",
@@ -200,7 +203,7 @@ module.exports = (message, channel) => {
 
     let adjective = adjectives[Math.floor(Math.random() * Math.floor(adjectives.length - 1))];
     let noun = nouns[Math.floor(Math.random() * Math.floor(nouns.length - 1))];
-    let number = Math.floor(Math.random() * Math.floor(100));
+    let number = Math.floor(Math.random() * Math.floor(101));
     if (number == 100) {
         number = 420;
     }

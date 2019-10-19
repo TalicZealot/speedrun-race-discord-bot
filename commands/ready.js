@@ -13,6 +13,8 @@ module.exports = (race, channel, username, message) => {
         } else {
             updateRaceMessage(race, channel);
         }
+    } else {
+        console.log('Player has not joined!');
     }
     if (message) {
         message.delete().then().catch(console.error);

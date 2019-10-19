@@ -40,16 +40,19 @@ module.exports = {
             let playerK = data.checkPlayerRanked(matchPlayers[i].username, category) ? K : KPlacement;
 
             for (let j = 0; j < i; j++) {
-                let opponentElo = data.getPlayerElo(matchPlayers[j].username, category);
-                adjustment += calculatePoints(playerElo, opponentElo, playerK, 0);
-            }
-            if (matchPlayers[i].forfeited) {
-                for (let j = i + 1; j < matchPlayers.length; j++) {
+                if (matchPlayers[i].forfeited && matchPlayers[j].forfeited) {
                     let opponentElo = data.getPlayerElo(matchPlayers[j].username, category);
                     adjustment += calculatePoints(playerElo, opponentElo, playerK, 0.5);
+                } else {
+                    let opponentElo = data.getPlayerElo(matchPlayers[j].username, category);
+                    adjustment += calculatePoints(playerElo, opponentElo, playerK, 0);
                 }
-            } else {
-                for (let j = i + 1; j < matchPlayers.length; j++) {
+            }
+            for (let j = i + 1; j < matchPlayers.length; j++) {
+                if (matchPlayers[i].forfeited && matchPlayers[j].forfeited) {
+                    let opponentElo = data.getPlayerElo(matchPlayers[j].username, category);
+                    adjustment += calculatePoints(playerElo, opponentElo, playerK, 0.5);
+                } else {
                     let opponentElo = data.getPlayerElo(matchPlayers[j].username, category);
                     adjustment += calculatePoints(playerElo, opponentElo, playerK, 1);
                 }

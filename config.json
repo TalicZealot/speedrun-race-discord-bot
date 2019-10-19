@@ -3,6 +3,7 @@
     "pagerRoleId": "632571703398105098",
     "maxOffsetSeconds": "15",
     "timeoutMinutes": "30",
+    "minimumNewIntervalMinutes": "1",
     "defaultLeaderboardSize": "25",
     "defaultOffset": "10400",
     "rematchTimeoutSeconds": "8000",

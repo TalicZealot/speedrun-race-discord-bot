@@ -27,4 +27,7 @@ fs.readdir('./events/', (err, files) => {
     });
 });
 
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN).then(x => {
+    let time = new Date();
+    console.log(time.toLocaleString('en-GB') + ' restarted');
+}).catch(console.error);

@@ -19,7 +19,7 @@ module.exports = (channel, message, username) => {
 
     if (board) {
         let playerRank = board.map(function(e) { return e.username; }).indexOf(username);
-        let output = '`Rank in ' + category + ': ';
+        let output = '` ' + username + ' rank in ' + category + ': ';
         if (playerRank > -1) {
             output += (playerRank + 1) + '`';
         } else {

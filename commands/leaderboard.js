@@ -26,7 +26,7 @@ module.exports = (channel, message) => {
         let outputSize = (board.length > parseInt(config.defaultLeaderboardSize)) ? parseInt(config.defaultLeaderboardSize) : board.length;
 
         for (let i = 0; i < outputSize; i++) {
-            output += '\n   `' + ((i + 1).toString().padStart(2, " ") + '. ' + board[i].username).padEnd(24, " ");
+            output += '\n   `' + ((i + 1).toString().padStart(2, " ") + '. ' + board[i].username.replace(/\W/gi, "")).padEnd(24, " ");
             output += (board[i].elo + ' ').padEnd(10, " ") + '`';
         }
         channel.send(output).then().catch(console.error);

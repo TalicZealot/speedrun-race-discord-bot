@@ -8,20 +8,17 @@ module.exports = (race, channel) => {
         updateRaceMessage(race, channel);
         await sleep(1000);
         //Remove this section to disable audio playback
-        const broadcast = channel.client.createVoiceBroadcast();
-        const voiceChannel = channel.client.channels.find(x => x.name.startsWith(config.voiceChannelPrefix)); //&& x.members.find(y => y.username == race.players[0].username)
+        const voiceChannel = channel.client.channels.find(x => x.name.startsWith(config.voiceChannelPrefix));
         if (voiceChannel) {
-            //console.log(voiceChannel.members);
             voiceChannel.join().then(connection => {
-                broadcast.playFile('../countdown.mp3');
-                const dispatcher = connection.playBroadcast(broadcast);
+            const dispatcher = connection.playFile(require("path").join(__dirname, '../countdown.mp3'));
+            dispatcher.on("end", end => {
+                voiceChannel.leave();
+            });
             }).catch(console.error);
         }
         //--------------------------------------------
-        await sleep(2000);
-        race.status = 'Starting in: 4';
-        updateRaceMessage(race, channel);
-        await sleep(1000);
+        await sleep(2500);
         race.status = 'Starting in: 3';
         updateRaceMessage(race, channel);
         let allReady = race.players.every(x => x.ready == true);

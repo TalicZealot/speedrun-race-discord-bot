@@ -2,17 +2,17 @@ module.exports = (race, channel) => {
     let output = 'Race Initiated!';
 
     if (race.seed) {
-        output += ' Seed: ' + race.seed;
+        output += '\n Seed: ' + race.seed;
     }
 
     if (race.kadgar) {
-        output += '\n' + race.kadgar;
+        output += '\n <' + race.kadgar + '>';
     }
 
     const centerPad = (str, length, char = ' ') => str.padStart((str.length + length) / 2, char).padEnd(length, char);
-    output += '\n       `' + centerPad((race.status), 33) + '`';
+    output += '\n       `' + centerPad(((race.tournament ? 'TOURNAMENT ' : '') + race.status), 33) + '`';
     output += '\n       `' + centerPad(('Category: ' + race.category), 33) + '`';
-    //race.players.sort((a, b) => (a.ready === b.ready) ? 1 : -1);
+
     race.players.sort(function(a, b) {
         if (a.time == null) {
             if (b.time) {
@@ -57,7 +57,7 @@ module.exports = (race, channel) => {
             output += '\n       ';
         }
 
-        output += ('` ' + race.players[i].username).padEnd(20, " ");
+        output += ('` ' + race.players[i].username.replace(/\W/gi, "")).padEnd(20, " ");
 
         if (race.players[i].time || race.players[i].forfeited) {
             let time = race.players[i].time;

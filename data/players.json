@@ -1,2 +1,16 @@
-[{
+[
+  {
+    "username": "example",
+    "example category": {
+      "elo": 1234,
+      "matches": 666
+    }
+  },
+  {
+    "username": "Talic",
+    "Coding": {
+      "elo": 0,
+      "matches": 999
+    }
+  }
 ]

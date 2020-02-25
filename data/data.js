@@ -93,7 +93,7 @@ module.exports = {
         }
         players.forEach(player => {
             if (player[category]) {
-                if (player[category].elo) {
+                if (player[category].elo && player[category].matches >= placementMatches) {
                     board.push({
                         username: player.username,
                         elo: player[category].elo
@@ -107,5 +107,63 @@ module.exports = {
         }
         board.sort((a, b) => (a.elo > b.elo) ? -1 : 1);
         return board;
+    },
+    getCategoryStats: function(category) {
+        let board = [];
+        let stats = {
+            totalRuns: 0,
+            categoryPlayers: 0
+        };
+        if (players.length < 1) {
+            players = playersDb;
+        }
+        players.forEach(player => {
+            if (player[category]) {
+                if (player[category].elo && player[category].matches >= placementMatches) {
+                    board.push({
+                        username: player.username,
+                        elo: player[category].elo
+                    });
+                }
+                if(player[category].elo) {
+                    stats.totalRuns += player[category].matches;
+                    stats.categoryPlayers += 1;
+                }
+            }
+        });
+        if (board.length == 0) {
+            console.log('no stats for "' + category + '"');
+            return null;
+        }
+        board.sort((a, b) => (a.elo > b.elo) ? -1 : 1);
+        stats.top = board.slice(0,3);
+        return stats;
+    },
+    getPlayerStats: function(player) {
+        let stats = {};
+        stats.categories = [];
+        if (players.length < 1) {
+            players = playersDb;
+        }
+        let playerIndex = players.findIndex(x => x.username == player);
+        if (playerIndex < 0) {
+            return null;
+        }
+        stats.twitch = 'https://www.twitch.tv/' + ((players[playerIndex].twitch) ? players[playerIndex].twitch : player);
+        Object.keys(players[playerIndex]).forEach(key => {
+            if (key != "username" && key != "twitch") {
+                let rank = this.getCategoryLeaderboard(key).findIndex(x => x.username == player) + 1;
+                if (rank < 1) {
+                    rank = 'unranked';
+                }
+                stats.categories.push({
+                    name: key,
+                    rank: rank,
+                    elo: players[playerIndex][key].elo,
+                    matches: players[playerIndex][key].matches
+                });
+            }
+        });
+        return stats;
     }
 };

@@ -15,6 +15,10 @@ const forfeit = require('../commands/forfeit');
 const offset = require('../commands/offset');
 const reset = require('../commands/reset');
 const rematch = require('../commands/rematch');
+const stats = require('../commands/stats');
+const submit = require('../commands/submit');
+const tournament = require('../commands/tournament');
+const kick = require('../commands/kick');
 
 module.exports = (client, race, message) => {
     const channel = client.channels.find(x => x.name === config.channel);
@@ -31,10 +35,10 @@ module.exports = (client, race, message) => {
     if (message.channel === channel && message.content.match(/^[.!](\brank\b) ([ a-zA-Z0-9%]{3,20})/i)) {
         return rank(channel, message, message.author.username);
     }
-    if (message.channel === channel && message.content.match(/^[.!](\bstream\b) ([a-zA-Z0-9_]{4,20})/i)) {
+    if (message.channel === channel && message.content.match(/^[.!]((\bstream\b)|(\btwitch\b)) ([a-zA-Z0-9_]{4,20})/i)) {
         return stream(message, message.author.username);
     }
-    if (message.channel === channel && message.content.match(/^[.!]((\bstartrace\b)|(\bnew\b))([ ]{0,1})([a-zA-Z0-9%]{0,20})((\b psx\b)|(\b xb\b)){0,1}/i)) {
+    if (message.channel === channel && message.content.match(/^[.!]((\bstartrace\b)|(\bnew\b)|(\benter\b))([ ]{0,1})([a-zA-Z0-9%]{0,20}[ ]{0,1}[a-zA-Z0-9%]{0,20})((\b psx\b)|(\b xb\b)){0,1}(\b tournament\b){0,1}/i)) {
         return startrace(race, channel, message);
     }
     if (message.channel === channel && message.content.match(/^[.!]((\bclose\b)|(\bend\b)|(\bexit\b))/i)) {
@@ -42,6 +46,9 @@ module.exports = (client, race, message) => {
     }
     if (message.channel === channel && message.content.match(/^[.!](\bcategory\b) ([ a-zA-Z0-9%]{3,20})/i)) {
         return category(race, message);
+    }
+    if (message.channel === channel && message.content.match(/^[.!](\btournament\b)/i)) {
+        return tournament(race, message);
     }
     if (message.channel === channel && message.content.match(/^[.!]((\bjoin\b)|(\benter\b))/i)) {
         return join(race, channel, message.author.username, message);
@@ -68,6 +75,15 @@ module.exports = (client, race, message) => {
         return offset(race, channel, message);
     }
     if (message.channel === channel && message.content.match(/^[.!]((\breset\b)|(\brestart\b))/i)) {
-        return reset(race, channel, message.author.username, message);
+        return reset(race, channel, message);
+    }
+    if (message.channel === channel && message.content.match(/^[.!](\bstats\b)([ ]{0,1})([a-zA-Z0-9%]{0,20})/i)) {
+        return stats(race, channel, message);
+    }
+    if (message.channel === channel && message.content.match(/^[.!](\bsubmit\b)(( "[a-zA-Z0-9% .]{3,20}"){3,11})( end)/i)) {
+        return submit(channel, message);
+    }
+    if (message.channel === channel && message.content.match(/^[.!](\bkick\b)([ ]{0,1})([a-zA-Z0-9%]{0,20})/i)) {
+        return kick(race, channel, message);
     }
 };

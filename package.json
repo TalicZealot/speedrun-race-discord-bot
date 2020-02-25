@@ -7,16 +7,19 @@
         "dev": "nodemon index.js"
     },
     "devDependencies": {
-        "nodemon": "^1.19.2"
+        "nodemon": "^1.19.4"
     },
     "dependencies": {
-        "@ffmpeg-installer/ffmpeg": "^1.0.20",
         "discord.js": "^11.5.1",
-        "dotenv": "^8.1.0",
-        "ffmpeg-static": "^2.6.0",
-        "opusscript": "0.0.7"
+        "dotenv": "^8.2.0"
     },
     "nodemonConfig": {
-        "ignore": ["/data/players.json", "*.md"]
+        "ignore": [
+            "/data/players.json",
+            "*.md"
+        ]
+    },
+    "jshintConfig": {
+        "esversion": 8
     }
 }

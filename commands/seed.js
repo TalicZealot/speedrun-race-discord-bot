@@ -2,6 +2,7 @@ module.exports = (message, channel) => {
     let adjectives = [
         "Invincible",
         "Burning",
+        "Preposterous",
         "Grumpy",
         "SuperDuper",
         "Boring",
@@ -103,6 +104,7 @@ module.exports = (message, channel) => {
         "Turtle",
         "Ranger",
         "Whip",
+        "Octopus",
         "Slayer",
         "Vampire",
         "Zombie",
@@ -146,8 +148,6 @@ module.exports = (message, channel) => {
         "Fortune",
         "Drawing",
         "Grocery",
-        "Airport",
-        "Election",
         "Leader",
         "Setting",
         "Security",
@@ -208,7 +208,24 @@ module.exports = (message, channel) => {
         number = 420;
     }
 
-    let seed = 'https://sotn.io/?' + adjective + noun + number;
+    let match = message.content.match(/^[.!](\bseed\b)( ){0,1}(\bbingo\b){0,1}( ){0,1}((\bhex\b)|(\bmission\b)){0,1}/i);
+
+    const rando = 'sotn.io/?';
+    const bingo = 'testrunnersrl.github.io/?seed=';
+    const bingoSuffix = '&game=sotn&type=';
+    let site = '';
+    let suffix = '';
+
+    if (match[3]) {
+        site = bingo;
+        if (match[5]) {
+            suffix = bingoSuffix + match[5];
+        }
+    } else {
+        site = rando;
+    }
+
+    let seed = '<https://' + site + adjective + noun + number + suffix + '>';
 
     if (channel) {
         channel.send(seed).then().catch(console.error);

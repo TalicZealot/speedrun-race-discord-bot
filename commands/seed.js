@@ -1,4 +1,4 @@
-module.exports = (message, channel) => {
+module.exports = (message, channel, isBingo, bingoType, bingoRando) => {
     let adjectives = [
         "Invincible",
         "Burning",
@@ -208,18 +208,33 @@ module.exports = (message, channel) => {
         number = 420;
     }
 
-    let match = message.content.match(/^[.!](\bseed\b)( ){0,1}(\bbingo\b){0,1}( ){0,1}((\bhex\b)|(\bmission\b)){0,1}/i);
+    let match = [];
+    if (message) {
+        match = message.content.match(/^[.!](\bseed\b)( ){0,1}(\bbingo\b){0,1}( ){0,1}((\bhex\b)|(\bmission\b)){0,1}( ){0,1}(\brando\b){0,1}/i);
+    }
 
     const rando = 'sotn.io/?';
     const bingo = 'testrunnersrl.github.io/?seed=';
     const bingoSuffix = '&game=sotn&type=';
+    const bingoRandoSuffix = '&game=sotnr&type=';
     let site = '';
     let suffix = '';
 
-    if (match[3]) {
+    if (match[3] || isBingo) {
         site = bingo;
+        if (match[9] || bingoRando) {
+            suffix += bingoRandoSuffix;
+        } else {
+            suffix += bingoSuffix;
+        }
         if (match[5]) {
-            suffix = bingoSuffix + match[5];
+            suffix += match[5];
+        } else {
+            if (bingoType) {
+                suffix += bingoType;
+            } else {
+                suffix += 'hex';
+            }
         }
     } else {
         site = rando;

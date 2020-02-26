@@ -38,7 +38,7 @@ module.exports = (client, race, message) => {
     if (message.channel === channel && message.content.match(/^[.!]((\bstream\b)|(\btwitch\b)) ([a-zA-Z0-9_]{4,20})/i)) {
         return stream(message, message.author.username);
     }
-    if (message.channel === channel && message.content.match(/^[.!]((\bstartrace\b)|(\bnew\b)|(\benter\b))([ ]{0,1})([a-zA-Z0-9%]{0,20}[ ]{0,1}[a-zA-Z0-9%]{0,20})((\b psx\b)|(\b xb\b)){0,1}(\b tournament\b){0,1}/i)) {
+    if (message.channel === channel && message.content.match(/^[.!]((\bstartrace\b)|(\bnew\b)|(\benter\b))([ ]{0,1})("[a-zA-Z0-9% ]{0,40}"){0,1}([ ]{0,1})([a-z]{0,10})(\b tournament\b){0,1}/i)) {
         return startrace(race, channel, message);
     }
     if (message.channel === channel && message.content.match(/^[.!]((\bclose\b)|(\bend\b)|(\bexit\b))/i)) {

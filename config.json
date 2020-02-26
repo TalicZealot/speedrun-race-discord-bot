@@ -16,11 +16,23 @@
         {
             "alias": "xb",
             "value": 3
+        },
+        {
+            "alias": "saturn",
+            "value": 27
+        },
+        {
+            "alias": "emusaturn",
+            "value": 23
         }
     ],
     "categories": [{
             "name": "Randomizer GSB",
             "aliases": ["gsb", "rando", "randomizer"]
+        },
+        {
+            "name": "Bingo",
+            "aliases": ["bingo"]
         },
         {
             "name": "Alucard Any%",

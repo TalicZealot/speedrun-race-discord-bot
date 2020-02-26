@@ -5,21 +5,28 @@ const updateRaceMessage = require('../common/updateRaceMessage');
 module.exports = (race, channel, message) => {
     if (race.finished == true ||(race.tournament && message.member.hasPermission('KICK_MEMBERS', false, false)) || race.tournament == false) {
         if ((Math.floor(((new Date().getTime()) - race.initiatedAt)) / (1000 * 60)) > parseInt(config.minimumNewIntervalMinutes)) {
-            let match = message.content.match(/^[.!]((\bstartrace\b)|(\bnew\b)|(\bjoin\b)|(\benter\b))([ ]{0,1})([a-zA-Z0-9%]{0,20}[ ]{0,1}[a-zA-Z0-9%]{0,20})((\b psx\b)|(\b xb\b)){0,1}(\b tournament\b){0,1}/i);
-            let category = match[7];
-            let offset = match[8];
-            let tournamentMode = match[9];
+            let match = message.content.match(/^[.!]((\bstartrace\b)|(\bnew\b)|(\bjoin\b)|(\benter\b))([ ]{0,1})("[a-zA-Z0-9% ]{0,40}"){0,1}([ ]{0,1})([a-z]{0,10})(\b tournament\b){0,1}/i);
+            let category = '';
+            if (match[7]) {
+                category = match[7].replace(/"/ig, '');
+            }
+            let offset = match[9];
+            let tournamentMode = match[10];
             let categories = config.categories;
+            let offsets = config.offsets;
             if (message && message.content.match(/^[.!]((\bstartrace\b)|(\bnew\b))/i)) {
                 message.delete().then().catch(console.error);
             }
-            if (offset && offset == " psx") {
-                race.offset = 10000;
-            } else if (offset && offset == " xb") {
-                race.offset = 3000;
-            } else {
-                race.offset = parseInt(config.defaultOffset);
+
+            race.offset = parseInt(config.defaultOffset);
+            if (offset) {
+                for (let i = 0; i < config.offsets.length; i++) {
+                    if (offset == offsets[i].alias) {
+                        race.offset = offsets[i].value * 1000;
+                    }
+                }
             }
+
             if (category == 'tournament') {
                 tournamentMode = true;
                 category = false;
@@ -50,6 +57,8 @@ module.exports = (race, channel, message) => {
             race.status = 'PRE-RACE: WAITING FOR PLAYERS';
             if (race.category == "Randomizer GSB") {
                 race.seed = seed();
+            } else if (race.category == "Bingo") {
+                race.seed = seed(null, null, true, 'hex', false);
             }
     
             return new Promise((resolve, reject) => {

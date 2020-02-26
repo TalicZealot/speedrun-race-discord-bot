@@ -7,7 +7,7 @@ A Discord bot for coordinating speedrun races.
 * timing offset
 * buttons and commands for ease of use
 
-## Version 1.5.0
+## Version 1.5.1
 
 ## Commands: 
    ```css
@@ -57,6 +57,10 @@ gsb, rando, randomizer, any%, alucard, aab, glitchless, ps4, requiem, abrsr, ric
 * ELO uses a json storage file. Good enough for small servers, but I would replace it with MongoDB or another db server for a large population. Data handling is abstracted in ../data/data.js for easy swapping.
 
 ### changelog
+#### 1.5.1
+* Better offset handling.
+* Fixed category selection.
+* Enabled different types of bingo seed generation.
 #### 1.5.0
 * Tournament mode for races. Disables new, reset and close for non-mods.
 * Added submit command, allowing mods to add a result.

@@ -45,7 +45,7 @@ module.exports = (client, race, message) => {
     if (message.channel === channel && message.content.match(/^[.!]((\bclose\b)|(\bend\b)|(\bexit\b))/i)) {
         return close(race, message, channel);
     }
-    if (message.channel === channel && message.content.match(/^[.!](\bcategory\b) ([ a-zA-Z0-9%]{3,20})/i)) {
+    if (message.channel === channel && message.content.match(/^[.!](\bcategory\b) ("[a-zA-Z0-9% ]{0,40}")/i)) {
         return category(race, channel, message);
     }
     if (message.channel === channel && message.content.match(/^[.!](\btournament\b)/i)) {

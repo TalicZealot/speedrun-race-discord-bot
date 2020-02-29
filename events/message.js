@@ -19,6 +19,7 @@ const stats = require('../commands/stats');
 const submit = require('../commands/submit');
 const tournament = require('../commands/tournament');
 const kick = require('../commands/kick');
+const category = require('../commands/category');
 
 module.exports = (client, race, message) => {
     const channel = client.channels.find(x => x.name === config.channel);
@@ -45,7 +46,7 @@ module.exports = (client, race, message) => {
         return close(race, message, channel);
     }
     if (message.channel === channel && message.content.match(/^[.!](\bcategory\b) ([ a-zA-Z0-9%]{3,20})/i)) {
-        return category(race, message);
+        return category(race, channel, message);
     }
     if (message.channel === channel && message.content.match(/^[.!](\btournament\b)/i)) {
         return tournament(race, message);

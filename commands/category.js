@@ -1,7 +1,10 @@
 const updateRaceMessage = require('../common/updateRaceMessage');
 const config = require('../config.json');
 
-module.exports = (race, message, category) => {
+module.exports = (race, channel, message) => {
+    let match = message.content.match(/^[.!](\bcategory\b) ([ a-zA-Z0-9%]{3,20})/i);
+    let category = match[2];
+
     if (!race.started && !race.finished) {
         if (category) {
             race.category = category;

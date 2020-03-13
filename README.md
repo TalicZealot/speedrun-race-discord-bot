@@ -10,6 +10,7 @@ A Discord bot for coordinating speedrun races.
 ## Version 1.5.2
 
 <details><summary>## Commands:</summary>
+
    ```css
  .prefixes :        both . and ! are acceptable prefixes
  .toggle /pager:    Grants or removes the RacePager role.
@@ -33,6 +34,7 @@ A Discord bot for coordinating speedrun races.
  .kick              Allows mods to kick players from a race.
  .submit            Submit a race result. Returns elo adjustments.
  ```
+ 
 </details>
 
 ## Reactions: 
@@ -54,6 +56,7 @@ gsb, rando, randomizer, any%, alucard, aab, glitchless, ps4, requiem, abrsr, ric
 * ELO uses a json storage file. Good enough for small servers, but I would replace it with MongoDB or another db server for a large population. Data handling is abstracted in ../data/data.js for easy swapping.
 
 <details><summary>### changelog</summary>
+
 #### 1.5.2
 * Randomizer preset selection.
 * Fixed leave not triggering start properly.
@@ -109,4 +112,5 @@ gsb, rando, randomizer, any%, alucard, aab, glitchless, ps4, requiem, abrsr, ric
 * Commands need to be in required channel
 #### 1.0.0
 * Release
+
 </details>

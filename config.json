@@ -2,7 +2,7 @@
     "channel": "race-channel",
     "pagerRoleId": "632571703398105098",
     "maxOffsetSeconds": "15",
-    "timeoutMinutes": "30",
+    "timeoutMinutes": "45",
     "minimumNewIntervalMinutes": "1",
     "defaultLeaderboardSize": "25",
     "defaultOffset": "10400",
@@ -24,6 +24,10 @@
         {
             "alias": "emusaturn",
             "value": 23
+        },
+        {
+            "alias": "dxc",
+            "value": 4.5
         }
     ],
     "categories": [{

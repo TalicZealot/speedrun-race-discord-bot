@@ -210,7 +210,7 @@ module.exports = (message, channel, isBingo, bingoType, bingoRando) => {
 
     let match = [];
     if (message) {
-        match = message.content.match(/^[.!](\bseed\b)( ){0,1}(\bbingo\b){0,1}( ){0,1}((\bhex\b)|(\bmission\b)){0,1}( ){0,1}(\brando\b){0,1}/i);
+        match = message.content.match(/^[.!](\bseed\b)( ){0,1}((\bagonize\b)|(\boptimize\b)|(\bglitch-hard\b)|(\bglitch\b)){0,1}( ){0,1}(\bbingo\b){0,1}( ){0,1}((\bhex\b)|(\bmission\b)){0,1}( ){0,1}(\brando\b){0,1}/i);
     }
 
     const rando = 'sotn.io/?';
@@ -220,15 +220,15 @@ module.exports = (message, channel, isBingo, bingoType, bingoRando) => {
     let site = '';
     let suffix = '';
 
-    if (match[3] || isBingo) {
+    if (match[9] || isBingo) {
         site = bingo;
-        if (match[9] || bingoRando) {
+        if (match[15] || bingoRando) {
             suffix += bingoRandoSuffix;
         } else {
             suffix += bingoSuffix;
         }
-        if (match[5]) {
-            suffix += match[5];
+        if (match[11]) {
+            suffix += match[11];
         } else {
             if (bingoType) {
                 suffix += bingoType;
@@ -238,6 +238,9 @@ module.exports = (message, channel, isBingo, bingoType, bingoRando) => {
         }
     } else {
         site = rando;
+        if (match[3]) {
+            site += 'P:' + match[3] + ',,';
+        }
     }
 
     let seed = '<https://' + site + adjective + noun + number + suffix + '>';

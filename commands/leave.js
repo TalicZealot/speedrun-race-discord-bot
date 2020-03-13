@@ -1,4 +1,5 @@
 const data = require('../data/data.js');
+const startRace = require('../common/startRace');
 const updateRaceMessage = require('../common/updateRaceMessage');
 
 module.exports = (race, channel, username, message) => {

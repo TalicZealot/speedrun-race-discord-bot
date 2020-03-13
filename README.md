@@ -7,9 +7,9 @@ A Discord bot for coordinating speedrun races.
 * timing offset
 * buttons and commands for ease of use
 
-## Version 1.5.1
+## Version 1.5.2
 
-## Commands: 
+<details><summary>## Commands:</summary>
    ```css
  .prefixes :        both . and ! are acceptable prefixes
  .toggle /pager:    Grants or removes the RacePager role.
@@ -33,13 +33,10 @@ A Discord bot for coordinating speedrun races.
  .kick              Allows mods to kick players from a race.
  .submit            Submit a race result. Returns elo adjustments.
  ```
+</details>
 
 ## Reactions: 
-➕:   Join
-✅:   Ready
-🏁:   Done
-❌ :   Forfeit
-↩:   Rematch
+➕:   Join, ✅:   Ready, 🏁:   Done, ❌ :   Forfeit, ↩:   Rematch
 
 ## Category aliases: 
 gsb, rando, randomizer, any%, alucard, aab, glitchless, ps4, requiem, abrsr, richter, rich, rab, maria, mab
@@ -56,7 +53,10 @@ gsb, rando, randomizer, any%, alucard, aab, glitchless, ps4, requiem, abrsr, ric
 * add countdown audio file to root folder or remove audio playback from startRace.js
 * ELO uses a json storage file. Good enough for small servers, but I would replace it with MongoDB or another db server for a large population. Data handling is abstracted in ../data/data.js for easy swapping.
 
-### changelog
+<details><summary>### changelog</summary>
+#### 1.5.2
+* Randomizer preset selection.
+* Fixed leave not triggering start properly.
 #### 1.5.1
 * Better offset handling.
 * Fixed category selection.
@@ -109,3 +109,4 @@ gsb, rando, randomizer, any%, alucard, aab, glitchless, ps4, requiem, abrsr, ric
 * Commands need to be in required channel
 #### 1.0.0
 * Release
+</details>

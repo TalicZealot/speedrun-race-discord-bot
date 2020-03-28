@@ -2,8 +2,8 @@ const config = require('../config.json');
 const elo = require('../elo/elo.js');
 
 module.exports = (channel, message) => {
-    if (message.member.hasPermission('KICK_MEMBERS', false, false)) {
-        let match = message.content.match(/^[.!](\bsubmit\b)(( "[a-zA-Z0-9% .]{3,20}"){3,11})( end)/i);
+    if (message.member.hasPermission('KICK_MEMBERS', false, false) || config.referees.includes(message.author.username)) {
+        let match = message.content.match(/^[.!](\bsubmit\b)(( "[a-zA-Z0-9% .]{3,20}"){3,18})( end)/i);
         let categoryAndPlayers = [...match[2].matchAll(/"([a-zA-Z0-9% .]{1,20})"/ig)];
         let players = [];
         let category = categoryAndPlayers[0][1];

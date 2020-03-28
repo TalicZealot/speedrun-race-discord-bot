@@ -7,9 +7,9 @@ A Discord bot for coordinating speedrun races.
 * timing offset
 * buttons and commands for ease of use
 
-## Version 1.5.2
+## Version 1.5.3
 
-<details><summary>## Commands:</summary>
+<details><summary>Commands</summary>
 
    ```css
  .prefixes :        both . and ! are acceptable prefixes
@@ -18,7 +18,7 @@ A Discord bot for coordinating speedrun races.
  .leaderboard:      Shows the current rankings for a category ".leaderboard gsb"
  .rank:             Shows the player's rank for a category ".rank maria"
  .stream:           Sets the Twitch username for the player and saves it. ".stream Alucard"
- .new / .startrace  Starts a new race. Optional category and offset ".new rab xb"
+ .new / .startrace  Starts a new race. Optional category and offset '.new "rab" xb'
  .close /end/exit    Ends the current race with no result.
  .category          Changes the category for the current race.
  .join:             Joins the current race or starts a new one ".join aab psx"
@@ -55,8 +55,14 @@ gsb, rando, randomizer, any%, alucard, aab, glitchless, ps4, requiem, abrsr, ric
 * add countdown audio file to root folder or remove audio playback from startRace.js
 * ELO uses a json storage file. Good enough for small servers, but I would replace it with MongoDB or another db server for a large population. Data handling is abstracted in ../data/data.js for easy swapping.
 
-<details><summary>### changelog</summary>
+<details><summary>changelog</summary>
 
+#### 1.5.3
+* Replaced kadgar with multistre.am due to better performance.
+* Fixed an issue where when a category returns no board, due to not yet ranked players, resulting in player stats index on null.
+* Added the referee role to configuration.
+* Adjusted input size for the submit command.
+* Added quotation marks for some inputs to account for not using aliases.
 #### 1.5.2
 * Randomizer preset selection.
 * Fixed leave not triggering start properly.

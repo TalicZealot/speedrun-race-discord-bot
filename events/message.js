@@ -78,10 +78,10 @@ module.exports = (client, race, message) => {
     if (message.channel === channel && message.content.match(/^[.!]((\breset\b)|(\brestart\b))/i)) {
         return reset(race, channel, message);
     }
-    if (message.channel === channel && message.content.match(/^[.!](\bstats\b)([ ]{0,1})([a-zA-Z0-9%]{0,20})/i)) {
+    if (message.channel === channel && message.content.match(/^[.!](\bstats\b)([ ]{0,1})([a-zA-Z 0-9%]{0,30})/i)) {
         return stats(race, channel, message);
     }
-    if (message.channel === channel && message.content.match(/^[.!](\bsubmit\b)(( "[a-zA-Z0-9% .]{3,20}"){3,11})( end)/i)) {
+    if (message.channel === channel && message.content.match(/^[.!](\bsubmit\b)(( "[a-zA-Z0-9% .]{3,20}"){3,18})( end)/i)) {
         return submit(channel, message);
     }
     if (message.channel === channel && message.content.match(/^[.!](\bkick\b)([ ]{0,1})([a-zA-Z0-9%]{0,20})/i)) {

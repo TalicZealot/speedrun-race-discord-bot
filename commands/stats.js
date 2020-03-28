@@ -3,7 +3,7 @@ const data = require('../data/data.js');
 
 module.exports = (race, channel, message) => {
     const centerPad = (str, length, char = ' ') => str.padStart((str.length + length) / 2, char).padEnd(length, char);
-    let match = message.content.match(/^[.!](\bstats\b)([ ]{0,1})([a-zA-Z0-9%]{0,20})/i);
+    let match = message.content.match(/^[.!](\bstats\b)([ ]{0,1})([a-zA-Z 0-9%]{0,30})/i);
     let category = match[3];
     let categories = config.categories;
     let stats = null;
@@ -25,6 +25,7 @@ module.exports = (race, channel, message) => {
             player = true;
         }
     } else {
+        console.log("player?");
         category = message.author.username;
         stats = data.getPlayerStats(category);
         player = true;

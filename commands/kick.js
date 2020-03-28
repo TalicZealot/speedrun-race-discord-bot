@@ -1,8 +1,9 @@
 const updateRaceMessage = require('../common/updateRaceMessage');
 const data = require('../data/data.js');
+const config = require('../config.json');
 
 module.exports = (race, channel, message) => {
-    if (message.member.hasPermission('KICK_MEMBERS', false, false)) {
+    if (message.member.hasPermission('KICK_MEMBERS', false, false) || config.referees.includes(message.author.username)) {
         let match = message.content.match(/^[.!](\bkick\b)([ ]{0,1})([a-zA-Z0-9%]{0,20})/i);
         let player =  race.players.find(x => x.username === match[3]);
 

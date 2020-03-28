@@ -9,6 +9,7 @@
     "rematchTimeoutSeconds": "8000",
     "voiceChannelPrefix": "Race-Channel",
     "defaultCategory": "Randomizer GSB",
+    "referees": ["TalicZealot", "dr4gonblitz", "Ben", "cerealmasticator", "Rats", "PCTrax", "Aldriel", "Manlynessness", "Kai", "3snow_p7im", "MASH"],
     "offsets": [{
             "alias": "psx",
             "value": 10

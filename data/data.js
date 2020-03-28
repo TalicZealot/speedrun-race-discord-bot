@@ -23,6 +23,10 @@ function getPlayerIndexByName(username) {
     if (players.length < 1) {
         players = playersDb;
     }
+    if (username.length < 4) {
+        console.log("Username can't be shorter than 4 characters!");
+        return null;
+    }
     let player = players.find(x => x.username == username);
     if (player) {
         return players.findIndex(x => x.username == username);
@@ -147,12 +151,16 @@ module.exports = {
         }
         let playerIndex = players.findIndex(x => x.username == player);
         if (playerIndex < 0) {
-            return null;
+            return stats;
         }
         stats.twitch = 'https://www.twitch.tv/' + ((players[playerIndex].twitch) ? players[playerIndex].twitch : player);
         Object.keys(players[playerIndex]).forEach(key => {
             if (key != "username" && key != "twitch") {
-                let rank = this.getCategoryLeaderboard(key).findIndex(x => x.username == player) + 1;
+                let board = this.getCategoryLeaderboard(key);
+                let rank = 0;
+                if (board) {
+                    rank = board.findIndex(x => x.username == player) + 1;
+                }
                 if (rank < 1) {
                     rank = 'unranked';
                 }

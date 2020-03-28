@@ -3,7 +3,7 @@ const seed = require('../commands/seed');
 const updateRaceMessage = require('../common/updateRaceMessage');
 
 module.exports = (race, channel, message) => {
-    if (race.finished == true ||(race.tournament && message.member.hasPermission('KICK_MEMBERS', false, false)) || race.tournament == false) {
+    if (race.finished == true ||(race.tournament && message.member.hasPermission('KICK_MEMBERS', false, false)) || config.referees.includes(message.author.username) || race.tournament == false) {
         if ((Math.floor(((new Date().getTime()) - race.initiatedAt)) / (1000 * 60)) > parseInt(config.minimumNewIntervalMinutes)) {
             let match = message.content.match(/^[.!]((\bstartrace\b)|(\bnew\b)|(\bjoin\b)|(\benter\b))([ ]{0,1})("[a-zA-Z0-9% ]{0,40}"){0,1}([ ]{0,1})([a-z]{0,10})(\b tournament\b){0,1}/i);
             let category = '';
@@ -53,7 +53,7 @@ module.exports = (race, channel, message) => {
             race.startedAt = null;
             race.remainingPlayers = 0;
             race.players = [];
-            race.kadgar = 'https://kadgar.net/live/';
+            race.kadgar = 'https://multistre.am/';
             race.status = 'PRE-RACE: WAITING FOR PLAYERS';
             if (race.category == "Randomizer GSB") {
                 race.seed = seed();

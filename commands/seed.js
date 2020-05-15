@@ -1,4 +1,4 @@
-module.exports = (message, channel, isBingo, bingoType, bingoRando) => {
+module.exports = (message, channel, isBingo, bingoType, bingoRando, randoType) => {
     let adjectives = [
         "Invincible",
         "Burning",
@@ -203,17 +203,26 @@ module.exports = (message, channel, isBingo, bingoType, bingoRando) => {
 
     let adjective = adjectives[Math.floor(Math.random() * Math.floor(adjectives.length - 1))];
     let noun = nouns[Math.floor(Math.random() * Math.floor(nouns.length - 1))];
-    let number = Math.floor(Math.random() * Math.floor(101));
+    let number = Math.floor(Math.random() * Math.floor(102));
     if (number == 100) {
         number = 420;
+    }
+    if (number == 101) {
+        number = 702;
+    }
+    if (number == 69) {
+        number = '69Nice';
     }
 
     let match = [];
     if (message) {
-        match = message.content.match(/^[.!](\bseed\b)( ){0,1}((\bagonize\b)|(\boptimize\b)|(\bglitch-hard\b)|(\bglitch\b)){0,1}( ){0,1}(\bbingo\b){0,1}( ){0,1}((\bhex\b)|(\bmission\b)){0,1}( ){0,1}(\brando\b){0,1}/i);
+        match = message.content.match(/^[.!](\bseed\b)( ){0,1}((\badventure\b)|(\bspeedrun\b)|(\bbalance\b)|(\bagonize\b)|(\boptimize\b)|(\bglitch-hard\b)|(\bglitch\b)){0,1}( ){0,1}(\bbingo\b){0,1}( ){0,1}((\bhex\b)|(\bmission\b)){0,1}( ){0,1}(\brando\b){0,1}/i);
     }
 
     const rando = 'sotn.io/?';
+    const randoa = 'a.sotn.io/?';
+    const randoc = 'c.sotn.io/?';
+    const randos = 's.sotn.io/?';
     const bingo = 'testrunnersrl.github.io/?seed=';
     const bingoSuffix = '&game=sotn&type=';
     const bingoRandoSuffix = '&game=sotnr&type=';
@@ -237,9 +246,28 @@ module.exports = (message, channel, isBingo, bingoType, bingoRando) => {
             }
         }
     } else {
-        site = rando;
         if (match[3]) {
-            site += 'P:' + match[3] + ',,';
+            if (match[3] == 'speedrun') {
+                site += randos;
+            } else if (match[3] == 'casual') {
+                site += randoc;
+            } else if (match[3] == 'adventure') {
+                site += randoa;
+            } else  {
+                site += rando +  'P:' + match[3] + ',,';
+            }
+        } else if (randoType) {
+            if (randoType == 'speedrun') {
+                site += randos;
+            } else if (randoType == 'casual') {
+                site += randoc;
+            } else if (randoType == 'adventure') {
+                site += randoa;
+            } else  {
+                site += rando +  'P:' + randoType + ',,';
+            }
+        } else {
+            site = rando;
         }
     }
 

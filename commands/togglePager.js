@@ -1,7 +1,13 @@
 const config = require('../config.json');
 
 module.exports = (message) => {
-    console.log(message.member.roles);
+
+    if (!message.member) {
+        if (message) {
+            message.delete().then().catch(console.error);
+        }
+        return;
+    }
 
     let userHasRole = message.member.roles.find(x => x.id === config.pagerRoleId);
 

@@ -32,8 +32,20 @@
         }
     ],
     "categories": [{
+        "name": "Randomizer Speedrun",
+        "aliases": ["rando", "randomizer"]
+        },
+        {
             "name": "Randomizer GSB",
-            "aliases": ["gsb", "rando", "randomizer"]
+            "aliases": ["gsb"]
+        },
+        {
+            "name": "Randomizer GSB Classic",
+            "aliases": ["gsbc", "rando classic", "randomizer classic"]
+        },
+        {
+            "name": "Randomizer GSB Adventure",
+            "aliases": ["gsba", "rando adventure", "randomizer adventure", "adventure"]
         },
         {
             "name": "Bingo",

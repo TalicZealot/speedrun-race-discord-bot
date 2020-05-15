@@ -8,7 +8,14 @@ module.exports = (race, channel, username, message) => {
     if (player && race.finished) {
         if (race.category == "Randomizer GSB") {
             race.seed = seed();
+        } else if (race.category == "Bingo") {
+            race.seed = seed(null, null, true, 'hex', false);
+        } else if (race.category == "Randomizer GSB Adventure") {
+            race.seed = seed(null, null, null, null, null, "adventure");
+        } else if (race.category == "Randomizer Speedrun") {
+            race.seed = seed(null, null, null, null, null, "speedrun");
         }
+        
         race.started = false;
         race.finished = false;
         race.remainingPlayers = race.players.length;

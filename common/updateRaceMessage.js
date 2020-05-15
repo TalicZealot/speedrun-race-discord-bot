@@ -70,7 +70,10 @@ module.exports = (race, channel) => {
             }
             output += (rightCol).padEnd(14, " ");
         } else {
-            let rightCol = (race.players[i].ready) ? 'ready ' : ' ';
+            let rightCol ='';
+            if (!race.started) {
+                rightCol = (race.players[i].ready) ? 'ready ' : ' ';
+            }
             output += (rightCol).padEnd(14, " ");
         }
         output += '`';

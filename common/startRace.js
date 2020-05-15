@@ -1,5 +1,6 @@
 const config = require('../config.json');
 const updateRaceMessage = require('../common/updateRaceMessage');
+const lock = require('../commands/lock');
 
 module.exports = (race, channel) => {
     const sleep = m => new Promise(r => setTimeout(r, m));
@@ -8,7 +9,7 @@ module.exports = (race, channel) => {
         updateRaceMessage(race, channel);
         await sleep(1000);
         //Remove this section to disable audio playback
-        const voiceChannel = channel.client.channels.find(x => x.name.startsWith(config.voiceChannelPrefix));
+        let voiceChannel = channel.client.channels.find(x => x.name.startsWith(config.voiceChannelPrefix));
         if (voiceChannel) {
             voiceChannel.join().then(connection => {
             const dispatcher = connection.playFile(require("path").join(__dirname, '../countdown.mp3'));
@@ -51,6 +52,7 @@ module.exports = (race, channel) => {
         race.started = true;
         race.startedAt = new Date().getTime() + race.offset;
         await sleep(1000);
+        lock(channel);
         race.status = 'RACE STARTED';
         updateRaceMessage(race, channel);
         channel.fetchMessage(race.messageId).then(x =>
@@ -61,6 +63,7 @@ module.exports = (race, channel) => {
             })()
         ).catch(console.error);
         if (voiceChannel) {
+            await sleep(2500);
             voiceChannel.leave();
         }
     })();

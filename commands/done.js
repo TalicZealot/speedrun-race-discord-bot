@@ -1,6 +1,7 @@
 ﻿const updateRaceMessage = require('../common/updateRaceMessage');
 const elo = require('../elo/elo.js');
 const sleep = m => new Promise(r => setTimeout(r, m));
+const lock = require('../commands/lock');
 
 module.exports = (race, channel, username, message) => {
     let player = race.players.find(x => x.username === username);
@@ -18,6 +19,7 @@ module.exports = (race, channel, username, message) => {
         let hours = Math.floor((time / (1000 * 60 * 60)) % 24);
         let outputTime = hours.toString().padStart(2, "0") + ':' + minutes.toString().padStart(2, "0") + ':' + seconds.toString().padStart(2, "0");
         if (race.remainingPlayers < 1) {
+            lock(channel);
             race.finished = true;
             race.status = 'RACE FINISHED';
             race.players.sort(function(a, b) {

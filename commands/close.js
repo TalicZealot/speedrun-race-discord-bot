@@ -2,7 +2,7 @@ const config = require('../config.json');
 const updateRaceMessage = require('../common/updateRaceMessage');
 
 module.exports = (race, message, channel) => {
-    if ((race.tournament && message.member.hasPermission('KICK_MEMBERS', false, false)) || race.tournament == false) {
+    if ((race.tournament && message.member && message.member.hasPermission('KICK_MEMBERS', false, false)) || race.tournament == false) {
         if (race.messageId && !race.finished && (Math.floor(((new Date().getTime()) - race.initiatedAt)) / (1000 * 60)) > parseInt(config.minimumNewIntervalMinutes)) {
             race.finished = true;
             race.status = 'RACE CLOSED';

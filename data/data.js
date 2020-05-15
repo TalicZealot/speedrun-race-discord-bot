@@ -23,8 +23,8 @@ function getPlayerIndexByName(username) {
     if (players.length < 1) {
         players = playersDb;
     }
-    if (username.length < 4) {
-        console.log("Username can't be shorter than 4 characters!");
+    if (username.length < 3) {
+        console.log("Username" + username + " is shorter than 4 characters!");
         return null;
     }
     let player = players.find(x => x.username == username);

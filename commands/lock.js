@@ -1,6 +1,7 @@
 const config = require('../config.json');
 
 module.exports = (channel, message) => {
+    console.log('lock command');
     const sleep = m => new Promise(r => setTimeout(r, m));
     if (!message || message.member && message.member.hasPermission('KICK_MEMBERS', false, false) || config.referees.includes(message.author.username)) {
         const voiceChannel = channel.client.channels.find(x => x.name.startsWith(config.voiceChannelPrefix));
@@ -18,6 +19,8 @@ module.exports = (channel, message) => {
              }).catch(console.error);
              console.log('Voice channel unlocked!');
         }
+    } else {
+        console.log('Not allowed to use lock!');
     }
 
     if (message) {

@@ -7,7 +7,7 @@ A Discord bot for coordinating speedrun races.
 * timing offset
 * buttons and commands for ease of use
 
-## Version 1.5.3
+## Version 1.5.4
 
 <details><summary>Commands</summary>
 
@@ -57,6 +57,10 @@ gsb, rando, randomizer, any%, alucard, aab, glitchless, ps4, requiem, abrsr, ric
 
 <details><summary>changelog</summary>
 
+#### 1.5.4
+* Changed rando modes.
+* Added aliases command
+* Regex adjustments.
 #### 1.5.3
 * Replaced kadgar with multistre.am due to better performance.
 * Fixed an issue where when a category returns no board, due to not yet ranked players, resulting in player stats index on null.

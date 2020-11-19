@@ -216,23 +216,26 @@ module.exports = (message, channel, isBingo, bingoType, bingoRando, randoType) =
 
     let match = [];
     if (message) {
-        match = message.content.match(/^[.!](\bseed\b)( ){0,1}((\badventure\b)|(\bspeedrun\b)|(\bbalance\b)|(\bagonize\b)|(\boptimize\b)|(\bglitch-hard\b)|(\bglitch\b)){0,1}( ){0,1}(\bbingo\b){0,1}( ){0,1}((\bhex\b)|(\bmission\b)){0,1}( ){0,1}(\brando\b){0,1}/i);
+        match = message.content.match(/^[.!](\bseed\b)( ){0,1}((\badventure\b)|(\bspeedrun\b)|(\bscavenger\b)|(\bempty-hand\b)|(\bglitch\b)){0,1}( ){0,1}(\bbingo\b){0,1}( ){0,1}((\bhex\b)|(\bmission\b)){0,1}( ){0,1}(\brando\b){0,1}/i);
     }
 
-    const rando = 'sotn.io/?';
-    const randoa = 'a.sotn.io/?';
-    const randoc = 'c.sotn.io/?';
-    const randos = 's.sotn.io/?';
+    const rando = 't.sotn.io/?';
+    const adventureUrl = 'a.t.sotn.io/?';
+    const casualUrl = 'c.t.sotn.io/?';
+    const speedrunUrl = 's.t.sotn.io/?';
+    const glitchUrl = 'g.t.sotn.io/?';
+    const scavengerUrl = 'sc.t.sotn.io/?';
+    const handUrl = 'eh.t.sotn.io/?';
     const bingo = 'testrunnersrl.github.io/?seed=';
     const bingoSuffix = '&game=sotn&type=';
-    const bingoRandoSuffix = '&game=sotnr&type=';
+    const bingospeedrunUrluffix = '&game=sotnr&type=';
     let site = '';
     let suffix = '';
 
     if (match[9] || isBingo) {
         site = bingo;
         if (match[15] || bingoRando) {
-            suffix += bingoRandoSuffix;
+            suffix += bingospeedrunUrluffix;
         } else {
             suffix += bingoSuffix;
         }
@@ -248,23 +251,35 @@ module.exports = (message, channel, isBingo, bingoType, bingoRando, randoType) =
     } else {
         if (match[3]) {
             if (match[3] == 'speedrun') {
-                site += randos;
+                site += speedrunUrl;
             } else if (match[3] == 'casual') {
-                site += randoc;
+                site += casualUrl;
             } else if (match[3] == 'adventure') {
-                site += randoa;
+                site += adventureUrl;
+            } else if (match[3] == 'glitch') {
+                site += glitchUrl;
+            } else if (match[3] == 'scavenger') {
+                site += scavengerUrl;
+            } else if (match[3] == 'empty-hand') {
+                site += handUrl;
             } else  {
-                site += rando +  'P:' + match[3] + ',,';
+                site += rando +  'p:' + match[3] + ',,';
             }
         } else if (randoType) {
             if (randoType == 'speedrun') {
-                site += randos;
+                site += speedrunUrl;
             } else if (randoType == 'casual') {
-                site += randoc;
+                site += casualUrl;
             } else if (randoType == 'adventure') {
-                site += randoa;
-            } else  {
-                site += rando +  'P:' + randoType + ',,';
+                site += adventureUrl;
+            } else if (randoType == 'glitch') {
+                site += glitchUrl;
+            } else if (randoType == 'scavenger') {
+                site += scavengerUrl;
+            } else if (randoType == 'empty-hand') {
+                site += handUrl;
+            }else  {
+                site += rando +  'p:' + randoType + ',,';
             }
         } else {
             site = rando;

@@ -55,14 +55,16 @@ module.exports = (race, channel, message) => {
             race.players = [];
             race.kadgar = 'https://multistre.am/';
             race.status = 'PRE-RACE: WAITING FOR PLAYERS';
-            if (race.category == "Randomizer GSB") {
+            if (race.category == "Randomizer Safe") {
                 race.seed = seed();
             } else if (race.category == "Bingo") {
                 race.seed = seed(null, null, true, "hex", false);
-            } else if (race.category == "Randomizer GSB Adventure") {
+            } else if (race.category == "Randomizer Adventure") {
                 race.seed = seed(null, null, null, null, null, "adventure");
             } else if (race.category == "Randomizer Speedrun") {
                 race.seed = seed(null, null, null, null, null, "speedrun");
+            } else if (race.category == "Randomizer Scavenger") {
+                race.seed = seed(null, null, null, null, null, "scavenger");
             }
     
             return new Promise((resolve, reject) => {

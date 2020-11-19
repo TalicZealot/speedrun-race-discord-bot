@@ -5,6 +5,7 @@ module.exports = (race, message, channel) => {
     if ((race.tournament && message.member && message.member.hasPermission('KICK_MEMBERS', false, false)) || race.tournament == false) {
         if (race.messageId && !race.finished && (Math.floor(((new Date().getTime()) - race.initiatedAt)) / (1000 * 60)) > parseInt(config.minimumNewIntervalMinutes)) {
             race.finished = true;
+            race.seed = null;
             race.status = 'RACE CLOSED';
             channel.fetchMessage(race.messageId).then(x =>
                 x.clearReactions().then().catch(console.error)).catch(console.error);

@@ -1,6 +1,6 @@
 {
     "name": "speedrun-race-bot",
-    "version": "1.4.0",
+    "version": "1.5.4",
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
@@ -10,8 +10,9 @@
         "nodemon": "^1.19.4"
     },
     "dependencies": {
-        "discord.js": "^11.5.1",
-        "dotenv": "^8.2.0"
+        "discord.js": "^11.6.4",
+        "dotenv": "^8.2.0",
+        "opusscript": "0.0.7"
     },
     "nodemonConfig": {
         "ignore": [

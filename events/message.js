@@ -90,7 +90,7 @@ module.exports = (client, race, message) => {
     if (message.channel === channel && message.content.match(/^[.!](\bkick\b)([ ]{0,1})([a-zA-Z0-9%]{0,20})/i)) {
         return kick(race, channel, message);
     }
-    if (message.channel === channel && message.content.match(/^[.!](\bsetseed\b) ([a-zA-Z0-9_%]{4,20})/i)) {
+    if (message.channel === channel && message.content.match(/^[.!](\bsetseed\b) ("https:\/\/[a-zA-Z0-9_%\/?,.]{4,70}")/i)) {
         return setSeed(race, channel, message.author.username, message);
     }
     if (message.channel === channel && message.content.match(/^[.!](\block\b)/i)) {

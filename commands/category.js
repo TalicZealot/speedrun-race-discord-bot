@@ -23,11 +23,11 @@ module.exports = (race, channel, message) => {
             }
         }
 
-        if (race.category == "Randomizer GSB") {
+        if (race.category == "Randomizer Safe") {
             race.seed = seed();
         } else if (race.category == "Bingo") {
             race.seed = seed(null, null, true, 'hex', false);
-        } else if (race.category == "Randomizer GSB Adventure") {
+        } else if (race.category == "Randomizer Adventure") {
             race.seed = seed(null, null, null, null, null, "adventure");
         } else if (race.category == "Randomizer Speedrun") {
             race.seed = seed(null, null, null, null, null, "speedrun");

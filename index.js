@@ -1,50 +1,55 @@
 require('dotenv').config();
+const Race = require('./models/race');
+const AudioPlayer = require('./models/audioPlayer');
 const config = require('./config.json');
 const fs = require('fs');
-const Discord = require('discord.js');
-const client = new Discord.Client();
+const { Client, Collection, Intents } = require('discord.js');
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES] });
+client.commands = new Collection();
+client.buttons = new Collection();
 const readline = require('readline');
+
+var race = null;
+var audioPlayer = null;
+
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+for (const file of eventFiles) {
+    const event = require(`./events/${file}`);
+    if (event.once) {
+        client.once(event.name, (...args) => event.execute(...args, client, race));
+    } else {
+        client.on(event.name, (...args) => event.execute(...args, client, race));
+    }
+}
+
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    client.commands.set(command.data.name, command);
+}
+
+const buttonFiles = fs.readdirSync('./buttons').filter(file => file.endsWith('.js'));
+for (const file of buttonFiles) {
+    const button = require(`./buttons/${file}`);
+    client.buttons.set(button.name, button);
+}
 
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
-  });
-
-var race = {
-    started: false,
-    finished: true,
-    startedAt: null,
-    initiatedAt: null,
-    remainingPlayers: 0,
-    players: [],
-    offset: parseInt(config.defaultOffset),
-    category: config.defaultCategory,
-    messageId: null,
-    seed: null,
-    kadgar: null,
-    status: '',
-    tournament: false
-};
-
-fs.readdir('./events/', (err, files) => {
-    files.forEach(file => {
-        const eventHandler = require(`./events/${file}`);
-        const eventName = file.split('.')[0];
-        client.on(eventName, (...args) => eventHandler(client, race, ...args));
-    });
 });
-
-client.login(process.env.BOT_TOKEN).then(x => {
-    let time = new Date();
-    console.log(time.toLocaleString('en-GB') + ' restarted');
-}).catch(console.error);
-
+const cliFiles = fs.readdirSync('./cli').filter(file => file.endsWith('.js'));
 rl.on('line', (input) => {
-    if (input === 'race') {
-        console.log(race);
-    } else if (input === 'channels') {
-        console.log(client.channels);
-    } else if (input === 'roles') {
-        console.log(client.guilds.first(1)[0].roles);
+    for (const file of cliFiles) {
+        const command = require(`./cli/${file}`);
+        if (input === command.name) {
+            command.execute(client, race);
+            break;
+        }
     }
 });
+
+client.login(process.env.BOT_TOKEN).then(() => {
+    audioPlayer = new AudioPlayer(client);
+    race = new Race(client, audioPlayer);
+}).catch(console.error);

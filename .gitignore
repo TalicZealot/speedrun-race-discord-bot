@@ -1,4 +1,5 @@
 node_modules/
+patches/
 .env
 .jshintrc
 countdown.mp3

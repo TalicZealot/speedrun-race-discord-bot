@@ -1,22 +1,27 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
 const config = require('../config.json');
-const updateRaceMessage = require('../common/updateRaceMessage');
 
-module.exports = (race, message, channel) => {
-    if ((race.tournament && message.member && message.member.hasPermission('KICK_MEMBERS', false, false)) || race.tournament == false) {
-        if (race.messageId && !race.finished && (Math.floor(((new Date().getTime()) - race.initiatedAt)) / (1000 * 60)) > parseInt(config.minimumNewIntervalMinutes)) {
-            race.finished = true;
-            race.seed = null;
-            race.status = 'RACE CLOSED';
-            channel.fetchMessage(race.messageId).then(x =>
-                x.clearReactions().then().catch(console.error)).catch(console.error);
-            updateRaceMessage(race, channel);
-        } else if (race.messageId && !race.finished) {
-            channel.send('Can\'t close race this soon!').then().catch(console.error);
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName('close')
+        .setDescription(`Closes the current race.`),
+    async execute(interaction, client, race) {
+
+        if (race.finished) {
+            await interaction.reply({ content: 'No active race!', ephemeral: true });
+            return;
         }
-    }
+        if (!race.includes(interaction.user.id)) {
+            await interaction.reply({ content: 'Cannot close if you are not participating!', ephemeral: true });
+            return;
+        }
 
-    if (message) {
-        message.delete().then().catch(console.error);
-    }
-    return;
+        if (race.tournament && !interaction.member.roles.cache.find(x => x.id === config.refereeRoleId)) {
+            await interaction.reply({ content: 'Only referees can close tournament races!', ephemeral: true });
+            return;
+        }
+
+        race.close();
+        await interaction.reply({ content: 'Race closed!', ephemeral: true });
+    },
 };

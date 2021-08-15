@@ -1,26 +1,47 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
 const config = require('../config.json');
 const elo = require('../elo/elo.js');
 
-module.exports = (channel, message) => {
-    if (message.member && message.member.hasPermission('KICK_MEMBERS', false, false) || config.referees.includes(message.author.username)) {
-        let match = message.content.match(/^[.!](\bsubmit\b)(( "[a-zA-Z0-9%_ .]{3,30}"){3,18})( end)/i);
-        let categoryAndPlayers = [...match[2].matchAll(/"([a-zA-Z0-9%_ .]{1,30})"/ig)];
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName('submit')
+        .setDescription(`Submit a race result.`),
+    async execute(interaction, client, race) {
+
+        if (!interaction.member.roles.cache.find(x => x.id === config.refereeRoleId)) {
+            await interaction.reply({ content: 'Only referees can submit race results!', ephemeral: true });
+            return;
+        }
+
         let players = [];
-        let category = categoryAndPlayers[0][1];
+        let category = interaction.options.getString('category');
+
         const centerPad = (str, length, char = ' ') => str.padStart((str.length + length) / 2, char).padEnd(length, char);
 
-        for (let i = 1; i < categoryAndPlayers.length; i++) {
-            let checkForfeit = categoryAndPlayers[i][1].match(/^[.](\bforfeit\b) ([a-zA-Z0-9%_ .]{3,20})/i);
-            if (checkForfeit) {
-                console.log(checkForfeit[2]);
+        players.push({
+            username: interaction.options.getUser('player1').username,
+            id: interaction.options.getUser('player1').id,
+            forfeited: false
+        });
+
+        players.push({
+            username: interaction.options.getUser('player2').username,
+            id: interaction.options.getUser('player2').id,
+            forfeited: interaction.options.getBoolean('player2forfeit'),
+        });
+
+        for (let i = 3; i < 11; i++) {
+            if (interaction.options.getUser('player' + i)) {
                 players.push({
-                    username: checkForfeit[2],
-                    forfeited: true
+                    username: interaction.options.getUser('player' + i).username,
+                    id: interaction.options.getUser('player' + i).id,
+                    forfeited: interaction.options.getBoolean('player' + i + 'forfeit'),
                 });
             } else {
-            players.push({username: categoryAndPlayers[i][1]});
+                break;
             }
         }
+
         let adjustments = elo.resolveMatch(players, category);
 
         let output = 'Results submitted:';
@@ -32,12 +53,12 @@ module.exports = (channel, message) => {
             output += (' ' + ((adjustments[i] > 0) ? '+' + adjustments[i] : adjustments[i])).padEnd(5, " ");
             output += '`';
         }
-        channel.send(output).then().catch(console.error);
-    } else {
-        channel.send('Moderator level permissions are required to use this command!').then().catch(console.error);
-    }
-    if (message) {
-        message.delete().then().catch(console.error);
-    }
-    return;
+
+        let channel = client.guilds.cache.first(1)[0].channels.fetch(config.raceChannelId);
+        channel.then(ch => {
+            ch.send(output).catch(console.error);
+        }).catch(console.error);
+
+        await interaction.reply({ content: 'Result submitted!', ephemeral: true });
+    },
 };

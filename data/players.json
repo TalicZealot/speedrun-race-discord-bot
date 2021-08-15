@@ -1,542 +1,1045 @@
-[
-  {
-    "username": "TalicZealot",
-    "Randomizer Safe": {
-      "elo": 1335,
-      "matches": 21
+[{
+        "username": "TalicZealot",
+        "[S2]Randomizer Safe": {
+            "elo": 1335,
+            "matches": 40
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1330,
+            "matches": 189
+        },
+        "[S2]Randomizer Adventure": {
+            "elo": 1005,
+            "matches": 7
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 1660,
+            "matches": 34
+        },
+        "[S2]Randomizer Scavenger": {
+            "elo": 1115,
+            "matches": 10
+        },
+        "[S2]Randomizer Scavenger Unlocked": {
+            "elo": 1005,
+            "matches": 2
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 1280,
+            "matches": 26
+        },
+        "[S3]Randomizer GSB": {
+            "elo": 755,
+            "matches": 2
+        },
+        "[S3]Randomizer Glitch": {
+            "elo": 950,
+            "matches": 1
+        },
+        "[S3]Randomizer Casual": {
+            "elo": 1005,
+            "matches": 5
+        },
+        "Randomizer Safe": {
+            "elo": 1000,
+            "matches": 0
+        },
+        "Randomizer Casual": {
+            "elo": 1635,
+            "matches": 15
+        },
+        "id": "99230602464628736"
     },
-    "Randomizer GSB Classic": {
-      "elo": 1330,
-      "matches": 189
+    {
+        "username": "dr4gonblitz",
+        "[S2]Randomizer Safe": {
+            "elo": 1630,
+            "matches": 31
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1640,
+            "matches": 67
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 1545,
+            "matches": 7
+        },
+        "[S2]Randomizer Adventure": {
+            "elo": 1150,
+            "matches": 2
+        },
+        "[S2]Randomizer Scavenger": {
+            "elo": 1230,
+            "matches": 8
+        },
+        "[S2]Randomizer Scavenger Unlocked": {
+            "elo": 995,
+            "matches": 2
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 1480,
+            "matches": 11
+        },
+        "[S3]Randomizer GSB": {
+            "elo": 955,
+            "matches": 3
+        },
+        "[S3]Randomizer Casual": {
+            "elo": 1175,
+            "matches": 3
+        }
     },
-    "Randomizer Adventure": {
-      "elo": 1005,
-      "matches": 7
+    {
+        "username": "Ben",
+        "[S2]Randomizer Safe": {
+            "elo": 1000,
+            "matches": 0
+        },
+        "twitch": "benauton",
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1315,
+            "matches": 14
+        }
     },
-    "Randomizer Speedrun": {
-      "elo": 1675,
-      "matches": 26
+    {
+        "username": "cerealmasticator",
+        "[S2]Randomizer Safe": {
+            "elo": 955,
+            "matches": 9
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1135,
+            "matches": 14
+        },
+        "[S2]Randomizer Adventure": {
+            "elo": 890,
+            "matches": 3
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 920,
+            "matches": 1
+        }
     },
-    "Randomizer Scavenger": {
-      "elo": 1115,
-      "matches": 10
+    {
+        "username": "Rats",
+        "[S2]Randomizer Safe": {
+            "elo": 1315,
+            "matches": 4
+        },
+        "twitch": "ratslul",
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1025,
+            "matches": 97
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 1210,
+            "matches": 6
+        },
+        "[S2]Randomizer Adventure": {
+            "elo": 795,
+            "matches": 2
+        }
     },
-    "Randomizer Scavenger Unlocked": {
-      "elo": 1005,
-      "matches": 2
+    {
+        "username": "PCTrax",
+        "[S2]Randomizer Safe": {
+            "elo": 1475,
+            "matches": 2
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1065,
+            "matches": 13
+        },
+        "[S2]Randomizer Adventure": {
+            "elo": 1015,
+            "matches": 2
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 1190,
+            "matches": 2
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 1215,
+            "matches": 3
+        }
+    },
+    {
+        "username": "Aldriel",
+        "[S2]Randomizer Safe": {
+            "elo": 1190,
+            "matches": 7
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1055,
+            "matches": 20
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 970,
+            "matches": 4
+        },
+        "[S2]Randomizer Scavenger": {
+            "elo": 725,
+            "matches": 8
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 595,
+            "matches": 2
+        }
+    },
+    {
+        "username": "Kris_NagaXIV",
+        "[S2]Randomizer Safe": {
+            "elo": 1000,
+            "matches": 0
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 950,
+            "matches": 10
+        }
+    },
+    {
+        "username": "Manlynessness",
+        "[S2]Randomizer Safe": {
+            "elo": 1000,
+            "matches": 1
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 900,
+            "matches": 26
+        }
+    },
+    {
+        "username": "Kai",
+        "[S2]Randomizer Safe": {
+            "elo": 1000,
+            "matches": 2
+        },
+        "twitch": "epikkai_",
+        "[S2]Randomizer GSB Classic": {
+            "elo": 960,
+            "matches": 8
+        }
+    },
+    {
+        "username": "3snow_p7im",
+        "[S2]Randomizer Safe": {
+            "elo": 875,
+            "matches": 8
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 945,
+            "matches": 26
+        },
+        "[S2]Randomizer Adventure": {
+            "elo": 1135,
+            "matches": 4
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 875,
+            "matches": 25
+        },
+        "[S2]Randomizer Scavenger": {
+            "elo": 915,
+            "matches": 1
+        },
+        "[S3]Randomizer Glitch": {
+            "elo": 900,
+            "matches": 1
+        }
+    },
+    {
+        "username": "TubePowered",
+        "[S2]Randomizer Safe": {
+            "elo": 905,
+            "matches": 10
+        },
+        "twitch": "tubesy",
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1060,
+            "matches": 20
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 880,
+            "matches": 7
+        },
+        "[S2]Randomizer Adventure": {
+            "elo": 1200,
+            "matches": 1
+        }
+    },
+    {
+        "username": "NightwolfXVI",
+        "[S2]Randomizer Safe": {
+            "elo": 1000,
+            "matches": 0
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 775,
+            "matches": 10
+        }
+    },
+    {
+        "username": "MASH",
+        "[S2]Randomizer Safe": {
+            "elo": 1000,
+            "matches": 0
+        },
+        "twitch": "ez0mash",
+        "[S2]Randomizer GSB Classic": {
+            "elo": 645,
+            "matches": 21
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 810,
+            "matches": 3
+        }
+    },
+    {
+        "username": "Stew",
+        "[S2]Randomizer Safe": {
+            "elo": 1150,
+            "matches": 2
+        },
+        "twitch": "ssbstew",
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1050,
+            "matches": 10
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 800,
+            "matches": 1
+        }
+    },
+    {
+        "username": "fatihG_",
+        "[S2]Randomizer Safe": {
+            "elo": 710,
+            "matches": 1
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 935,
+            "matches": 1
+        },
+        "[S2]Randomizer Casual": {
+            "elo": 900,
+            "matches": 1
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 410,
+            "matches": 3
+        }
+    },
+    {
+        "username": "Diagon",
+        "twitch": "Diagongdx",
+        "[S2]Randomizer Safe": {
+            "elo": 1315,
+            "matches": 45
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1115,
+            "matches": 26
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 1150,
+            "matches": 30
+        },
+        "[S2]Randomizer Adventure": {
+            "elo": 995,
+            "matches": 3
+        },
+        "[S2]Randomizer Scavenger": {
+            "elo": 920,
+            "matches": 5
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 1290,
+            "matches": 7
+        },
+        "[S3]Randomizer Glitch": {
+            "elo": 950,
+            "matches": 2
+        },
+        "[S3]Randomizer GSB": {
+            "elo": 1290,
+            "matches": 2
+        },
+        "[S3]Randomizer Casual": {
+            "elo": 960,
+            "matches": 1
+        },
+        "Randomizer Casual": {
+            "elo": 1410,
+            "matches": 6
+        }
+    },
+    {
+        "username": "dontevorgil",
+        "[S2]Randomizer Safe": {
+            "elo": 890,
+            "matches": 3
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 835,
+            "matches": 3
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 955,
+            "matches": 1
+        },
+        "[S2]Randomizer Adventure": {
+            "elo": 680,
+            "matches": 2
+        }
+    },
+    {
+        "username": "asdheyb",
+        "[S2]Randomizer Safe": {
+            "elo": 1935,
+            "matches": 44
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1060,
+            "matches": 11
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 1320,
+            "matches": 15
+        },
+        "[S2]Randomizer Adventure": {
+            "elo": 1075,
+            "matches": 2
+        },
+        "[S2]Randomizer Scavenger": {
+            "elo": 1335,
+            "matches": 3
+        },
+        "[S2]Custom": {
+            "elo": 1150,
+            "matches": 1
+        },
+        "[S2]Randomizer Casual": {
+            "elo": 1100,
+            "matches": 1
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 2085,
+            "matches": 28
+        },
+        "[S3]Randomizer GSB": {
+            "elo": 1130,
+            "matches": 3
+        },
+        "[S3]Randomizer Glitch": {
+            "elo": 1100,
+            "matches": 1
+        },
+        "[S3]Randomizer Casual": {
+            "elo": 1255,
+            "matches": 6
+        },
+        "Randomizer Casual": {
+            "elo": 1805,
+            "matches": 9
+        }
+    },
+    {
+        "username": "romscout",
+        "[S2]Randomizer Safe": {
+            "elo": 1320,
+            "matches": 2
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1065,
+            "matches": 16
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 1040,
+            "matches": 3
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 1400,
+            "matches": 1
+        },
+        "[S3]Randomizer Glitch": {
+            "elo": 1100,
+            "matches": 1
+        }
+    },
+    {
+        "username": "RaneofSoTN",
+        "[S2]Randomizer Safe": {
+            "elo": 1000,
+            "matches": 0
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1305,
+            "matches": 2
+        }
+    },
+    {
+        "username": "PalmyMKGames",
+        "[S2]Randomizer Safe": {
+            "elo": 580,
+            "matches": 1
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 820,
+            "matches": 29
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 765,
+            "matches": 3
+        }
+    },
+    {
+        "username": "thesylo",
+        "twitch": "the_real_sylo",
+        "[S2]Randomizer Safe": {
+            "elo": 1000,
+            "matches": 0
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 935,
+            "matches": 1
+        }
+    },
+    {
+        "username": "SaintVonJester",
+        "[S2]Randomizer Safe": {
+            "elo": 600,
+            "matches": 1
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1060,
+            "matches": 1
+        }
+    },
+    {
+        "username": "Keremene",
+        "twitch": "keremene440",
+        "[S2]Randomizer Safe": {
+            "elo": 800,
+            "matches": 1
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1060,
+            "matches": 1
+        }
+    },
+    {
+        "username": "knox",
+        "[S2]Randomizer Safe": {
+            "elo": 500,
+            "matches": 0
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1060,
+            "matches": 1
+        }
+    },
+    {
+        "username": "Dyson",
+        "[S2]Randomizer Safe": {
+            "elo": 700,
+            "matches": 1
+        },
+        "[S2]Randomizer GSB Classic": {
+            "elo": 1060,
+            "matches": 1
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 1045,
+            "matches": 2
+        },
+        "twitch": "Dyson_Bladeless",
+        "[S2]Randomizer Adventure": {
+            "elo": 945,
+            "matches": 1
+        }
+    },
+    {
+        "username": "Epic",
+        "[S2]Randomizer Safe": {
+            "elo": 745,
+            "matches": 3
+        },
+        "twitch": "epicly_epic",
+        "[S2]Randomizer Speedrun": {
+            "elo": 760,
+            "matches": 3
+        }
+    },
+    {
+        "username": "Keremene440",
+        "[S2]Randomizer Safe": {
+            "elo": 625,
+            "matches": 24
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 510,
+            "matches": 6
+        },
+        "[S2]Randomizer Casual": {
+            "elo": 1000,
+            "matches": 1
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 810,
+            "matches": 23
+        },
+        "[S3]Randomizer GSB": {
+            "elo": 935,
+            "matches": 2
+        },
+        "Randomizer Casual": {
+            "elo": 510,
+            "matches": 4
+        }
+    },
+    {
+        "username": "Fahrenheit",
+        "[S2]Randomizer Safe": {
+            "elo": 1000,
+            "matches": 3
+        },
+        "twitch": "fahrenheit_tepes",
+        "[S2]Randomizer Adventure": {
+            "elo": 1145,
+            "matches": 1
+        }
+    },
+    {
+        "username": "ArrenJevleth",
+        "[S2]Randomizer Adventure": {
+            "elo": 945,
+            "matches": 2
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 940,
+            "matches": 1
+        },
+        "twitch": "ArrenJevleth",
+        "[S2]Randomizer Safe": {
+            "elo": 920,
+            "matches": 6
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 1200,
+            "matches": 1
+        }
+    },
+    {
+        "username": "JesterMasque",
+        "[S2]Randomizer Speedrun": {
+            "elo": 790,
+            "matches": 1
+        }
+    },
+    {
+        "username": "! ★ House",
+        "[S2]Randomizer Safe": {
+            "elo": 1050,
+            "matches": 1
+        }
+    },
+    {
+        "username": "Dinner Dog",
+        "twitch": "DinnerDog",
+        "[S2]Randomizer Safe": {
+            "elo": 1160,
+            "matches": 12
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 1235,
+            "matches": 1
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 1640,
+            "matches": 77
+        },
+        "[S3]Randomizer Casual": {
+            "elo": 1305,
+            "matches": 3
+        },
+        "Randomizer Safe": {
+            "elo": 1000,
+            "matches": 0
+        },
+        "Randomizer Casual": {
+            "elo": 1295,
+            "matches": 7
+        }
+    },
+    {
+        "username": "jeeble"
+    },
+    {
+        "username": "aqueronte",
+        "[S2]Randomizer Safe": {
+            "elo": 925,
+            "matches": 1
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 895,
+            "matches": 1
+        }
+    },
+    {
+        "username": "OmegaKaotix",
+        "[S2]Randomizer Speedrun": {
+            "elo": 605,
+            "matches": 4
+        },
+        "[S2]Randomizer Safe": {
+            "elo": 565,
+            "matches": 19
+        }
+    },
+    {
+        "username": "MrRazzio",
+        "[S2]Randomizer Safe": {
+            "elo": 895,
+            "matches": 28
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 1095,
+            "matches": 2
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 895,
+            "matches": 26
+        },
+        "[S3]Randomizer Casual": {
+            "elo": 1180,
+            "matches": 2
+        },
+        "Randomizer Casual": {
+            "elo": 1130,
+            "matches": 2
+        }
+    },
+    {
+        "username": "D0GW00D",
+        "[S2]Randomizer Safe": {
+            "elo": 640,
+            "matches": 20
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 955,
+            "matches": 4
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 765,
+            "matches": 59
+        },
+        "[S3]Randomizer Casual": {
+            "elo": 935,
+            "matches": 2
+        },
+        "Randomizer Casual": {
+            "elo": 785,
+            "matches": 7
+        }
+    },
+    {
+        "username": "chrisaegrimm",
+        "[S2]Randomizer Safe": {
+            "elo": 1020,
+            "matches": 13
+        },
+        "[S2]Randomizer Scavenger": {
+            "elo": 945,
+            "matches": 1
+        },
+        "[S2]Randomizer Speedrun": {
+            "elo": 950,
+            "matches": 6
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 1050,
+            "matches": 22
+        },
+        "[S3]Randomizer GSB": {
+            "elo": 930,
+            "matches": 2
+        },
+        "[S3]Randomizer Casual": {
+            "elo": 850,
+            "matches": 2
+        },
+        "Randomizer Casual": {
+            "elo": 1190,
+            "matches": 5
+        },
+        "id": "425732685714161675"
+    },
+    {
+        "username": "Crystal_Gamer",
+        "twitch": "crystalgamerag",
+        "[S2]Randomizer Safe": {
+            "elo": 945,
+            "matches": 1
+        }
+    },
+    {
+        "username": "Nyksund",
+        "[S2]Randomizer Safe": {
+            "elo": 960,
+            "matches": 2
+        }
+    },
+    {
+        "username": "freeland",
+        "[S2]Randomizer Safe": {
+            "elo": 790,
+            "matches": 17
+        },
+        "twitch": "freeland1787",
+        "[S2]Randomizer Speedrun": {
+            "elo": 950,
+            "matches": 6
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 895,
+            "matches": 43
+        },
+        "[S3]Randomizer Casual": {
+            "elo": 860,
+            "matches": 1
+        },
+        "Randomizer Casual": {
+            "elo": 690,
+            "matches": 15
+        }
+    },
+    {
+        "username": "Dunning_E_Kruger",
+        "[S2]Randomizer Safe": {
+            "elo": 950,
+            "matches": 1
+        }
+    },
+    {
+        "username": "Blackfox42",
+        "twitch": "blackfox424",
+        "[S2]Randomizer Safe": {
+            "elo": 900,
+            "matches": 1
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 740,
+            "matches": 47
+        },
+        "[S3]Randomizer Casual": {
+            "elo": 815,
+            "matches": 1
+        },
+        "Randomizer Casual": {
+            "elo": 860,
+            "matches": 6
+        }
+    },
+    {
+        "username": "Alucyrs",
+        "[S2]Randomizer Safe": {
+            "elo": 545,
+            "matches": 4
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 300,
+            "matches": 10
+        },
+        "Randomizer Casual": {
+            "elo": 690,
+            "matches": 1
+        }
+    },
+    {
+        "username": "Cryomonoxide",
+        "[S2]Randomizer Safe": {
+            "elo": 790,
+            "matches": 1
+        },
+        "[S3]Randomizer Safe": {
+            "elo": 1030,
+            "matches": 29
+        },
+        "[S3]Randomizer Casual": {
+            "elo": 1025,
+            "matches": 5
+        },
+        "Randomizer Casual": {
+            "elo": 1035,
+            "matches": 10
+        }
+    },
+    {
+        "username": "MT_Fun",
+        "[S3]Randomizer Safe": {
+            "elo": 1160,
+            "matches": 49
+        },
+        "[S3]Randomizer Casual": {
+            "elo": 950,
+            "matches": 1
+        },
+        "Randomizer Casual": {
+            "elo": 605,
+            "matches": 7
+        },
+        "id": "178992162841559040"
+    },
+    {
+        "username": "Doozy",
+        "[S3]Randomizer Safe": {
+            "elo": 590,
+            "matches": 10
+        },
+        "[S3]Randomizer GSB": {
+            "elo": 1005,
+            "matches": 1
+        },
+        "Randomizer Casual": {
+            "elo": 520,
+            "matches": 6
+        },
+        "twitch": "doozyzood"
+    },
+    {
+        "username": "RefinedHornet",
+        "[S3]Randomizer Safe": {
+            "elo": 1285,
+            "matches": 40
+        },
+        "[S3]Randomizer Casual": {
+            "elo": 1015,
+            "matches": 3
+        },
+        "Randomizer Casual": {
+            "elo": 1160,
+            "matches": 6
+        }
+    },
+    {
+        "username": "Chuckle",
+        "[S3]Randomizer Safe": {
+            "elo": 445,
+            "matches": 27
+        },
+        "twitch": "Chuckle_1"
+    },
+    {
+        "username": "Dshana",
+        "[S3]Randomizer Safe": {
+            "elo": 765,
+            "matches": 1
+        }
+    },
+    {
+        "username": "VeXtopher",
+        "[S3]Randomizer Safe": {
+            "elo": 325,
+            "matches": 36
+        }
+    },
+    {
+        "username": "NicktheGameGuy",
+        "[S3]Randomizer Safe": {
+            "elo": 850,
+            "matches": 1
+        }
+    },
+    {
+        "username": "Seraphin Eveles",
+        "[S3]Randomizer Safe": {
+            "elo": 890,
+            "matches": 2
+        }
+    },
+    {
+        "username": "Suchuuato",
+        "[S3]Randomizer Safe": {
+            "elo": 580,
+            "matches": 4
+        }
+    },
+    {
+        "username": "Gods666thChild",
+        "[S3]Randomizer Safe": {
+            "elo": 935,
+            "matches": 5
+        },
+        "[S3]Randomizer Casual": {
+            "elo": 860,
+            "matches": 2
+        },
+        "Randomizer Casual": {
+            "elo": 780,
+            "matches": 8
+        }
+    },
+    {
+        "username": "arubaka",
+        "[S3]Randomizer Casual": {
+            "elo": 905,
+            "matches": 1
+        }
+    },
+    {
+        "username": "DiscoCokkroach",
+        "[S3]Randomizer Casual": {
+            "elo": 905,
+            "matches": 1
+        }
+    },
+    {
+        "username": "Superds",
+        "Randomizer Casual": {
+            "elo": 800,
+            "matches": 3
+        }
+    },
+    {
+        "username": "JupiterClimb",
+        "Randomizer Casual": {
+            "elo": 1030,
+            "matches": 19
+        }
+    },
+    {
+        "username": "DinnerDog",
+        "Casual": {
+            "elo": 800,
+            "matches": 1
+        },
+        "Randomizer Casual": {
+            "elo": 1010,
+            "matches": 2
+        }
+    },
+    {
+        "username": "Superds_1",
+        "Randomizer Casual": {
+            "elo": 1055,
+            "matches": 2
+        }
+    },
+    {
+        "username": "Gerardo/Ruimex 瑞墨",
+        "Randomizer Casual": {
+            "elo": 1060,
+            "matches": 1
+        }
+    },
+    {
+        "username": "cemo",
+        "Randomizer Casual": {
+            "elo": 825,
+            "matches": 1
+        }
+    },
+    {
+        "username": "99230602464628736"
     }
-  },
-  {
-    "username": "dr4gonblitz",
-    "Randomizer Safe": {
-      "elo": 1410,
-      "matches": 15
-    },
-    "Randomizer GSB Classic": {
-      "elo": 1640,
-      "matches": 67
-    },
-    "Randomizer Speedrun": {
-      "elo": 1090,
-      "matches": 3
-    },
-    "Randomizer Adventure": {
-      "elo": 1150,
-      "matches": 2
-    },
-    "Randomizer Scavenger": {
-      "elo": 1230,
-      "matches": 8
-    },
-    "Randomizer Scavenger Unlocked": {
-      "elo": 995,
-      "matches": 2
-    }
-  },
-  {
-    "username": "Ben",
-    "Randomizer Safe": {
-      "elo": 1000,
-      "matches": 0
-    },
-    "twitch": "benauton",
-    "Randomizer GSB Classic": {
-      "elo": 1315,
-      "matches": 14
-    }
-  },
-  {
-    "username": "cerealmasticator",
-    "Randomizer Safe": {
-      "elo": 965,
-      "matches": 6
-    },
-    "Randomizer GSB Classic": {
-      "elo": 1135,
-      "matches": 14
-    },
-    "Randomizer Adventure": {
-      "elo": 890,
-      "matches": 3
-    }
-  },
-  {
-    "username": "Rats",
-    "Randomizer Safe": {
-      "elo": 1315,
-      "matches": 4
-    },
-    "twitch": "ratslul",
-    "Randomizer GSB Classic": {
-      "elo": 1025,
-      "matches": 97
-    },
-    "Randomizer Speedrun": {
-      "elo": 1210,
-      "matches": 6
-    },
-    "Randomizer Adventure": {
-      "elo": 795,
-      "matches": 2
-    }
-  },
-  {
-    "username": "PCTrax",
-    "Randomizer Safe": {
-      "elo": 1360,
-      "matches": 1
-    },
-    "Randomizer GSB Classic": {
-      "elo": 1065,
-      "matches": 13
-    },
-    "Randomizer Adventure": {
-      "elo": 1015,
-      "matches": 2
-    }
-  },
-  {
-    "username": "Aldriel",
-    "Randomizer Safe": {
-      "elo": 1190,
-      "matches": 7
-    },
-    "Randomizer GSB Classic": {
-      "elo": 1055,
-      "matches": 20
-    },
-    "Randomizer Speedrun": {
-      "elo": 940,
-      "matches": 3
-    },
-    "Randomizer Scavenger": {
-      "elo": 725,
-      "matches": 8
-    }
-  },
-  {
-    "username": "Kris_NagaXIV",
-    "Randomizer Safe": {
-      "elo": 1000,
-      "matches": 0
-    },
-    "Randomizer GSB Classic": {
-      "elo": 950,
-      "matches": 10
-    }
-  },
-  {
-    "username": "Manlynessness",
-    "Randomizer Safe": {
-      "elo": 1000,
-      "matches": 1
-    },
-    "Randomizer GSB Classic": {
-      "elo": 900,
-      "matches": 26
-    }
-  },
-  {
-    "username": "Kai",
-    "Randomizer Safe": {
-      "elo": 1000,
-      "matches": 2
-    },
-    "twitch": "epikkai_",
-    "Randomizer GSB Classic": {
-      "elo": 960,
-      "matches": 8
-    }
-  },
-  {
-    "username": "3snow_p7im",
-    "Randomizer Safe": {
-      "elo": 950,
-      "matches": 4
-    },
-    "Randomizer GSB Classic": {
-      "elo": 945,
-      "matches": 26
-    },
-    "Randomizer Adventure": {
-      "elo": 1135,
-      "matches": 4
-    },
-    "Randomizer Speedrun": {
-      "elo": 1090,
-      "matches": 18
-    },
-    "Randomizer Scavenger": {
-      "elo": 915,
-      "matches": 1
-    }
-  },
-  {
-    "username": "TubePowered",
-    "Randomizer Safe": {
-      "elo": 800,
-      "matches": 3
-    },
-    "twitch": "tubesy",
-    "Randomizer GSB Classic": {
-      "elo": 1060,
-      "matches": 20
-    },
-    "Randomizer Speedrun": {
-      "elo": 810,
-      "matches": 3
-    },
-    "Randomizer Adventure": {
-      "elo": 1200,
-      "matches": 1
-    }
-  },
-  {
-    "username": "NightwolfXVI",
-    "Randomizer Safe": {
-      "elo": 1000,
-      "matches": 0
-    },
-    "Randomizer GSB Classic": {
-      "elo": 775,
-      "matches": 10
-    }
-  },
-  {
-    "username": "MASH",
-    "Randomizer Safe": {
-      "elo": 1000,
-      "matches": 0
-    },
-    "twitch": "ez0mash",
-    "Randomizer GSB Classic": {
-      "elo": 645,
-      "matches": 21
-    },
-    "Randomizer Speedrun": {
-      "elo": 905,
-      "matches": 2
-    }
-  },
-  {
-    "username": "Stew",
-    "Randomizer Safe": {
-      "elo": 985,
-      "matches": 1
-    },
-    "twitch": "ssbstew",
-    "Randomizer GSB Classic": {
-      "elo": 1050,
-      "matches": 10
-    }
-  },
-  {
-    "username": "fatihG_",
-    "Randomizer Safe": {
-      "elo": 1000,
-      "matches": 0
-    },
-    "Randomizer GSB Classic": {
-      "elo": 935,
-      "matches": 1
-    }
-  },
-  {
-    "username": "Diagon",
-    "twitch": "Diagongdx",
-    "Randomizer Safe": {
-      "elo": 1175,
-      "matches": 13
-    },
-    "Randomizer GSB Classic": {
-      "elo": 1115,
-      "matches": 26
-    },
-    "Randomizer Speedrun": {
-      "elo": 1140,
-      "matches": 18
-    },
-    "Randomizer Adventure": {
-      "elo": 995,
-      "matches": 3
-    },
-    "Randomizer Scavenger": {
-      "elo": 865,
-      "matches": 4
-    }
-  },
-  {
-    "username": "dontevorgil",
-    "Randomizer Safe": {
-      "elo": 890,
-      "matches": 3
-    },
-    "Randomizer GSB Classic": {
-      "elo": 835,
-      "matches": 3
-    },
-    "Randomizer Speedrun": {
-      "elo": 955,
-      "matches": 1
-    },
-    "Randomizer Adventure": {
-      "elo": 680,
-      "matches": 2
-    }
-  },
-  {
-    "username": "asdheyb",
-    "Randomizer Safe": {
-      "elo": 1480,
-      "matches": 7
-    },
-    "Randomizer GSB Classic": {
-      "elo": 1060,
-      "matches": 11
-    },
-    "Randomizer Speedrun": {
-      "elo": 1110,
-      "matches": 2
-    },
-    "Randomizer Adventure": {
-      "elo": 1075,
-      "matches": 2
-    },
-    "Randomizer Scavenger": {
-      "elo": 1335,
-      "matches": 3
-    }
-  },
-  {
-    "username": "romscout",
-    "Randomizer Safe": {
-      "elo": 1320,
-      "matches": 2
-    },
-    "Randomizer GSB Classic": {
-      "elo": 1065,
-      "matches": 16
-    },
-    "Randomizer Speedrun": {
-      "elo": 1040,
-      "matches": 3
-    }
-  },
-  {
-    "username": "RaneofSoTN",
-    "Randomizer Safe": {
-      "elo": 1000,
-      "matches": 0
-    },
-    "Randomizer GSB Classic": {
-      "elo": 1305,
-      "matches": 2
-    }
-  },
-  {
-    "username": "PalmyMKGames",
-    "Randomizer Safe": {
-      "elo": 580,
-      "matches": 1
-    },
-    "Randomizer GSB Classic": {
-      "elo": 820,
-      "matches": 29
-    },
-    "Randomizer Speedrun": {
-      "elo": 765,
-      "matches": 3
-    }
-  },
-  {
-    "username": "thesylo",
-    "twitch": "the_real_sylo",
-    "Randomizer Safe": {
-      "elo": 1000,
-      "matches": 0
-    },
-    "Randomizer GSB Classic": {
-      "elo": 935,
-      "matches": 1
-    }
-  },
-  {
-    "username": "SaintVonJester",
-    "Randomizer Safe": {
-      "elo": 600,
-      "matches": 1
-    },
-    "Randomizer GSB Classic": {
-      "elo": 1060,
-      "matches": 1
-    }
-  },
-  {
-    "username": "Keremene",
-    "twitch": "keremene440",
-    "Randomizer Safe": {
-      "elo": 800,
-      "matches": 1
-    },
-    "Randomizer GSB Classic": {
-      "elo": 1060,
-      "matches": 1
-    }
-  },
-  {
-    "username": "knox",
-    "Randomizer Safe": {
-      "elo": 500,
-      "matches": 0
-    },
-    "Randomizer GSB Classic": {
-      "elo": 1060,
-      "matches": 1
-    }
-  },
-  {
-    "username": "Dyson",
-    "Randomizer Safe": {
-      "elo": 700,
-      "matches": 1
-    },
-    "Randomizer GSB Classic": {
-      "elo": 1060,
-      "matches": 1
-    },
-    "Randomizer Speedrun": {
-      "elo": 1045,
-      "matches": 2
-    },
-    "twitch": "Dyson_Bladeless",
-    "Randomizer Adventure": {
-      "elo": 945,
-      "matches": 1
-    }
-  },
-  {
-    "username": "Epic",
-    "Randomizer Safe": {
-      "elo": 745,
-      "matches": 3
-    },
-    "twitch": "epicly_epic",
-    "Randomizer Speedrun": {
-      "elo": 760,
-      "matches": 3
-    }
-  },
-  {
-    "username": "Keremene440",
-    "Randomizer Safe": {
-      "elo": 625,
-      "matches": 3
-    },
-    "Randomizer Speedrun": {
-      "elo": 800,
-      "matches": 2
-    }
-  },
-  {
-    "username": "Fahrenheit",
-    "Randomizer Safe": {
-      "elo": 1000,
-      "matches": 3
-    },
-    "twitch": "fahrenheit_tepes",
-    "Randomizer Adventure": {
-      "elo": 1145,
-      "matches": 1
-    }
-  },
-  {
-    "username": "ArrenJevleth",
-    "Randomizer Adventure": {
-      "elo": 945,
-      "matches": 2
-    },
-    "Randomizer Speedrun": {
-      "elo": 940,
-      "matches": 1
-    },
-    "twitch": "ArrenJevleth",
-    "Randomizer Safe": {
-      "elo": 1015,
-      "matches": 2
-    }
-  },
-  {
-    "username": "JesterMasque",
-    "Randomizer Speedrun": {
-      "elo": 790,
-      "matches": 1
-    }
-  },
-  {
-    "username": "! ★ House",
-    "Randomizer Safe": {
-      "elo": 1050,
-      "matches": 1
-    }
-  },
-  {
-    "username": "Dinner Dog",
-    "twitch": "DinnerDog",
-    "Randomizer Safe": {
-      "elo": 970,
-      "matches": 2
-    }
-  },
-  {
-    "username": "jeeble"
-  },
-  {
-    "username": "aqueronte",
-    "Randomizer Safe": {
-      "elo": 925,
-      "matches": 1
-    },
-    "Randomizer Speedrun": {
-      "elo": 895,
-      "matches": 1
-    }
-  },
-  {
-    "username": "OmegaKaotix",
-    "Randomizer Speedrun": {
-      "elo": 850,
-      "matches": 1
-    },
-    "Randomizer Safe": {
-      "elo": 660,
-      "matches": 2
-    }
-  },
-  {
-    "username": "MrRazzio",
-    "Randomizer Safe": {
-      "elo": 1030,
-      "matches": 1
-    }
-  }
 ]

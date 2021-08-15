@@ -1,95 +1,41 @@
 {
-    "channel": "race-channel",
+    "raceChannelId": "566486385377280001",
+    "raceVoiceChannelId": "407763206564741120",
     "pagerRoleId": "632571703398105098",
+    "refereeRoleId": "876383410212462602",
     "maxOffsetSeconds": "15",
     "timeoutMinutes": "45",
     "minimumNewIntervalMinutes": "1",
-    "defaultLeaderboardSize": "25",
+    "defaultLeaderboardSize": "35",
     "defaultOffset": "10400",
     "rematchTimeoutSeconds": "8000",
-    "voiceChannelPrefix": "Race-Channel",
-    "defaultCategory": "Randomizer Safe",
-    "referees": ["TalicZealot", "dr4gonblitz", "Ben", "cerealmasticator", "Rats", "PCTrax", "Aldriel", "Manlynessness", "Kai", "3snow_p7im", "MASH"],
+    "generatePPF": true,
+    "randoPath": "D:/Programming/SotN-Randomizer/",
+    "patchFolder": "D:/Programming/speedrun-race-discord-bot/patches/",
+    "countdownFiles": ["../audio/countdown1.mp3", "../audio/countdown2.mp3", "../audio/countdown3.mp3", "../audio/countdown4.mp3"],
+    "leaderboardmessages": [{
+        "name": "Randomizer Casual",
+        "id": "876325364333420574"
+    }],
     "offsets": [{
-            "alias": "psx",
-            "value": 10
+            "name": "psx",
+            "value": 10.4
         },
         {
-            "alias": "xb",
+            "name": "xb",
             "value": 3
         },
         {
-            "alias": "saturn",
+            "name": "saturn",
             "value": 27
         },
         {
-            "alias": "emusaturn",
+            "name": "emusaturn",
             "value": 23
         },
         {
-            "alias": "dxc",
+            "name": "dxc",
             "value": 4.5
-        }
-    ],
-    "categories": [{
-            "name": "Randomizer Speedrun",
-            "aliases": ["rando", "randomizer"]
-        },
-        {
-            "name": "Randomizer Safe",
-            "aliases": ["safe", "gsb"]
-        },
-        {
-            "name": "Randomizer Scavenger",
-            "aliases": ["scavenger", "skavenger"]
-        },
-        {
-            "name": "Randomizer GSB Classic",
-            "aliases": ["gsbc", "rando classic", "randomizer classic"]
-        },
-        {
-            "name": "Randomizer Adventure",
-            "aliases": ["rando adventure", "randomizer adventure", "adventure"]
-        },
-        {
-            "name": "Bingo",
-            "aliases": ["bingo"]
-        },
-        {
-            "name": "Alucard Any%",
-            "aliases": ["any%", "alucard"]
-        },
-        {
-            "name": "Alucard All Bosses",
-            "aliases": ["aab"]
-        },
-        {
-            "name": "Alucard Glitchless",
-            "aliases": ["glitchless"]
-        },
-        {
-            "name": "Requiem Any%",
-            "aliases": ["requiem", "ps4"]
-        },
-        {
-            "name": "ABRSR",
-            "aliases": ["abrsr"]
-        },
-        {
-            "name": "Richter Any%",
-            "aliases": ["richter", "rich"]
-        },
-        {
-            "name": "Richter All Bosses",
-            "aliases": ["rab"]
-        },
-        {
-            "name": "Maria Any%",
-            "aliases": ["maria"]
-        },
-        {
-            "name": "Maria All Bosses",
-            "aliases": ["mab"]
         }
     ]
 }

@@ -55,6 +55,11 @@ module.exports = {
         players[playerIndex].twitch = twitch;
         savePlayer(players[playerIndex]);
     },
+    setPlayerId: function(username, id) {
+        let playerIndex = getPlayerIndexByName(username);
+        players[playerIndex].id = id;
+        savePlayer(players[playerIndex]);
+    },
     getPlayerElo: function(username, category) {
         let playerIndex = getPlayerIndexByName(username);
         if (!players[playerIndex][category]) {
@@ -129,7 +134,7 @@ module.exports = {
                         elo: player[category].elo
                     });
                 }
-                if(player[category].elo) {
+                if (player[category].elo) {
                     stats.totalRuns += player[category].matches;
                     stats.categoryPlayers += 1;
                 }
@@ -140,7 +145,7 @@ module.exports = {
             return null;
         }
         board.sort((a, b) => (a.elo > b.elo) ? -1 : 1);
-        stats.top = board.slice(0,3);
+        stats.top = board.slice(0, 3);
         return stats;
     },
     getPlayerStats: function(player) {

@@ -1,19 +1,28 @@
-const updateRaceMessage = require('../common/updateRaceMessage');
-const config = require('../config.json');
+const { SlashCommandBuilder } = require('@discordjs/builders');
 
-module.exports = (race, channel, username, message) => {
-    let player = race.players.find(x => x.username === username);
-    let match = message.content.match(/^[.!](\bsetseed\b) ("https:\/\/[a-zA-Z0-9_%\/?,.]{4,70}")/i);
-    let seed = match[2].replace(/"/ig, '');
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName('setseed')
+        .setDescription('Submit a custom seed for the current randomzier race.'),
+    async execute(interaction, client, race) {
 
-    if (!race.started && (player || config.referees.includes(message.author.username))) {
+        if (!race.finished && !race.includes(interaction.user.id)) {
+            await interaction.reply({ content: `Can't set the seed if you are not in the race!`, ephemeral: true });
+            return;
+        }
 
-        race.seed = '<' + seed + '>';
-        updateRaceMessage(race, channel);
-        console.log('updated');
+        if (!race.finished && race.started) {
+            await interaction.reply({ content: `Can't set the seed after the race has started!`, ephemeral: true });
+            return;
+        }
+
+        if (!race.finished) {
+            race.seed = interaction.options.getString('seed');
+            race.updateSeed();
+            await interaction.reply({ content: 'Seed has been updated!', ephemeral: true });
+            return;
+        }
+
+        await interaction.reply({ content: 'No active race!', ephemeral: true });
     }
-    if (message) {
-        message.delete().then().catch(console.error);
-    }
-    return;
 };

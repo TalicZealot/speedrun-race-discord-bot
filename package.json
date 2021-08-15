@@ -1,26 +1,23 @@
 {
-    "name": "speedrun-race-bot",
-    "version": "1.5.4",
-    "main": "index.js",
+    "dependencies": {
+        "@discordjs/rest": "^0.1.0-canary.0",
+        "@discordjs/voice": "^0.6.0",
+        "discord-api-types": "^0.22.0",
+        "discord.js": "^13.1.0",
+        "dotenv": "^10.0.0",
+        "libsodium-wrappers": "^0.7.9",
+        "nodemon": "^2.0.12",
+        "simple-git": "^2.43.0"
+    },
     "scripts": {
         "start": "node index.js",
         "dev": "nodemon index.js"
     },
-    "devDependencies": {
-        "nodemon": "^1.19.4"
-    },
-    "dependencies": {
-        "discord.js": "^11.6.4",
-        "dotenv": "^8.2.0",
-        "opusscript": "0.0.7"
-    },
     "nodemonConfig": {
         "ignore": [
             "/data/players.json",
-            "*.md"
+            "*.md",
+            "/patches/*.*"
         ]
-    },
-    "jshintConfig": {
-        "esversion": 8
     }
 }

@@ -4,6 +4,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 module.exports = {
     name: 'deploy',
     async execute(client, race) {
+        /*
         let commandId = null;
         client.guilds.cache.get('625294110139482113')?.commands.fetch().then(
             commands => {
@@ -23,6 +24,6 @@ module.exports = {
                 });
             }
         );
-        
+        */
     }
 };

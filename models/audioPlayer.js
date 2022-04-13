@@ -25,7 +25,6 @@ module.exports = class AudioPlayer {
 
     play() {
         let index = Math.floor(Math.random() * 3) + 1;
-        console.log(`index: ${index}, file: ${this.audioFiles[index]}`);
         const resource = createAudioResource(this.audioFiles[index], { inputType: StreamType.Arbitrary });
         this.player.play(resource);
         return entersState(this.player, AudioPlayerStatus.Playing, 5e3);
@@ -43,6 +42,19 @@ module.exports = class AudioPlayer {
         try {
             await entersState(this.connection, VoiceConnectionStatus.Ready, 30e3);
             this.connection.subscribe(this.player);
+
+            this.connection.on(VoiceConnectionStatus.Disconnected, async(oldState, newState) => {
+                try {
+                    await Promise.race([
+                        entersState(connection, VoiceConnectionStatus.Signalling, 5000),
+                        entersState(connection, VoiceConnectionStatus.Connecting, 5000),
+                    ]);
+                } catch (error) {
+                    connection.destroy();
+                    throw error;
+                }
+            });
+
             return this.connection;
         } catch (error) {
             this.connection.destroy();
@@ -51,7 +63,13 @@ module.exports = class AudioPlayer {
     }
 
     disconnect() {
-        this.connection.destroy();
+        try {
+            if (this.connection) {
+                this.connection.destroy();
+            }
+        } catch (error) {
+            throw error;
+        }
     }
 
 };

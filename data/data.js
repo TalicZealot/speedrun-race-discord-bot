@@ -120,7 +120,6 @@ module.exports = {
     getCategoryStats: function(category) {
         let board = [];
         let stats = {
-            totalRuns: 0,
             categoryPlayers: 0
         };
         if (players.length < 1) {
@@ -135,7 +134,6 @@ module.exports = {
                     });
                 }
                 if (player[category].elo) {
-                    stats.totalRuns += player[category].matches;
                     stats.categoryPlayers += 1;
                 }
             }
@@ -145,7 +143,7 @@ module.exports = {
             return null;
         }
         board.sort((a, b) => (a.elo > b.elo) ? -1 : 1);
-        stats.top = board.slice(0, 3);
+        stats.top = board.slice(0, 4);
         return stats;
     },
     getPlayerStats: function(player) {
@@ -160,7 +158,7 @@ module.exports = {
         }
         stats.twitch = 'https://www.twitch.tv/' + ((players[playerIndex].twitch) ? players[playerIndex].twitch : player);
         Object.keys(players[playerIndex]).forEach(key => {
-            if (key != "username" && key != "twitch") {
+            if (key != "username" && key != "twitch" && key != "id") {
                 let board = this.getCategoryLeaderboard(key);
                 let rank = 0;
                 if (board) {

@@ -26,7 +26,6 @@ module.exports = class Race {
         this.status = '';
         this.tournament = false;
         this.ranked = true;
-        this.audioPlayer.connectToChannel();
     }
 
     includes(id) {
@@ -70,6 +69,9 @@ module.exports = class Race {
 
     finishPlayer(user) {
         if (!this.finished && this.started && this.includes(user.id)) {
+            if (this.players.find(player => player.username === user.username).forfeited) {
+                return;
+            }
             if (this.players.find(player => player.username === user.username).time) {
                 this.players.find(player => player.username === user.username).time = null;
                 this.update();
@@ -144,14 +146,20 @@ module.exports = class Race {
 
     initiate(category, tournament, user) {
         this.defaults();
+        this.audioPlayer.connectToChannel();
         this.status = 'RACE: WAITING FOR PLAYERS';
         this.category = category;
-        if (category.includes('Randomizer')) {
-            let preset = category.replace('Randomizer ', '').toLowerCase();
+        if (category.includes('Randomizer') && !category.includes('Custom')) {
+            let preset = category.replace('Randomizer ', '').toLowerCase().replace(' ', '-');
             this.seed = seed(preset);
             if (config.generatePPF) {
                 generatePPF(this.seed, this.channel);
             }
+        }
+
+        if (category.includes('Custom')) {
+            let preset = category.replace('Randomizer ', '').toLowerCase();
+            this.ranked = false;
         }
 
         if (category.includes('Custom')) {
@@ -228,6 +236,7 @@ module.exports = class Race {
         this.status = 'RACE STARTED'
         this.started = true;
         this.updateMessage();
+        this.audioPlayer.disconnect();
 
         let buttonComponents = [
             new MessageButton()
@@ -276,7 +285,8 @@ module.exports = class Race {
             }
         }
 
-        this.status = 'RACE FINISHED'
+        this.status = 'RACE FINISHED';
+        this.started = false;
         this.finished = true;
         this.updateMessage();
         lockVoiceChannel(this.client);
@@ -309,6 +319,8 @@ module.exports = class Race {
     }
 
     async update() {
+        this.sortPlayers();
+
         if (!this.started && this.playersReady() && this.players.length > 1) {
             await this.start();
         }
@@ -406,6 +418,9 @@ module.exports = class Race {
         this.initiatedAt = new Date().getTime();
         this.offset = parseInt(config.defaultOffset);
         this.status = 'RACE RESTARTED: WAITING FOR PLAYERS';
+        this.players.forEach(player => {
+            player.ready = false;
+        });
         this.updateMessage();
     }
 
@@ -430,5 +445,31 @@ module.exports = class Race {
         this.offset = parseInt(config.defaultOffset);
         this.status = 'RACE CLOSED';
         this.updateMessage();
+        this.audioPlayer.disconnect();
+
+        let buttonComponents = [];
+
+        if (this.seed) {
+            buttonComponents.push(
+                new MessageButton()
+                .setLabel('Seed')
+                .setStyle('LINK')
+                .setURL(this.seed),
+            );
+        }
+
+        buttonComponents.push(
+            new MessageButton()
+            .setLabel('Multistream')
+            .setStyle('LINK')
+            .setURL(this.multistream)
+        );
+
+        const buttons = new MessageActionRow()
+            .addComponents(buttonComponents);
+
+        this.channel.then(channel => {
+            channel.messages.fetch(this.messageId).then(msg => msg.edit({ components: [buttons] }));
+        }).catch(console.error);
     }
 }

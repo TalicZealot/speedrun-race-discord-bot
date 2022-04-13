@@ -4,7 +4,6 @@ module.exports = class Player {
         this.username = username;
         this.ready = false;
         this.time = null;
-        this.eloAdjustment = null;
         this.forfeited = false;
     }
 

@@ -6,11 +6,19 @@ const simpleGit = require('simple-git');
 
 module.exports = (seed, channel) => {
     let match = seed.match(/([?])([a-zA-Z0-9]{7,40}$)/i);
+    let seedName = '';
     if (!match) {
-        return;
+        match = seed.match(/([?a-zA-Z0-9-:]{7,40})([,]){2}([a-zA-Z0-9]{7,40}$)/i);
+        seedName = match[3];
+        if (!match) {
+            console.log('Bad seed format!');
+            return;
+        }
+    } else {
+        seedName = match[2];
     }
-    console.log(match[2]);
-    let patchFileName = match[2] + ".ppf";
+    console.log(seedName);
+    let patchFileName = seedName + ".ppf";
     let randoPath = config.randoPath;
 
     const git = simpleGit({
@@ -18,13 +26,25 @@ module.exports = (seed, channel) => {
     });
     git.pull().then(() => {
         console.log("generating seed...");
-        let randomizer = cp.fork(randoPath + "randomize", ["-o", config.patchFolder + patchFileName, seed], { cwd: randoPath });
+
+        let logs = '';
+
+        let randomizer = cp.fork(randoPath + "randomize", ["-o", config.patchFolder + patchFileName, seed], { cwd: randoPath, stdio: ['ignore', 'pipe', 'pipe', 'ipc'] });
+
+        randomizer.stdout.on('data', (outdata) => {
+            logs += outdata;
+        });
 
         randomizer.on('exit', (m) => {
+            console.log('logged: ' + logs);
+            let output = 'https://ppf.sotn.io/';
+            logs = logs.replace(/(?:\r\n|\r|\n)/g, ',').replace(/\s\s+/g, ' ');
+            let items = logs.split('Starting equipment:, ')[1];
+            output += '\n Starting equipment: ||' + items + '||';
             if (fs.existsSync(config.patchFolder + patchFileName)) {
                 channel.then(ch => {
                     ch.send({
-                        content: 'https://ppf.sotn.io/',
+                        content: output,
                         files: [{
                             attachment: config.patchFolder + patchFileName,
                             name: patchFileName

@@ -11,7 +11,7 @@ module.exports = {
             await interaction.reply({ content: 'No active race!', ephemeral: true });
             return;
         }
-        if (!race.includes(interaction.user.id)) {
+        if (!race.includes(interaction.user.id) && !interaction.member.roles.cache.find(x => x.id === config.refereeRoleId)) {
             await interaction.reply({ content: 'Cannot close if you are not participating!', ephemeral: true });
             return;
         }

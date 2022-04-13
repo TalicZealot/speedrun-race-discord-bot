@@ -15,7 +15,7 @@ module.exports = {
             return;
         }
 
-        if (!race.includes(interaction.user.id)) {
+        if (!race.includes(interaction.user.id) && !interaction.member.roles.cache.find(x => x.id === config.refereeRoleId)) {
             await interaction.reply({ content: 'Cannot restart if you are not participating!', ephemeral: true });
             return;
         }

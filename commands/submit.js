@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const updateLeaderboard = require('../common/updateLeaderboard');
 const config = require('../config.json');
 const elo = require('../elo/elo.js');
 
@@ -43,15 +44,15 @@ module.exports = {
         }
 
         let adjustments = elo.resolveMatch(players, category);
+        console.log(adjustments);
+        updateLeaderboard(client, category);
 
         let output = 'Results submitted:';
-        output += '\n`' + centerPad(('Adjustments:'), 24) + '`';
-        output += '\n`' + centerPad(('Category: ' + category), 24) + '`';
+        output += '\n`' + 'Adjustments:' + '`';
+        output += '\n`' + 'Category: ' + category + '`';
         for (let i = 0; i < players.length; i++) {
-            output += '\n';
-            output += ('` ' + players[i].username.replace(/\W/gi, "").replace(/.forfeit/gi, "")).padEnd(20, " ");
-            output += (' ' + ((adjustments[i] > 0) ? '+' + adjustments[i] : adjustments[i])).padEnd(5, " ");
-            output += '`';
+            let userRow = players[i].username.replace(/\W/gi, "").replace(/.forfeit/gi, "") + "  " + ((adjustments[i] > 0) ? '+' + adjustments[i] : adjustments[i]);
+            output += '\n`' + userRow + '`';
         }
 
         let channel = client.guilds.cache.first(1)[0].channels.fetch(config.raceChannelId);

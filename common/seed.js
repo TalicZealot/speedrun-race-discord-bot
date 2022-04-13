@@ -213,6 +213,64 @@ module.exports = (preset) => {
         "Potential"
     ];
 
+    adjectivesHalloween = [
+        "Scary",
+        "Terrifying",
+        "Spooky",
+        "Eerie",
+        "Horrendous",
+        "Spinechilling",
+        "Bloodcurdling",
+        "Chilling",
+        "Horrid",
+        "Horrific",
+        "Horrifying",
+        "Dire",
+        "Dreadful",
+        "Fearsome",
+        "Ghastly",
+        "Disturbing",
+        "Unnerving",
+        "Creepy",
+        "Nightmarish",
+        "Gruesome",
+        "Grotesque",
+        "Hideous",
+        "Petrifying",
+        "Undead",
+        "Vile",
+        "Evil"
+    ];
+    nounsHalloween = [
+        "Skeleton",
+        "Ghost",
+        "Vampire",
+        "Ghoul",
+        "Werewolf",
+        "Zombie",
+        "Phantom",
+        "Monster",
+        "Lich",
+        "Bulette",
+        "Beholder",
+        "Hag",
+        "Witch",
+        "MindFlayer",
+        "Devil",
+        "Alien",
+        "Abomination",
+        "Construct",
+        "Wendigo",
+        "Wight",
+        "Goblin",
+        "Crone",
+        "Spectre",
+        "Banshee",
+        "Wraith",
+        "Arachnid",
+        "Monstrosity"
+    ];
+
     let adjective = adjectives[Math.floor(Math.random() * Math.floor(adjectives.length - 1))];
     let noun = nouns[Math.floor(Math.random() * Math.floor(nouns.length - 1))];
     let number = Math.floor(Math.random() * Math.floor(102));
@@ -231,9 +289,11 @@ module.exports = (preset) => {
     const casualUrl = 'c.t.sotn.io/?';
     const speedrunUrl = 's.t.sotn.io/?';
     const ogUrl = 'og.t.sotn.io/?';
+    const gogUrl = 'sotn.io/?tp:guarded-og,,'
     const glitchUrl = 'g.t.sotn.io/?';
     const scavengerUrl = 'sc.t.sotn.io/?';
     const handUrl = 'eh.t.sotn.io/?';
+    const batUrl = 'sotn.io/?tp:bat-master,,';
     const bingo = 'testrunnersrl.github.io/?seed=';
     const bingoSuffix = '&game=sotn&type=';
     const bingospeedrunUrluffix = '&game=sotnr&type=';
@@ -244,6 +304,9 @@ module.exports = (preset) => {
     switch (preset) {
         case "og":
             site += ogUrl;
+            break;
+        case "guarded-og":
+            site += gogUrl;
             break;
         case "speedrun":
             site += speedrunUrl;
@@ -260,6 +323,9 @@ module.exports = (preset) => {
             break;
         case "scavenger":
             site += scavengerUrl;
+            break;
+        case "bat-master":
+            site += batUrl;
             break;
         case "empty-hand":
             site += handUrl;

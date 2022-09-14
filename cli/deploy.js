@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder, Routes } = require('discord.js');
+const { REST } = require('@discordjs/rest');
 
 module.exports = {
     name: 'deploy',
@@ -392,5 +393,25 @@ module.exports = {
         const command = await client.guilds.cache.first(1)[0]?.commands.set(data);
         console.log(command);
         //const command = await client.application?.commands.set(data);
+
+        const rest = new REST({ version: '10' }).setToken(token);
+        rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
+	        .then((data) => console.log(`Successfully registered ${data.length} application commands.`))
+	        .catch(console.error);
+
+            (async () => {
+                try {
+                    console.log(`Started refreshing ${commands.length} application (/) commands.`);
+            
+                    const data = await rest.put(
+                        Routes.applicationGuildCommands(clientId, guildId),
+                        { body: commands },
+                    );
+            
+                    console.log(`Successfully reloaded ${data.length} application (/) commands.`);
+                } catch (error) {
+                    console.error(error);
+                }
+            })();
     }
 };

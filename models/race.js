@@ -7,7 +7,7 @@ const lockVoiceChannel = require('../common/lockVoiceChannel');
 const unlockVoiceChannel = require('../common/unlockVoiceChannel');
 const updateLeaderboard = require('../common/updateLeaderboard');
 const Player = require('./player.js');
-const { MessageActionRow, MessageButton } = require('discord.js');
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle  } = require('discord.js');
 
 module.exports = class Race {
     constructor(client, audioPlayer) {
@@ -165,33 +165,33 @@ module.exports = class Race {
         this.initiatedAt = new Date().getTime();
 
         let buttonComponents = [
-            new MessageButton()
+            new ButtonBuilder()
             .setCustomId('join')
             .setLabel('Join')
-            .setStyle('PRIMARY'),
-            new MessageButton()
+            .setStyle(ButtonStyle.Primary),
+            new ButtonBuilder()
             .setCustomId('ready')
             .setLabel('Ready')
-            .setStyle('SUCCESS')
+            .setStyle(ButtonStyle.Success)
         ];
 
         if (this.seed) {
             buttonComponents.push(
-                new MessageButton()
+                new ButtonBuilder()
                 .setLabel('Seed')
-                .setStyle('LINK')
+                .setStyle(ButtonStyle.Link)
                 .setURL(this.seed),
             );
         }
 
         buttonComponents.push(
-            new MessageButton()
+            new ButtonBuilder()
             .setLabel('Multistream')
-            .setStyle('LINK')
+            .setStyle(ButtonStyle.Link)
             .setURL(this.multistream)
         );
 
-        const buttons = new MessageActionRow()
+        const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
         this.channel.then(channel => {
@@ -207,7 +207,7 @@ module.exports = class Race {
         const sleep = m => new Promise(r => setTimeout(r, m));
         this.status = 'GET READY';
         this.updateMessage()
-        await sleep(2700);
+        await sleep(1700);
         this.status = 'Starting in: 3';
         this.updateMessage()
         await sleep(1000);
@@ -224,42 +224,42 @@ module.exports = class Race {
         await sleep(1000);
         this.status = 'PLAY!';
         this.updateMessage();
-        await sleep(1000);
+        await sleep(1500);
         this.status = 'RACE STARTED'
         this.started = true;
         this.updateMessage();
         this.audioPlayer.disconnect();
 
         let buttonComponents = [
-            new MessageButton()
+            new ButtonBuilder()
             .setCustomId('finish')
             .setLabel('Finish')
-            .setStyle('SUCCESS'),
-            new MessageButton()
+            .setStyle(ButtonStyle.Success),
+            new ButtonBuilder()
             .setCustomId('forfeit')
             .setLabel('Forfeit')
-            .setStyle('DANGER'),
+            .setStyle(ButtonStyle.Danger),
         ];
 
         if (this.seed) {
             buttonComponents.push(
-                new MessageButton()
+                new ButtonBuilder()
                 .setLabel('Seed')
-                .setStyle('LINK')
+                .setStyle(ButtonStyle.Link)
                 .setURL(this.seed),
             );
         }
 
         buttonComponents.push(
-            new MessageButton()
+            new ButtonBuilder()
             .setLabel('Multistream')
-            .setStyle('LINK')
+            .setStyle(ButtonStyle.Link)
             .setURL(this.multistream)
         );
 
         this.startedAt = new Date().getTime() + this.offset;
 
-        const buttons = new MessageActionRow()
+        const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
         this.channel.then(channel => {
@@ -288,21 +288,21 @@ module.exports = class Race {
 
         if (this.seed) {
             buttonComponents.push(
-                new MessageButton()
+                new ButtonBuilder()
                 .setLabel('Seed')
-                .setStyle('LINK')
+                .setStyle(ButtonStyle.Link)
                 .setURL(this.seed),
             );
         }
 
         buttonComponents.push(
-            new MessageButton()
+            new ButtonBuilder()
             .setLabel('Multistream')
-            .setStyle('LINK')
+            .setStyle(ButtonStyle.Link)
             .setURL(this.multistream)
         );
 
-        const buttons = new MessageActionRow()
+        const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
         this.channel.then(channel => {
@@ -327,33 +327,33 @@ module.exports = class Race {
     updateSeed() {
 
         let buttonComponents = [
-            new MessageButton()
+            new ButtonBuilder()
             .setCustomId('join')
             .setLabel('Join')
-            .setStyle('PRIMARY'),
-            new MessageButton()
+            .setStyle(ButtonStyle.Primary),
+            new ButtonBuilder()
             .setCustomId('ready')
             .setLabel('Ready')
-            .setStyle('SUCCESS')
+            .setStyle(ButtonStyle.Success)
         ];
 
         if (this.seed) {
             buttonComponents.push(
-                new MessageButton()
+                new ButtonBuilder()
                 .setLabel('Seed')
-                .setStyle('LINK')
+                .setStyle(ButtonStyle.Link)
                 .setURL(this.seed),
             );
         }
 
         buttonComponents.push(
-            new MessageButton()
+            new ButtonBuilder()
             .setLabel('Multistream')
-            .setStyle('LINK')
+            .setStyle(ButtonStyle.Link)
             .setURL(this.multistream)
         );
 
-        const buttons = new MessageActionRow()
+        const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
         this.channel.then(channel => {
@@ -443,21 +443,21 @@ module.exports = class Race {
 
         if (this.seed) {
             buttonComponents.push(
-                new MessageButton()
+                new ButtonBuilder()
                 .setLabel('Seed')
-                .setStyle('LINK')
+                .setStyle(ButtonStyle.Link)
                 .setURL(this.seed),
             );
         }
 
         buttonComponents.push(
-            new MessageButton()
+            new ButtonBuilder()
             .setLabel('Multistream')
-            .setStyle('LINK')
+            .setStyle(ButtonStyle.Link)
             .setURL(this.multistream)
         );
 
-        const buttons = new MessageActionRow()
+        const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
         this.channel.then(channel => {

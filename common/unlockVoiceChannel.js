@@ -1,4 +1,5 @@
 const config = require('../config.json');
+const { PermissionFlagsBits } = require('discord.js');
 
 module.exports = (client) => {
 
@@ -11,8 +12,8 @@ module.exports = (client) => {
     let channel = client.guilds.cache.first(1)[0].channels.fetch(config.raceVoiceChannelId);
     channel.then(
         ch => {
-            if (!ch.permissionOverwrites.cache.find(permission => permission.id === everyone.id).allow.has('SPEAK')) {
-                ch.permissionOverwrites.edit(everyone, { 'SPEAK': true });
+            if (!ch.permissionOverwrites.cache.find(permission => permission.id === everyone.id).allow.has(PermissionFlagsBits.Speak)) {
+                ch.permissionOverwrites.edit(everyone, { Speak: true });
                 console.log('Voice channel unlocked!');
             }
         }

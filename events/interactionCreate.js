@@ -1,7 +1,7 @@
 module.exports = {
     name: 'interactionCreate',
     async execute(interaction, client, race) {
-        if (interaction.isCommand()) {
+        if (interaction.isChatInputCommand()) {
             if (!client.commands.has(interaction.commandName)) return;
             try {
                 await client.commands.get(interaction.commandName).execute(interaction, client, race);

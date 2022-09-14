@@ -13,10 +13,12 @@ module.exports = (preset) => {
         "Tall",
         "Large",
         "Terrible",
+        "Distorted",
         "Curious",
         "Pregnant",
         "Useful",
         "Decent",
+        "Enhanced",
         "Asleep",
         "Cultural",
         "Indistinguishable",
@@ -24,6 +26,7 @@ module.exports = (preset) => {
         "Healthy",
         "Logical",
         "Popular",
+        "Overdriven",
         "Unhappy",
         "Known",
         "Critical",
@@ -68,6 +71,7 @@ module.exports = (preset) => {
         "Chipped",
         "Squishy",
         "Corrupted",
+        "Predictable",
         "Super",
         "Sharp",
         "Junior",
@@ -294,10 +298,14 @@ module.exports = (preset) => {
     const scavengerUrl = 'sc.t.sotn.io/?';
     const handUrl = 'eh.t.sotn.io/?';
     const batUrl = 'sotn.io/?tp:bat-master,,';
+    const nimbleUrl = 'sotn.io/?tp:nimble,,';
+    const lycanthropeUrl = 'sotn.io/?tp:lycanthrope,,';
+    const expeditionUrl = 'sotn.io/?tp:expedition,,';
+    const warlockUrl = 'sotn.io/?tp:warlock,,';
+
     const bingo = 'testrunnersrl.github.io/?seed=';
     const bingoSuffix = '&game=sotn&type=';
     const bingospeedrunUrluffix = '&game=sotnr&type=';
-    let glitchSeed = false;
     let site = '';
     let suffix = '';
 
@@ -319,13 +327,24 @@ module.exports = (preset) => {
             break;
         case "glitch":
             site += glitchUrl;
-            glitchSeed = true;
             break;
         case "scavenger":
             site += scavengerUrl;
             break;
         case "bat-master":
             site += batUrl;
+            break;
+        case "nimble":
+            site += nimbleUrl;
+            break;
+        case "lycanthrope":
+            site += lycanthropeUrl;
+            break;
+        case "expedition":
+            site += expeditionUrl;
+            break;
+        case "warlock":
+            site += warlockUrl;
             break;
         case "empty-hand":
             site += handUrl;

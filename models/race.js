@@ -4,6 +4,7 @@ const elo = require('../elo/elo.js');
 const seed = require('../common/seed.js');
 const generatePPF = require('../common/generatePPF.js');
 const lockVoiceChannel = require('../common/lockVoiceChannel');
+const unlockVoiceChannel = require('../common/unlockVoiceChannel');
 const updateLeaderboard = require('../common/updateLeaderboard');
 const Player = require('./player.js');
 const { MessageActionRow, MessageButton } = require('discord.js');
@@ -25,7 +26,7 @@ module.exports = class Race {
         this.multistream = null;
         this.status = '';
         this.tournament = false;
-        this.ranked = true;
+        this.ranked = false;
     }
 
     includes(id) {
@@ -144,26 +145,17 @@ module.exports = class Race {
         });
     }
 
-    initiate(category, tournament, user) {
+    initiate(category, ranked, tournament, user) {
         this.defaults();
         this.audioPlayer.connectToChannel();
         this.status = 'RACE: WAITING FOR PLAYERS';
         this.category = category;
-        if (category.includes('Randomizer') && !category.includes('Custom')) {
-            let preset = category.replace('Randomizer ', '').toLowerCase().replace(' ', '-');
-            this.seed = seed(preset);
+        this.ranked = ranked;
+        if (!category.includes('Custom')) {
+            this.seed = seed(category.toLowerCase());
             if (config.generatePPF) {
                 generatePPF(this.seed, this.channel);
             }
-        }
-
-        if (category.includes('Custom')) {
-            let preset = category.replace('Randomizer ', '').toLowerCase();
-            this.ranked = false;
-        }
-
-        if (category.includes('Custom')) {
-            this.ranked = false;
         }
 
         this.finished = false;
@@ -289,7 +281,7 @@ module.exports = class Race {
         this.started = false;
         this.finished = true;
         this.updateMessage();
-        lockVoiceChannel(this.client);
+        unlockVoiceChannel(this.client);
         updateLeaderboard(this.client, this.category);
 
         let buttonComponents = [];
@@ -374,7 +366,7 @@ module.exports = class Race {
         let output = '-';
 
         const centerPad = (str, length, char = ' ') => str.padStart((str.length + length) / 2, char).padEnd(length, char);
-        output += '\n       `' + centerPad(((this.tournament ? 'TOURNAMENT ' : '') + this.status), 33) + '`';
+        output += '\n       `' + centerPad(((this.ranked ? 'RANKED ' : '') + this.status), 33) + '`';
         output += '\n       `' + centerPad(('Category: ' + this.category), 33) + '`';
 
         for (let i = 0; i < this.players.length; i++) {
@@ -436,7 +428,7 @@ module.exports = class Race {
         this.seed = null;
         this.multistream = null;
         this.tournament = false;
-        this.ranked = true;
+        this.ranked = false;
     }
 
     close() {

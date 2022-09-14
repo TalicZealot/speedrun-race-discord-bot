@@ -14,7 +14,7 @@
     "patchFolder": "D:/Programming/speedrun-race-discord-bot/patches/",
     "countdownFiles": ["../audio/countdown1.mp3", "../audio/countdown2.mp3", "../audio/countdown3.mp3", "../audio/countdown4.mp3"],
     "leaderboardmessages": [{
-        "name": "Randomizer Casual",
+        "name": "Casual",
         "id": "876325364333420574"
     }],
     "offsets": [{

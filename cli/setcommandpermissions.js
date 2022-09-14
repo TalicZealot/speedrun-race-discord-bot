@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 //Use this command to set role or user permissions to slash commands
 module.exports = {
-    name: 'deploy',
+    name: 'setcommandpermissions',
     async execute(client, race) {
         /*
         let commandId = null;

@@ -15,7 +15,7 @@ module.exports = {
             return;
         }
 
-        race.initiate(interaction.options.getString('category'), interaction.options.getBoolean('tournament'), interaction.user);
+        race.initiate(interaction.options.getString('category'), interaction.options.getBoolean('ranked'), interaction.options.getBoolean('tournament'), interaction.user);
         await interaction.reply({ content: 'Race initiated!', ephemeral: true });
     },
 };

@@ -11,44 +11,67 @@ module.exports = {
                         type: 'STRING',
                         description: 'Category of the race.',
                         required: true,
-                        choices: [{
-                                name: 'Randomizer Safe',
-                                value: 'Randomizer Safe',
+                        choices: [
+                            {
+                                name: 'Guarded OG',
+                                value: 'Guarded-OG',
                             },
                             {
-                                name: 'Randomizer Casual',
-                                value: 'Randomizer Casual',
+                                name: 'Safe',
+                                value: 'Safe',
                             },
                             {
-                                name: 'Randomizer Speedrun',
-                                value: 'Randomizer Speedrun',
+                                name: 'Casual',
+                                value: 'Casual',
                             },
                             {
-                                name: 'Randomizer Adventure',
-                                value: 'Randomizer Adventure',
+                                name: 'Nimble',
+                                value: 'Nimble',
                             },
                             {
-                                name: 'Randomizer Bat master',
-                                value: 'Randomizer Bat master',
+                                name: 'Lycanthrope',
+                                value: 'Lycanthrope',
                             },
                             {
-                                name: 'Randomizer OG',
-                                value: 'Randomizer OG',
+                                name: 'Expedition',
+                                value: 'Expedition',
                             },
                             {
-                                name: 'Randomizer Guarded OG',
-                                value: 'Randomizer Guarded OG',
+                                name: 'Warlock',
+                                value: 'Warlock',
                             },
                             {
-                                name: 'Randomizer Custom',
-                                value: 'Randomizer Custom',
+                                name: 'Adventure',
+                                value: 'Adventure',
+                            },
+                            {
+                                name: 'OG',
+                                value: 'OG',
+                            },
+                            {
+                                name: 'Speedrun',
+                                value: 'Speedrun',
+                            },
+                            {
+                                name: 'Bat master',
+                                value: 'Bat-master',
+                            },
+                            {
+                                name: 'Custom',
+                                value: 'Custom',
                             },
                         ]
                     },
                     {
+                        name: 'ranked',
+                        type: 'BOOLEAN',
+                        description: 'ranked',
+                        required: false
+                    },
+                    {
                         name: 'tournament',
                         type: 'BOOLEAN',
-                        description: 'platform',
+                        description: 'tournament',
                         required: false
                     },
                     {
@@ -95,33 +118,49 @@ module.exports = {
                         description: 'Category of the race.',
                         required: false,
                         choices: [{
-                                name: 'Randomizer Safe',
-                                value: 'Randomizer Safe',
-                            },
-                            {
-                                name: 'Randomizer Casual',
-                                value: 'Randomizer Casual',
-                            },
-                            {
-                                name: 'Randomizer Speedrun',
-                                value: 'Randomizer Speedrun',
-                            },
-                            {
-                                name: 'Randomizer Adventure',
-                                value: 'Randomizer Adventure',
-                            },
-                            {
-                                name: 'Randomizer Bat master',
-                                value: 'Randomizer Bat master',
-                            },
-                            {
-                                name: 'Randomizer OG',
-                                value: 'Randomizer OG',
-                            },
-                            {
-                                name: 'Randomizer Guarded OG',
-                                value: 'Randomizer Guarded OG',
-                            }
+                            name: 'Guarded OG',
+                            value: 'Guarded-OG',
+                        },
+                        {
+                            name: 'Safe',
+                            value: 'Safe',
+                        },
+                        {
+                            name: 'Casual',
+                            value: 'Casual',
+                        },
+                        {
+                            name: 'Nimble',
+                            value: 'Nimble',
+                        },
+                        {
+                            name: 'Lycanthrope',
+                            value: 'Lycanthrope',
+                        },
+                        {
+                            name: 'Expedition',
+                            value: 'Expedition',
+                        },
+                        {
+                            name: 'Warlock',
+                            value: 'Warlock',
+                        },
+                        {
+                            name: 'Adventure',
+                            value: 'Adventure',
+                        },
+                        {
+                            name: 'OG',
+                            value: 'OG',
+                        },
+                        {
+                            name: 'Speedrun',
+                            value: 'Speedrun',
+                        },
+                        {
+                            name: 'Bat master',
+                            value: 'Bat-master',
+                        }
                         ]
                     },
                     {
@@ -172,7 +211,11 @@ module.exports = {
             },
             {
                 name: 'lock',
-                description: 'Toggles the race voice channel auto mute state.'
+                description: 'Turns on auto mute for the race voice channel for joining users.'
+            },
+            {
+                name: 'unlock',
+                description: 'Turns off auto mute for the race voice channel.'
             },
             {
                 name: 'submit',
@@ -183,29 +226,49 @@ module.exports = {
                         description: 'Category of the race.',
                         required: true,
                         choices: [{
-                                name: 'Randomizer Safe',
-                                value: 'Randomizer Safe',
-                            },
-                            {
-                                name: 'Randomizer Casual',
-                                value: 'Randomizer Casual',
-                            },
-                            {
-                                name: 'Randomizer Adventure',
-                                value: 'Randomizer Adventure',
-                            },
-                            {
-                                name: 'Randomizer Bat master',
-                                value: 'Randomizer Bat master',
-                            },
-                            {
-                                name: 'Randomizer OG',
-                                value: 'Randomizer OG',
-                            },
-                            {
-                                name: 'Randomizer Guarded OG',
-                                value: 'Randomizer Guarded OG',
-                            }
+                            name: 'Guarded OG',
+                            value: 'Guarded-OG',
+                        },
+                        {
+                            name: 'Safe',
+                            value: 'Safe',
+                        },
+                        {
+                            name: 'Casual',
+                            value: 'Casual',
+                        },
+                        {
+                            name: 'Nimble',
+                            value: 'Nimble',
+                        },
+                        {
+                            name: 'Lycanthrope',
+                            value: 'Lycanthrope',
+                        },
+                        {
+                            name: 'Expedition',
+                            value: 'Expedition',
+                        },
+                        {
+                            name: 'Warlock',
+                            value: 'Warlock',
+                        },
+                        {
+                            name: 'Adventure',
+                            value: 'Adventure',
+                        },
+                        {
+                            name: 'OG',
+                            value: 'OG',
+                        },
+                        {
+                            name: 'Speedrun',
+                            value: 'Speedrun',
+                        },
+                        {
+                            name: 'Bat master',
+                            value: 'Bat-master',
+                        }
                         ]
                     },
                     {

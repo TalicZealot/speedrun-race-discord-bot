@@ -27,6 +27,7 @@ module.exports = class Race {
         this.status = '';
         this.tournament = false;
         this.ranked = false;
+        this.message = null;
     }
 
     includes(id) {
@@ -196,6 +197,7 @@ module.exports = class Race {
 
         this.channel.then(channel => {
             channel.send({ content: 'RACE STARTED', components: [buttons] }).then(msg => {
+                this.message = msg;
                 this.messageId = msg.id;
                 this.updateMessage();
             })
@@ -262,9 +264,8 @@ module.exports = class Race {
         const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
-        this.channel.then(channel => {
-            channel.messages.fetch(this.messageId).then(msg => msg.edit({ components: [buttons] }));
-        }).catch(console.error);
+        this.retry(() => {this.message.edit({ components: [buttons] })}, 3);
+
         lockVoiceChannel(this.client);
     }
 
@@ -275,6 +276,7 @@ module.exports = class Race {
                 this.players[i].adjustment = adjustments[i];
                 data.setPlayerId(this.players[i].username, this.players[i].id);
             }
+            updateLeaderboard(this.client, this.category);
         }
 
         this.status = 'RACE FINISHED';
@@ -282,7 +284,6 @@ module.exports = class Race {
         this.finished = true;
         this.updateMessage();
         unlockVoiceChannel(this.client);
-        updateLeaderboard(this.client, this.category);
 
         let buttonComponents = [];
 
@@ -305,9 +306,7 @@ module.exports = class Race {
         const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
-        this.channel.then(channel => {
-            channel.messages.fetch(this.messageId).then(msg => msg.edit({ components: [buttons] }));
-        }).catch(console.error);
+        this.retry(() => {this.message.edit({ components: [buttons] })}, 3);
     }
 
     async update() {
@@ -356,9 +355,7 @@ module.exports = class Race {
         const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
-        this.channel.then(channel => {
-            channel.messages.fetch(this.messageId).then(msg => msg.edit({ components: [buttons] }));
-        }).catch(console.error);
+        this.retry(() => {this.message.edit({ components: [buttons] })}, 3);
     }
 
     updateMessage() {
@@ -398,9 +395,7 @@ module.exports = class Race {
             output += '`';
         }
 
-        this.channel.then(channel => {
-            channel.messages.fetch(this.messageId).then(msg => msg.edit(output));
-        }).catch(console.error);
+        this.retry(() => {this.message.edit(output)}, 3);
     }
 
     restart() {
@@ -460,8 +455,18 @@ module.exports = class Race {
         const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
-        this.channel.then(channel => {
-            channel.messages.fetch(this.messageId).then(msg => msg.edit({ components: [buttons] }));
-        }).catch(console.error);
+        this.retry(() => {this.message.edit({ components: [buttons] })}, 3);
+    }
+
+    async retry(apiCall, retries) {
+        for (let i = 0; i < retries; i++) {
+            try {
+                apiCall();
+                return;
+            } catch (error) {
+                console.log(error);
+                await sleep(Math.pow(12, i) + Math.floor(Math.random() * 10));
+            }
+        }
     }
 }

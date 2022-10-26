@@ -73,6 +73,18 @@
     "Casual": {
       "elo": 970,
       "matches": 4
+    },
+    "Safe": {
+      "elo": 1050,
+      "matches": 1
+    },
+    "Expedition": {
+      "elo": 950,
+      "matches": 1
+    },
+    "Guarded-OG": {
+      "elo": 1050,
+      "matches": 1
     }
   },
   {
@@ -120,11 +132,15 @@
   },
   {
     "username": "Dinner Dog",
-    "twitch": "DinnerDog",
+    "twitch": "dinnerdog",
     "id": "724749246431101089",
     "Casual": {
       "elo": 1270,
       "matches": 12
+    },
+    "Guarded-OG": {
+      "elo": 1100,
+      "matches": 1
     }
   },
   {
@@ -150,6 +166,18 @@
     "Casual": {
       "elo": 505,
       "matches": 6
+    },
+    "Guarded-OG": {
+      "elo": 950,
+      "matches": 1
+    },
+    "Safe": {
+      "elo": 1050,
+      "matches": 1
+    },
+    "Lycanthrope": {
+      "elo": 950,
+      "matches": 1
     }
   },
   {
@@ -170,6 +198,14 @@
     "id": "178992162841559040",
     "Casual": {
       "elo": 1165,
+      "matches": 1
+    },
+    "Safe": {
+      "elo": 950,
+      "matches": 1
+    },
+    "Lycanthrope": {
+      "elo": 1050,
       "matches": 1
     }
   },
@@ -273,6 +309,10 @@
     "Casual": {
       "elo": 1055,
       "matches": 18
+    },
+    "Guarded-OG": {
+      "elo": 950,
+      "matches": 1
     }
   },
   {
@@ -307,7 +347,19 @@
       "elo": 980,
       "matches": 12
     },
-    "id": "281602836784218112"
+    "id": "281602836784218112",
+    "Safe": {
+      "elo": 950,
+      "matches": 1
+    },
+    "Expedition": {
+      "elo": 1050,
+      "matches": 1
+    },
+    "Guarded-OG": {
+      "elo": 950,
+      "matches": 1
+    }
   },
   {
     "username": "Kostas_Kirby",
@@ -321,5 +373,21 @@
   },
   {
     "username": "50keyz"
+  },
+  {
+    "username": "CountCranberry"
+  },
+  {
+    "username": "Titus G (LynxTomboyLover)"
+  },
+  {
+    "username": "Lack"
+  },
+  {
+    "username": "Elpinchelack"
+  },
+  {
+    "username": "Mott",
+    "twitch": "mottzilla0"
   }
 ]

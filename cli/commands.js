@@ -1,6 +1,6 @@
 module.exports = {
     name: 'commands',
-    execute(client, race) {
+    execute(client) {
         client.guilds.cache.get('625294110139482113')?.commands.fetch().then(
             commands => {
                 commands.forEach(command => {

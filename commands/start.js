@@ -58,12 +58,16 @@ module.exports = {
                         name: 'Custom',
                         value: 'Custom',
                     },
-                )),
+                ))
+        .addBooleanOption(option =>
+            option.setName('ranked')
+                .setDescription('Ranked races use ELO')
+                .setRequired(false))
+        .addBooleanOption(option =>
+            option.setName('tournament')
+                .setDescription('Tournament races have more restrictions for non-referees.')
+                .setRequired(false)),
     async execute(interaction, client, race) {
-        if (race.tournament && interaction.member.roles.cache) {
-            interaction.member.roles.cache.has(role => role.id == id)
-        }
-
         if ((race.started || !race.finished) && race.tournament && !interaction.member.roles.cache.find(x => x.id === config.refereeRoleId)) {
             await interaction.reply({ content: 'Only referees can close tournament races!', ephemeral: true });
             return;

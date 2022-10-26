@@ -4,7 +4,11 @@ const config = require('../config.json');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('kick')
-        .setDescription(`Removes a user from the race without a result.`),
+        .setDescription(`Removes a user from the race without a result.`)
+        .addUserOption(option =>
+            option.setName('user')
+                .setDescription('user')
+                .setRequired(false)),
     async execute(interaction, client, race) {
         if (!interaction.member.roles.cache.find(x => x.id === config.refereeRoleId)) {
             await interaction.reply({ content: 'Only referees can kick players!', ephemeral: true });

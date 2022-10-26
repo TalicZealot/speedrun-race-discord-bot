@@ -6,8 +6,118 @@ const elo = require('../elo/elo.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('submit')
-        .setDescription(`Submit a race result.`),
-    async execute(interaction, client, race) {
+        .setDescription(`Submit a race result.`)
+        .addStringOption(option =>
+            option.setName('category')
+                .setDescription('Category of the race')
+                .setRequired(true)
+                .addChoices(
+                    {
+                        name: 'Guarded OG',
+                        value: 'Guarded-OG',
+                    },
+                    {
+                        name: 'Safe',
+                        value: 'Safe',
+                    },
+                    {
+                        name: 'Casual',
+                        value: 'Casual',
+                    },
+                    {
+                        name: 'Nimble',
+                        value: 'Nimble',
+                    },
+                    {
+                        name: 'Lycanthrope',
+                        value: 'Lycanthrope',
+                    },
+                    {
+                        name: 'Expedition',
+                        value: 'Expedition',
+                    },
+                    {
+                        name: 'Warlock',
+                        value: 'Warlock',
+                    },
+                    {
+                        name: 'Adventure',
+                        value: 'Adventure',
+                    },
+                    {
+                        name: 'OG',
+                        value: 'OG',
+                    },
+                    {
+                        name: 'Speedrun',
+                        value: 'Speedrun',
+                    },
+                    {
+                        name: 'Bat master',
+                        value: 'Bat-master',
+                    },
+                ))
+        .addUserOption(option =>
+            option.setName('player1')
+                .setDescription('player1')
+                .setRequired(true))
+        .addUserOption(option =>
+            option.setName('player2')
+                .setDescription('player2')
+                .setRequired(true))
+        .addUserOption(option =>
+            option.setName('player3')
+                .setDescription('player3')
+                .setRequired(false))
+        .addUserOption(option =>
+            option.setName('player4')
+                .setDescription('player4')
+                .setRequired(false))
+        .addUserOption(option =>
+            option.setName('player5')
+                .setDescription('player5')
+                .setRequired(false))
+        .addUserOption(option =>
+            option.setName('player6')
+                .setDescription('player6')
+                .setRequired(false))
+        .addUserOption(option =>
+            option.setName('player7')
+                .setDescription('player7')
+                .setRequired(false))
+        .addUserOption(option =>
+            option.setName('player8')
+                .setDescription('player8')
+                .setRequired(false))
+        .addBooleanOption(option =>
+            option.setName('player2forfeit')
+                .setDescription('True if the player forfeited.')
+                .setRequired(false))
+        .addBooleanOption(option =>
+            option.setName('player3forfeit')
+                .setDescription('True if the player forfeited.')
+                .setRequired(false))
+        .addBooleanOption(option =>
+            option.setName('player4forfeit')
+                .setDescription('True if the player forfeited.')
+                .setRequired(false))
+        .addBooleanOption(option =>
+            option.setName('player5forfeit')
+                .setDescription('True if the player forfeited.')
+                .setRequired(false))
+        .addBooleanOption(option =>
+            option.setName('player6forfeit')
+                .setDescription('True if the player forfeited.')
+                .setRequired(false))
+        .addBooleanOption(option =>
+            option.setName('player7forfeit')
+                .setDescription('True if the player forfeited.')
+                .setRequired(false))
+        .addBooleanOption(option =>
+            option.setName('player8forfeit')
+                .setDescription('True if the player forfeited.')
+                .setRequired(false)),
+    async execute(interaction, client) {
 
         if (!interaction.member.roles.cache.find(x => x.id === config.refereeRoleId)) {
             await interaction.reply({ content: 'Only referees can submit race results!', ephemeral: true });
@@ -17,7 +127,7 @@ module.exports = {
         let players = [];
         let category = interaction.options.getString('category');
 
-        const centerPad = (str, length, char = ' ') => str.padStart((str.length + length) / 2, char).padEnd(length, char);
+        //const centerPad = (str, length, char = ' ') => str.padStart((str.length + length) / 2, char).padEnd(length, char);
 
         players.push({
             username: interaction.options.getUser('player1').username,
@@ -31,7 +141,7 @@ module.exports = {
             forfeited: interaction.options.getBoolean('player2forfeit'),
         });
 
-        for (let i = 3; i < 11; i++) {
+        for (let i = 3; i < 9; i++) {
             if (interaction.options.getUser('player' + i)) {
                 players.push({
                     username: interaction.options.getUser('player' + i).username,

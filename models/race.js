@@ -23,11 +23,13 @@ module.exports = class Race {
         this.category = null;
         this.messageId = null;
         this.seed = null;
+        this.seedName = '';
         this.multistream = null;
         this.status = '';
         this.tournament = false;
         this.ranked = false;
         this.message = null;
+        this.replays = [];
     }
 
     includes(id) {
@@ -146,16 +148,24 @@ module.exports = class Race {
         });
     }
 
+    addReplay(filename) {
+        this.replays.push(filename);
+    }
+
     initiate(category, ranked, tournament, user) {
         this.defaults();
         this.audioPlayer.connectToChannel();
         this.status = 'RACE: WAITING FOR PLAYERS';
         this.category = category;
         this.ranked = ranked;
+        unlockVoiceChannel(this.client);
+
         if (!category.includes('Custom')) {
-            this.seed = seed(category.toLowerCase());
+            let seedData = seed(category.toLowerCase());
+            this.seed = seedData.link;
+            this.seedName = seedData.name;
             if (config.generatePPF) {
-                generatePPF(this.seed, this.channel);
+                generatePPF(this.seed, this.seedName, this.channel);
             }
         }
 
@@ -409,6 +419,7 @@ module.exports = class Race {
             player.ready = false;
         });
         this.updateMessage();
+        unlockVoiceChannel(this.client);
     }
 
     defaults() {
@@ -424,6 +435,8 @@ module.exports = class Race {
         this.multistream = null;
         this.tournament = false;
         this.ranked = false;
+        this.seedName = '';
+        this.replays = [];
     }
 
     close() {
@@ -459,6 +472,7 @@ module.exports = class Race {
     }
 
     async retry(apiCall, retries) {
+        const sleep = m => new Promise(r => setTimeout(r, m));
         for (let i = 0; i < retries; i++) {
             try {
                 apiCall();

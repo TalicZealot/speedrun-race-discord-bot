@@ -1,9 +1,9 @@
 require('dotenv').config();
 const Race = require('./models/race');
 const AudioPlayer = require('./models/audioPlayer');
-const config = require('./config.json');
 const fs = require('fs');
-const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const config = require('./config.json');
+const { Client, Events, Collection, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildVoiceStates]});
 client.commands = new Collection();
 client.buttons = new Collection();
@@ -39,6 +39,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 const cliFiles = fs.readdirSync('./cli').filter(file => file.endsWith('.js'));
+
 rl.on('line', (input) => {
     for (const file of cliFiles) {
         const command = require(`./cli/${file}`);
@@ -49,7 +50,10 @@ rl.on('line', (input) => {
     }
 });
 
-client.login(process.env.BOT_TOKEN).then(() => {
+client.once(Events.ClientReady, c => {
+	console.log(`Ready! Logged in as ${c.user.tag}`);
     audioPlayer = new AudioPlayer(client);
     race = new Race(client, audioPlayer);
-}).catch(console.error);
+});
+
+client.login(process.env.BOT_TOKEN);

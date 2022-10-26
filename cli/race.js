@@ -1,6 +1,6 @@
 module.exports = {
     name: 'race',
-    execute(client, race) {
+    execute(race) {
         console.log(race);
     },
 };

@@ -1,22 +1,9 @@
 const config = require('../config.json');
 const cp = require('child_process');
-const { Attachment } = require('discord.js');
 const fs = require('fs');
 const simpleGit = require('simple-git');
 
-module.exports = (seed, channel) => {
-    let match = seed.match(/([?])([a-zA-Z0-9]{7,40}$)/i);
-    let seedName = '';
-    if (!match) {
-        match = seed.match(/([?a-zA-Z0-9-:]{7,40})([,]){2}([a-zA-Z0-9]{7,40}$)/i);
-        seedName = match[3];
-        if (!match) {
-            console.log('Bad seed format!');
-            return;
-        }
-    } else {
-        seedName = match[2];
-    }
+module.exports = (seed, seedName, channel) => {
     console.log(seedName);
     let patchFileName = seedName + ".ppf";
     let randoPath = config.randoPath;

@@ -1,12 +1,69 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const config = require('../config.json');
 const data = require('../data/data.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('stats')
-        .setDescription(`Outputs summarized race stats for the selected category or user.`),
-    async execute(interaction, client, race) {
+        .setDescription(`Outputs summarized race stats for the selected category or user.`)
+        .addStringOption(option =>
+            option.setName('category')
+                .setDescription('Category')
+                .setRequired(false)
+                .addChoices(
+                    {
+                        name: 'Guarded OG',
+                        value: 'Guarded-OG',
+                    },
+                    {
+                        name: 'Safe',
+                        value: 'Safe',
+                    },
+                    {
+                        name: 'Casual',
+                        value: 'Casual',
+                    },
+                    {
+                        name: 'Nimble',
+                        value: 'Nimble',
+                    },
+                    {
+                        name: 'Lycanthrope',
+                        value: 'Lycanthrope',
+                    },
+                    {
+                        name: 'Expedition',
+                        value: 'Expedition',
+                    },
+                    {
+                        name: 'Warlock',
+                        value: 'Warlock',
+                    },
+                    {
+                        name: 'Adventure',
+                        value: 'Adventure',
+                    },
+                    {
+                        name: 'OG',
+                        value: 'OG',
+                    },
+                    {
+                        name: 'Speedrun',
+                        value: 'Speedrun',
+                    },
+                    {
+                        name: 'Bat master',
+                        value: 'Bat-master',
+                    },
+                ))
+        .addUserOption(option =>
+            option.setName('user')
+                .setDescription('user')
+                .setRequired(false))
+        .addBooleanOption(option =>
+            option.setName('public')
+                .setDescription('Select true if you want the reply to be visible to everybody.')
+                .setRequired(false)),
+    async execute(interaction) {
         const centerPad = (str, length, char = ' ') => str.padStart((str.length + length) / 2, char).padEnd(length, char);
         let category = interaction.options.getString('category');
         let player = interaction.options.getUser('user');

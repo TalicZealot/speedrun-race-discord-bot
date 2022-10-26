@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const unlockVoiceChannel = require('../common/unlockVoiceChannel');
 const config = require('../config.json');
 
 module.exports = {
@@ -22,6 +23,7 @@ module.exports = {
         }
 
         race.close();
+        unlockVoiceChannel(client);
         await interaction.reply({ content: 'Race closed!', ephemeral: true });
     },
 };

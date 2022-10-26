@@ -3,7 +3,11 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('setseed')
-        .setDescription('Submit a custom seed for the current randomzier race.'),
+        .setDescription('Submit a custom seed for the current randomzier race.')
+        .addStringOption(option =>
+            option.setName('seed')
+                .setDescription('Link to the seed.')
+                .setRequired(true)),
     async execute(interaction, client, race) {
 
         if (!race.finished && !race.includes(interaction.user.id)) {

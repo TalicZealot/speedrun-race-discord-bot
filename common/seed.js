@@ -122,6 +122,7 @@ module.exports = (preset) => {
         "Zerg",
         "Terran",
         "Protoss",
+        "SCP",
         "Spark",
         "Steel",
         "Rage",
@@ -217,12 +218,13 @@ module.exports = (preset) => {
         "Potential"
     ];
 
-    adjectivesHalloween = [
+    let adjectivesHalloween = [
         "Scary",
         "Terrifying",
         "Spooky",
         "Eerie",
         "Horrendous",
+        "Abyssal",
         "Spinechilling",
         "Bloodcurdling",
         "Chilling",
@@ -243,11 +245,35 @@ module.exports = (preset) => {
         "Petrifying",
         "Undead",
         "Vile",
-        "Evil"
+        "Evil",
+        "Unsettling",
+        "Incorporeal",
+        "Ephemeral",
+        "Haunting",
+        "Frightening",
+        "Graven",
+        "Abhorrent",
+        "Surreal",
+        "Insidious",
+        "Sordid",
+        "Malicious",
+        "Unspeakable",
+        "Defiled",
+        "Unscrupulous",
+        "Sinister",
+        "Malevolent",
+        "Haunted",
+        "Gory",
+        "Decapitated",
+        "Disemboweled",
+        "Deceased",
+        "Fanged",
+        "Paranormal"
     ];
-    nounsHalloween = [
+    let nounsHalloween = [
         "Skeleton",
         "Ghost",
+        "SCP",
         "Vampire",
         "Ghoul",
         "Werewolf",
@@ -261,7 +287,11 @@ module.exports = (preset) => {
         "Witch",
         "MindFlayer",
         "Devil",
+        "Demon",
+        "Fiend",
         "Alien",
+        "Lich",
+        "Gargoyle",
         "Abomination",
         "Construct",
         "Wendigo",
@@ -272,12 +302,37 @@ module.exports = (preset) => {
         "Banshee",
         "Wraith",
         "Arachnid",
-        "Monstrosity"
+        "Monstrosity",
+        "Yokai",
+        "Spirit",
+        "Wretch",
+        "Fiend",
+        "Oni",
+        "Kitsune",
+        "Chupacabra",
+        "Basilisk",
+        "Horror",
+        "Nightmare",
+        "Cockatrice",
+        "Kraken",
+        "Djinn",
+        "Ogre",
+        "Gorgon",
+        "Warlock",
+        "Ooze",
+        "Shedim",
+        "Asura",
+        "Daeva",
+        "Gallas",
     ];
 
-    let adjective = adjectives[Math.floor(Math.random() * Math.floor(adjectives.length - 1))];
-    let noun = nouns[Math.floor(Math.random() * Math.floor(nouns.length - 1))];
+    let adjective = adjectivesHalloween[Math.floor(Math.random() * Math.floor(adjectivesHalloween.length - 1))];
+    let noun = nounsHalloween[Math.floor(Math.random() * Math.floor(nounsHalloween.length - 1))];
     let number = Math.floor(Math.random() * Math.floor(102));
+    if (number > 75) {
+        number = 'BehindYou';
+    }
+    /*
     if (number == 100) {
         number = 420;
     }
@@ -287,6 +342,7 @@ module.exports = (preset) => {
     if (number == 69) {
         number = '69Nice';
     }
+    */
 
     const rando = 't.sotn.io/?';
     const adventureUrl = 'a.t.sotn.io/?';
@@ -353,7 +409,13 @@ module.exports = (preset) => {
             site += rando;
     }
 
-    let seed = 'https://' + site + adjective + noun + number + suffix;
+    let seedName = adjective + noun + number + suffix;
+    let seedLink = 'https://' + site + seedName;
+
+    let seed = {
+        name: seedName,
+        link: seedLink
+    };
 
     return seed;
 };

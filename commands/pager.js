@@ -5,7 +5,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('pager')
         .setDescription(`Gives or removes the RacePager role.`),
-    async execute(interaction, client, race) {
+    async execute(interaction) {
         let userHasRole = interaction.member.roles.cache.find(x => x.id === config.pagerRoleId);
         if (userHasRole) {
             interaction.member.roles.remove(config.pagerRoleId).then(console.log).catch(console.error);

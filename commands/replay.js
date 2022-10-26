@@ -14,7 +14,12 @@ module.exports = {
             .setRequired(true)
         ),
     async execute(interaction, client, race) {
-        if (!race.finished || !race.includes(interaction.user.id)) {
+        if (!race.finished) {
+            await interaction.reply({ content: `Race has to be finished!`, ephemeral: true });
+            return;
+        }
+
+        if (!race.includes(interaction.user.id)) {
             await interaction.reply({ content: `Can't set the seed if you are not in the race!`, ephemeral: true });
             return;
         }

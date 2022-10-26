@@ -6,7 +6,7 @@ module.exports = {
         .setName('replays')
         .setDescription(`Generate a zip of all the submitted replays for this race.`),
     async execute(interaction, client, race) {
-        if (!race.finished) {
+        if (!race.finished || race.seedName == "") {
             await interaction.reply({ content: `Race has to be finished!`, ephemeral: true });
             return;
         }

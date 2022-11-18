@@ -5,6 +5,11 @@ const fs = require('fs');
 module.exports = async (url, name, race) => {
     let path = config.replaysFolder + "/" + race.seedName + "/" + name;
     const file = fs.createWriteStream(path);
+    const dir = race.seedName;
+
+    if (!fs.existsSync(config.replaysFolder + "/"  + dir)) {
+        fs.mkdirSync(config.replaysFolder + "/"  + dir);
+    }
 
     return new Promise((resolve, reject) => {
         https.get(url, function (response) {

@@ -1,5 +1,5 @@
 module.exports = (preset) => {
-    let adjectives = [
+    let adjectivesNormal = [
         "Invincible",
         "Burning",
         "Preposterous",
@@ -106,7 +106,7 @@ module.exports = (preset) => {
         "Flawless",
         "Pointless"
     ];
-    let nouns = [
+    let nounsNormal = [
         "Axelord",
         "Fleaman",
         "Nutella",
@@ -326,23 +326,29 @@ module.exports = (preset) => {
         "Gallas",
     ];
 
-    let adjective = adjectivesHalloween[Math.floor(Math.random() * Math.floor(adjectivesHalloween.length - 1))];
-    let noun = nounsHalloween[Math.floor(Math.random() * Math.floor(nounsHalloween.length - 1))];
-    let number = Math.floor(Math.random() * Math.floor(102));
-    if (number > 75) {
-        number = 'BehindYou';
+    let adjectives = [];
+    let nouns = [];
+
+    let month = new Date().getMonth() + 1;
+
+    switch (month) {
+        case 10:
+            adjectives = adjectivesHalloween;
+            nouns = nounsHalloween;
+            break;
+    
+        default:
+            adjectives = adjectivesNormal;
+            nouns = nounsNormal;
+            break;
     }
-    /*
-    if (number == 100) {
-        number = 420;
-    }
-    if (number == 101) {
-        number = 702;
-    }
-    if (number == 69) {
+
+    let adjective = adjectives[Math.floor(Math.random() * Math.floor(adjectivesHalloween.length - 1))];
+    let noun = nouns[Math.floor(Math.random() * Math.floor(nounsHalloween.length - 1))];
+    let number = Math.floor(Math.random() * 999);
+    if (number === 69 || number === 169 || number === 269 || number === 369 || number === 469 || number === 569) {
         number = '69Nice';
     }
-    */
 
     const rando = 't.sotn.io/?';
     const adventureUrl = 'a.t.sotn.io/?';

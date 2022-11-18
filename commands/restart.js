@@ -1,3 +1,4 @@
+const config = require('../config.json');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const unlockVoiceChannel = require('../common/unlockVoiceChannel');
 

@@ -14,7 +14,7 @@ module.exports = {
             .setRequired(true)
         ),
     async execute(interaction, client, race) {
-        if (!race.finished || race.seedName == "") {
+        if (!race.finished || race.seedName === "") {
             await interaction.reply({ content: `Race has to be finished!`, ephemeral: true });
             return;
         }
@@ -36,6 +36,27 @@ module.exports = {
             return;
         }
 
+        if (race.seedName === "custom") {
+            let name = replay.name.replace(".sotnr","");
+            let preset = "";
+            let seedName = "";
+
+            let matchPreset = name.match(/(ADVENTURE|BAT-MASTER|CASUAL|EMPTY-HAND|EXPEDITION|GEM-FARMER|GLITCH|GUARDED-OG|LYCANTHROPE|NIMBLE|OG|SAFE|SCAVENGER|SPEEDRUN|THIRD-CASTLE|WARLOCK|CUSTOM)/);
+            
+            if (matchPreset) {
+                preset = matchPreset[1];
+            }
+        
+            name = name.replace(preset, '');
+            
+            let match = name.match(/([a-zA-Z0-9()]{5,50})([-]){1}([a-zA-Z0-9 -]{0,30})$/i);
+            if (match && match.length == 4) {
+                seedName = match[1];
+            }
+
+            race.setSeedName(seedName);
+        }
+
         if (fs.existsSync(config.replaysFolder + "/" + race.seedName + "/" + replay.name)) {
             await interaction.reply({ content: `Invalid. File already submitted!`, ephemeral: true });
             return;
@@ -43,8 +64,8 @@ module.exports = {
 
         await downloadReplay(replay.url, replay.name, race);
 
-        if (race.replays.lenght == race.players.lenght) {
-            zipReplays(interaction.channel, race.replays, race.seedName);
+        if (race.allReplaysSubmitted()) {
+            zipReplays(interaction.channel, race);
         }
 
         await interaction.reply({ content: 'Replay submitted!', ephemeral: true });

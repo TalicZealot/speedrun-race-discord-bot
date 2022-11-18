@@ -16,7 +16,7 @@ module.exports = {
             return;
         }
 
-        zipReplays(interaction.channel, race.replays, race.seedName);
+        zipReplays(interaction.channel, race);
 
         await interaction.reply({ content: 'Zip generated!', ephemeral: true });
     },

@@ -13,6 +13,10 @@
     "Casual": {
       "elo": 1360,
       "matches": 7
+    },
+    "Lycanthrope": {
+      "elo": 950,
+      "matches": 1
     }
   },
   {
@@ -212,7 +216,15 @@
   {
     "username": "Doozy",
     "twitch": "doozyzood",
-    "id": "777312183449026561"
+    "id": "777312183449026561",
+    "Warlock": {
+      "elo": 950,
+      "matches": 1
+    },
+    "Custom": {
+      "elo": 1120,
+      "matches": 3
+    }
   },
   {
     "username": "RefinedHornet",
@@ -232,6 +244,10 @@
     "Randomizer Casual": {
       "elo": 750,
       "matches": 1
+    },
+    "Custom": {
+      "elo": 880,
+      "matches": 3
     }
   },
   {
@@ -244,6 +260,10 @@
     "Casual": {
       "elo": 1795,
       "matches": 16
+    },
+    "Lycanthrope": {
+      "elo": 1050,
+      "matches": 1
     }
   },
   {
@@ -288,6 +308,10 @@
     "Casual": {
       "elo": 620,
       "matches": 7
+    },
+    "Warlock": {
+      "elo": 1050,
+      "matches": 1
     }
   },
   {
@@ -389,5 +413,27 @@
   {
     "username": "Mott",
     "twitch": "mottzilla0"
+  },
+  {
+    "username": "Bar_Keep"
+  },
+  {
+    "username": "Dylicious",
+    "twitch": "dylicious1364"
+  },
+  {
+    "username": "Binitch"
+  },
+  {
+    "username": "Muraky",
+    "twitch": "Muraky"
+  },
+  {
+    "username": "Mars Aderon",
+    "twitch": "marsaderon"
+  },
+  {
+    "username": "SKRIMPZ",
+    "twitch": "skrimpzpls"
   }
 ]

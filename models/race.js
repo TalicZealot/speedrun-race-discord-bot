@@ -152,6 +152,18 @@ module.exports = class Race {
         this.replays.push(filename);
     }
 
+    getReplays() {
+        return this.replays;
+    }
+
+    allReplaysSubmitted() {
+       return this.replays.length === this.players.length; 
+    }
+
+    setSeedName(name) {
+        this.seedName = name;
+    }
+
     initiate(category, ranked, tournament, user) {
         this.defaults();
         this.audioPlayer.connectToChannel();
@@ -167,6 +179,8 @@ module.exports = class Race {
             if (config.generatePPF) {
                 generatePPF(this.seed, this.seedName, this.channel);
             }
+        } else {
+            this.seedName = "custom";
         }
 
         this.finished = false;

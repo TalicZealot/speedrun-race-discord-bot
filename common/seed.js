@@ -326,6 +326,21 @@ module.exports = (preset) => {
         "Gallas",
     ];
 
+    let adjectivesHolidays = [
+        "Snowy",
+        "Merry",
+        "Happy",
+        "Jolly",
+        "Cozy",
+        "Festive",
+        "Relaxing",
+        "Cheery",
+        "Warm",
+        "Sparkly",
+        "Wintry",
+        "Joyful"
+    ];
+
     let adjectives = [];
     let nouns = [];
 
@@ -336,17 +351,22 @@ module.exports = (preset) => {
             adjectives = adjectivesHalloween;
             nouns = nounsHalloween;
             break;
-    
+
+        case 12:
+            adjectives = adjectivesHolidays;
+            nouns = nounsNormal;
+            break;
+
         default:
             adjectives = adjectivesNormal;
             nouns = nounsNormal;
             break;
     }
 
-    let adjective = adjectives[Math.floor(Math.random() * Math.floor(adjectivesHalloween.length - 1))];
-    let noun = nouns[Math.floor(Math.random() * Math.floor(nounsHalloween.length - 1))];
+    let adjective = adjectives[Math.floor(Math.random() * Math.floor(adjectives.length - 1))];
+    let noun = nouns[Math.floor(Math.random() * Math.floor(nouns.length - 1))];
     let number = Math.floor(Math.random() * 999);
-    if (number === 69 || number === 169 || number === 269 || number === 369 || number === 469 || number === 569) {
+    if (number % 100 === 69) {
         number = '69Nice';
     }
 
@@ -365,9 +385,9 @@ module.exports = (preset) => {
     const expeditionUrl = 'sotn.io/?tp:expedition,,';
     const warlockUrl = 'sotn.io/?tp:warlock,,';
 
-    const bingo = 'testrunnersrl.github.io/?seed=';
-    const bingoSuffix = '&game=sotn&type=';
-    const bingospeedrunUrluffix = '&game=sotnr&type=';
+    //const bingo = 'testrunnersrl.github.io/?seed=';
+    //const bingoSuffix = '&game=sotn&type=';
+    //const bingospeedrunUrluffix = '&game=sotnr&type=';
     let site = '';
     let suffix = '';
 

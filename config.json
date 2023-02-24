@@ -15,30 +15,20 @@
     "randoPath": "D:/Programming/SotN-Randomizer/",
     "patchFolder": "D:/Programming/speedrun-race-discord-bot/patches/",
     "replaysFolder": "D:/Programming/speedrun-race-discord-bot/replays/",
-    "countdownFiles": ["../audio/countdown1.mp3", "../audio/countdown2.mp3", "../audio/countdown3.mp3", "../audio/countdown4.mp3"],
-    "leaderboardmessages": [{
-        "name": "Casual",
-        "id": "876325364333420574"
-    }],
-    "offsets": [{
-            "name": "psx",
-            "value": 10.4
+    "countdownFiles": [
+        "../audio/countdown1.mp3",
+        "../audio/countdown2.mp3",
+        "../audio/countdown3.mp3",
+        "../audio/countdown4.mp3"
+    ],
+    "leaderboardmessages": [
+        {
+            "name": "Casual",
+            "id": "876325364333420574"
         },
         {
-            "name": "xb",
-            "value": 3
-        },
-        {
-            "name": "saturn",
-            "value": 27
-        },
-        {
-            "name": "emusaturn",
-            "value": 23
-        },
-        {
-            "name": "dxc",
-            "value": 4.5
+            "name": "Lycanthrope",
+            "id": "1078661871520981032"
         }
     ]
 }

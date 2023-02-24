@@ -30,7 +30,13 @@ module.exports = (client, category) => {
         client.guilds.cache.first(1)[0].channels.fetch(config.raceChannelId).then(channel => {
             channel.messages.fetch(boardMessageId).then(msg => msg.edit(output));
         }).catch(console.error);
+    } else {
+        let output = 'Leaderboard';
+        output += '\n   `' + centerPad(('Category: ' + category), 34) + '`';
 
-        console.log("Leaderboard updated!");
+        client.guilds.cache.first(1)[0].channels.fetch(config.raceChannelId).then(channel => {
+            channel.messages.fetch(boardMessageId).then(msg => msg.edit(output));
+        }).catch(console.error);
     }
+    console.log("Leaderboard updated!");
 };

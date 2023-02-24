@@ -60,8 +60,8 @@ module.exports = {
                     },
                 ))
         .addBooleanOption(option =>
-            option.setName('ranked')
-                .setDescription('Ranked races use ELO')
+            option.setName('unranked')
+                .setDescription('Unranked races don\'t get tracked on the leaderboards.')
                 .setRequired(false))
         .addBooleanOption(option =>
             option.setName('tournament')
@@ -72,8 +72,7 @@ module.exports = {
             await interaction.reply({ content: 'Only referees can close tournament races!', ephemeral: true });
             return;
         }
-
-        race.initiate(interaction.options.getString('category'), interaction.options.getBoolean('ranked'), interaction.options.getBoolean('tournament'), interaction.user);
+        race.initiate(interaction.options.getString('category'), interaction.options.getBoolean('unranked'), interaction.options.getBoolean('tournament'), interaction.user);
         await interaction.reply({ content: 'Race initiated!', ephemeral: true });
     },
 };

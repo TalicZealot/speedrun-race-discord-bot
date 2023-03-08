@@ -43,8 +43,8 @@ const cliFiles = fs.readdirSync('./cli').filter(file => file.endsWith('.js'));
 rl.on('line', (input) => {
     for (const file of cliFiles) {
         const command = require(`./cli/${file}`);
-        if (input === command.name) {
-            command.execute(client, race);
+        if (input.startsWith(command.name)) {
+            command.execute(client, race, input);
             break;
         }
     }

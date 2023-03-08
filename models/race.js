@@ -7,7 +7,7 @@ const lockVoiceChannel = require('../common/lockVoiceChannel');
 const unlockVoiceChannel = require('../common/unlockVoiceChannel');
 const updateLeaderboard = require('../common/updateLeaderboard');
 const Player = require('./player.js');
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle  } = require('discord.js');
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js');
 
 module.exports = class Race {
     constructor(client, audioPlayer) {
@@ -27,7 +27,7 @@ module.exports = class Race {
         this.multistream = null;
         this.status = '';
         this.tournament = false;
-        this.ranked = false;
+        this.ranked = true;
         this.message = null;
         this.replays = [];
     }
@@ -94,7 +94,7 @@ module.exports = class Race {
     }
 
     sortPlayers() {
-        this.players.sort(function(a, b) {
+        this.players.sort(function (a, b) {
             if (a.time == null) {
                 if (b.time) {
                     return 1;
@@ -157,19 +157,19 @@ module.exports = class Race {
     }
 
     allReplaysSubmitted() {
-       return this.replays.length === this.players.length; 
+        return this.replays.length === this.players.length;
     }
 
     setSeedName(name) {
         this.seedName = name;
     }
 
-    initiate(category, ranked, tournament, user) {
+    initiate(category, unranked, tournament, user) {
         this.defaults();
         this.audioPlayer.connectToChannel();
         this.status = 'RACE: WAITING FOR PLAYERS';
         this.category = category;
-        this.ranked = ranked;
+        this.ranked = !unranked;
         unlockVoiceChannel(this.client);
 
         if (!category.includes('Custom')) {
@@ -191,36 +191,41 @@ module.exports = class Race {
 
         let buttonComponents = [
             new ButtonBuilder()
-            .setCustomId('join')
-            .setLabel('Join')
-            .setStyle(ButtonStyle.Primary),
+                .setCustomId('join')
+                .setLabel('Join')
+                .setStyle(ButtonStyle.Primary),
             new ButtonBuilder()
-            .setCustomId('ready')
-            .setLabel('Ready')
-            .setStyle(ButtonStyle.Success)
+                .setCustomId('ready')
+                .setLabel('Ready')
+                .setStyle(ButtonStyle.Success)
         ];
 
         if (this.seed) {
             buttonComponents.push(
                 new ButtonBuilder()
-                .setLabel('Seed')
-                .setStyle(ButtonStyle.Link)
-                .setURL(this.seed),
+                    .setLabel('Seed')
+                    .setStyle(ButtonStyle.Link)
+                    .setURL(this.seed),
             );
         }
 
         buttonComponents.push(
             new ButtonBuilder()
-            .setLabel('Multistream')
-            .setStyle(ButtonStyle.Link)
-            .setURL(this.multistream)
+                .setLabel('Multistream')
+                .setStyle(ButtonStyle.Link)
+                .setURL(this.multistream)
         );
 
         const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
+        const exampleEmbed = new EmbedBuilder()
+            .setColor(0x1f0733)
+            .setTitle(((this.ranked ? 'RANKED ' : '') + this.status))
+            .setFooter({ text: 'Category: ' + this.category });
+
         this.channel.then(channel => {
-            channel.send({ content: 'RACE STARTED', components: [buttons] }).then(msg => {
+            channel.send({ embeds: [exampleEmbed], components: [buttons] }).then(msg => {
                 this.message = msg;
                 this.messageId = msg.id;
                 this.updateMessage();
@@ -258,29 +263,29 @@ module.exports = class Race {
 
         let buttonComponents = [
             new ButtonBuilder()
-            .setCustomId('finish')
-            .setLabel('Finish')
-            .setStyle(ButtonStyle.Success),
+                .setCustomId('finish')
+                .setLabel('Finish')
+                .setStyle(ButtonStyle.Success),
             new ButtonBuilder()
-            .setCustomId('forfeit')
-            .setLabel('Forfeit')
-            .setStyle(ButtonStyle.Danger),
+                .setCustomId('forfeit')
+                .setLabel('Forfeit')
+                .setStyle(ButtonStyle.Danger),
         ];
 
         if (this.seed) {
             buttonComponents.push(
                 new ButtonBuilder()
-                .setLabel('Seed')
-                .setStyle(ButtonStyle.Link)
-                .setURL(this.seed),
+                    .setLabel('Seed')
+                    .setStyle(ButtonStyle.Link)
+                    .setURL(this.seed),
             );
         }
 
         buttonComponents.push(
             new ButtonBuilder()
-            .setLabel('Multistream')
-            .setStyle(ButtonStyle.Link)
-            .setURL(this.multistream)
+                .setLabel('Multistream')
+                .setStyle(ButtonStyle.Link)
+                .setURL(this.multistream)
         );
 
         this.startedAt = new Date().getTime() + this.offset;
@@ -288,7 +293,7 @@ module.exports = class Race {
         const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
-        this.retry(() => {this.message.edit({ components: [buttons] })}, 3);
+        this.retry(() => { this.message.edit({ components: [buttons] }) }, 3);
 
         lockVoiceChannel(this.client);
     }
@@ -314,23 +319,23 @@ module.exports = class Race {
         if (this.seed) {
             buttonComponents.push(
                 new ButtonBuilder()
-                .setLabel('Seed')
-                .setStyle(ButtonStyle.Link)
-                .setURL(this.seed),
+                    .setLabel('Seed')
+                    .setStyle(ButtonStyle.Link)
+                    .setURL(this.seed),
             );
         }
 
         buttonComponents.push(
             new ButtonBuilder()
-            .setLabel('Multistream')
-            .setStyle(ButtonStyle.Link)
-            .setURL(this.multistream)
+                .setLabel('Multistream')
+                .setStyle(ButtonStyle.Link)
+                .setURL(this.multistream)
         );
 
         const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
-        this.retry(() => {this.message.edit({ components: [buttons] })}, 3);
+        this.retry(() => { this.message.edit({ components: [buttons] }) }, 3);
     }
 
     async update() {
@@ -351,38 +356,71 @@ module.exports = class Race {
 
         let buttonComponents = [
             new ButtonBuilder()
-            .setCustomId('join')
-            .setLabel('Join')
-            .setStyle(ButtonStyle.Primary),
+                .setCustomId('join')
+                .setLabel('Join')
+                .setStyle(ButtonStyle.Primary),
             new ButtonBuilder()
-            .setCustomId('ready')
-            .setLabel('Ready')
-            .setStyle(ButtonStyle.Success)
+                .setCustomId('ready')
+                .setLabel('Ready')
+                .setStyle(ButtonStyle.Success)
         ];
 
         if (this.seed) {
             buttonComponents.push(
                 new ButtonBuilder()
-                .setLabel('Seed')
-                .setStyle(ButtonStyle.Link)
-                .setURL(this.seed),
+                    .setLabel('Seed')
+                    .setStyle(ButtonStyle.Link)
+                    .setURL(this.seed),
             );
         }
 
         buttonComponents.push(
             new ButtonBuilder()
-            .setLabel('Multistream')
-            .setStyle(ButtonStyle.Link)
-            .setURL(this.multistream)
+                .setLabel('Multistream')
+                .setStyle(ButtonStyle.Link)
+                .setURL(this.multistream)
         );
 
         const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
-        this.retry(() => {this.message.edit({ components: [buttons] })}, 3);
+        this.retry(() => { this.message.edit({ components: [buttons] }) }, 3);
     }
 
     updateMessage() {
+        this.sortPlayers();
+        let output = '```';
+
+        for (let i = 0; i < this.players.length; i++) {
+            output += '\n';
+            output += ('  ' + this.players[i].username.replace(/\W/gi, "")).padEnd(20, " ");
+
+            if (this.players[i].time || this.players[i].forfeited) {
+                let rightCol = (this.players[i].forfeited) ? 'forfeited' : this.players[i].hours().toString().padStart(2, "0") + ':' + this.players[i].minutes().toString().padStart(2, "0") + ':' + this.players[i].seconds().toString().padStart(2, "0");
+                if (this.finished && this.players[i].adjustment) {
+                    rightCol += '   ' + ((this.players[i].adjustment > 0) ? '+' + this.players[i].adjustment : this.players[i].adjustment);
+                }
+                output += (rightCol).padEnd(20, " ");
+            } else {
+                let rightCol = '';
+                if (!this.started) {
+                    rightCol = (this.players[i].ready) ? 'ready ' : ' ';
+                }
+                output += (rightCol).padEnd(20, " ");
+            }
+        }
+        output += '```';
+
+        const exampleEmbed = new EmbedBuilder()
+            .setColor(0x1f0733)
+            .setTitle(((this.ranked ? 'RANKED ' : '') + this.status))
+            .setDescription(output)
+            .setFooter({ text: 'Category: ' + this.category });
+
+        this.retry(() => { this.message.edit({ embeds: [exampleEmbed] }) }, 3);
+    }
+
+    updateMessageOld() {
         this.sortPlayers();
         let output = '-';
 
@@ -419,7 +457,7 @@ module.exports = class Race {
             output += '`';
         }
 
-        this.retry(() => {this.message.edit(output)}, 3);
+        this.retry(() => { this.message.edit(output) }, 3);
     }
 
     restart() {
@@ -448,7 +486,7 @@ module.exports = class Race {
         this.seed = null;
         this.multistream = null;
         this.tournament = false;
-        this.ranked = false;
+        this.ranked = true;
         this.seedName = '';
         this.replays = [];
     }
@@ -466,23 +504,23 @@ module.exports = class Race {
         if (this.seed) {
             buttonComponents.push(
                 new ButtonBuilder()
-                .setLabel('Seed')
-                .setStyle(ButtonStyle.Link)
-                .setURL(this.seed),
+                    .setLabel('Seed')
+                    .setStyle(ButtonStyle.Link)
+                    .setURL(this.seed),
             );
         }
 
         buttonComponents.push(
             new ButtonBuilder()
-            .setLabel('Multistream')
-            .setStyle(ButtonStyle.Link)
-            .setURL(this.multistream)
+                .setLabel('Multistream')
+                .setStyle(ButtonStyle.Link)
+                .setURL(this.multistream)
         );
 
         const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
-        this.retry(() => {this.message.edit({ components: [buttons] })}, 3);
+        this.retry(() => { this.message.edit({ components: [buttons] }) }, 3);
     }
 
     async retry(apiCall, retries) {

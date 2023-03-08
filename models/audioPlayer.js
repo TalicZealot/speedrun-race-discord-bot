@@ -51,11 +51,11 @@ module.exports = class AudioPlayer {
             this.connection.on(VoiceConnectionStatus.Disconnected, async(oldState, newState) => {
                 try {
                     await Promise.race([
-                        entersState(connection, VoiceConnectionStatus.Signalling, 5000),
-                        entersState(connection, VoiceConnectionStatus.Connecting, 5000),
+                        entersState(this.connection, VoiceConnectionStatus.Signalling, 5000),
+                        entersState(this.connection, VoiceConnectionStatus.Connecting, 5000),
                     ]);
                 } catch (error) {
-                    connection.destroy();
+                    this.connection.destroy();
                     console.log(error);
                 }
             });

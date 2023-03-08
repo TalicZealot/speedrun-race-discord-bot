@@ -176,5 +176,17 @@ module.exports = {
             }
         });
         return stats;
+    },
+    startNewSeason: function(seasonNumber) {
+        if (players.length < 1) {
+            players = playersDb;
+        }
+        fs.writeFileSync(path.join(__dirname, '../data/season-' + seasonNumber + '.json'), JSON.stringify(players, null, 2));
+        let newSeason = [];
+        players.forEach(player => {
+            newSeason.push({username: player.username, id: player.id, twitch: player.twitch})
+        });
+
+        fs.writeFileSync(path.join(__dirname, '../data/players.json'), JSON.stringify(newSeason, null, 2));
     }
 };

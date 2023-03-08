@@ -3,6 +3,8 @@ const downloadReplay = require('../common/downloadReplay');
 const zipReplays = require('../common/zipReplays');
 const config = require('../config.json');
 const fs = require('fs');
+const maxFileSize = 35000;
+const replayFileExtension = ".sotnr";
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -26,18 +28,18 @@ module.exports = {
 
         let replay = interaction.options.getAttachment('replay');
 
-        if (replay.size > 35000) {
+        if (replay.size > maxFileSize) {
             await interaction.reply({ content: `File size was too large!`, ephemeral: true });
             return;
         }
 
-        if (!replay.name.endsWith(".sotnr")) {
+        if (!replay.name.endsWith(replayFileExtension)) {
             await interaction.reply({ content: `Invalid file type!`, ephemeral: true });
             return;
         }
 
         if (race.seedName === "custom") {
-            let name = replay.name.replace(".sotnr","");
+            let name = replay.name.replace(replayFileExtension,"");
             let preset = "";
             let seedName = "";
 

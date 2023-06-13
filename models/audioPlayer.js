@@ -5,10 +5,9 @@ const {
     createAudioPlayer,
     createAudioResource,
     entersState,
-    NoSubscriberBehavior,
     StreamType,
     AudioPlayerStatus,
-    VoiceConnectionStatus,
+    VoiceConnectionStatus
 } = require('@discordjs/voice');
 
 module.exports = class AudioPlayer {
@@ -48,14 +47,26 @@ module.exports = class AudioPlayer {
             await entersState(this.connection, VoiceConnectionStatus.Ready, 30e3);
             this.connection.subscribe(this.player);
 
-            this.connection.on(VoiceConnectionStatus.Disconnected, async(oldState, newState) => {
+            const networkStateChangeHandler = (oldNetworkState, newNetworkState) => {
+                const newUdp = Reflect.get(newNetworkState, 'udp');
+                clearInterval(newUdp?.keepAliveInterval);
+            }
+
+            this.connection.on('stateChange', (oldState, newState) => {
+                Reflect.get(oldState, 'networking')?.off('stateChange', networkStateChangeHandler);
+                Reflect.get(newState, 'networking')?.on('stateChange', networkStateChangeHandler);
+            });
+
+            this.connection.on(VoiceConnectionStatus.Disconnected, async () => {
                 try {
                     await Promise.race([
                         entersState(this.connection, VoiceConnectionStatus.Signalling, 5000),
                         entersState(this.connection, VoiceConnectionStatus.Connecting, 5000),
                     ]);
                 } catch (error) {
-                    this.connection.destroy();
+                    if (this.connection.state.status !== VoiceConnectionStatus.Destroyed) {
+                        this.connection.destroy();
+                    }
                     console.log(error);
                 }
             });
@@ -63,7 +74,9 @@ module.exports = class AudioPlayer {
             this.connected = true;
             return this.connection;
         } catch (error) {
-            this.connection.destroy();
+            if (this.connection.state.status !== VoiceConnectionStatus.Destroyed) {
+                this.connection.destroy();
+            }
             console.log(error);
         }
     }

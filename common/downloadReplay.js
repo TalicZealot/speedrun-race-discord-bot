@@ -2,7 +2,7 @@ const config = require('../config.json');
 const https = require('https');
 const fs = require('fs');
 
-module.exports = async (url, name, race) => {
+module.exports = async (url, name, race, user) => {
     let path = config.replaysFolder + "/" + race.seedName + "/" + name;
     const file = fs.createWriteStream(path);
     const dir = race.seedName;
@@ -16,7 +16,7 @@ module.exports = async (url, name, race) => {
             response.pipe(file);
             file.on("finish", () => {
                 file.close();
-                race.addReplay(name);
+                race.addReplay(name, user);
                 resolve('replay downloaded');
             });
             file.on("error", (e) => {

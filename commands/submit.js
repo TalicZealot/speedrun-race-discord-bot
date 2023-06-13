@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { EmbedBuilder } = require('discord.js');
 const updateLeaderboard = require('../common/updateLeaderboard');
 const config = require('../config.json');
 const elo = require('../elo/elo.js');
@@ -157,17 +158,22 @@ module.exports = {
         console.log(adjustments);
         updateLeaderboard(client, category);
 
-        let output = 'Results submitted:';
-        output += '\n`' + 'Adjustments:' + '`';
-        output += '\n`' + 'Category: ' + category + '`';
+        let output = '```';
         for (let i = 0; i < players.length; i++) {
             let userRow = players[i].username.replace(/\W/gi, "").replace(/.forfeit/gi, "") + "  " + ((adjustments[i] > 0) ? '+' + adjustments[i] : adjustments[i]);
-            output += '\n`' + userRow + '`';
+            output += '\n ' + userRow.padEnd(22, " ");
         }
+        output += '```';
+
+        const exampleEmbed = new EmbedBuilder()
+            .setColor(0x1f0733)
+            .setTitle('ELO adjustments for submitted race')
+            .setDescription(output)
+            .setFooter({ text: 'Category: ' + category });
 
         let channel = client.guilds.cache.first(1)[0].channels.fetch(config.raceChannelId);
         channel.then(ch => {
-            ch.send(output).catch(console.error);
+            ch.send({ embeds: [exampleEmbed] }).catch(console.error);
         }).catch(console.error);
 
         await interaction.reply({ content: 'Result submitted!', ephemeral: true });

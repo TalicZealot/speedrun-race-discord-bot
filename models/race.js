@@ -6,6 +6,7 @@ const generatePPF = require('../common/generatePPF.js');
 const lockVoiceChannel = require('../common/lockVoiceChannel');
 const unlockVoiceChannel = require('../common/unlockVoiceChannel');
 const updateLeaderboard = require('../common/updateLeaderboard');
+const zipReplays = require('../common/zipReplays');
 const Player = require('./player.js');
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js');
 
@@ -34,6 +35,10 @@ module.exports = class Race {
 
     includes(id) {
         return this.players.find(player => player.id === id) !== undefined;
+    }
+
+    isRanked() {
+        return this.ranked;
     }
 
     removePlayer(id) {
@@ -84,6 +89,13 @@ module.exports = class Race {
                 this.update();
             }
         }
+    }
+
+    playerHasFinished(user) {
+        if (this.finished || this.players.find(player => player.username === user.username).time || this.players.find(player => player.username === user.username).forfeited) {
+            return true;
+        }
+        return false;
     }
 
     forfeitPlayer(user) {
@@ -148,8 +160,9 @@ module.exports = class Race {
         });
     }
 
-    addReplay(filename) {
+    addReplay(filename, user) {
         this.replays.push(filename);
+        this.players.find(player => player.username === user.username).replaySubmitted = true;
     }
 
     getReplays() {
@@ -157,7 +170,19 @@ module.exports = class Race {
     }
 
     allReplaysSubmitted() {
-        return this.replays.length === this.players.length;
+        if (!this.finished) {
+            return false;
+        }
+
+        this.players.every(x => x.time != null || x.forfeited === true);
+
+        for (let i = 0; i < this.players.length; i++) {
+            if (!this.players[i].forfeited && !this.players[i].replaySubmitted) {
+                return false;
+            }
+        }
+        
+        return true;
     }
 
     setSeedName(name) {
@@ -166,7 +191,6 @@ module.exports = class Race {
 
     initiate(category, unranked, tournament, user) {
         this.defaults();
-        this.audioPlayer.connectToChannel();
         this.status = 'RACE: WAITING FOR PLAYERS';
         this.category = category;
         this.ranked = !unranked;
@@ -180,7 +204,9 @@ module.exports = class Race {
                 generatePPF(this.seed, this.seedName, this.channel);
             }
         } else {
-            this.seedName = "custom";
+            var crypto = require("crypto");
+            var id = crypto.randomBytes(10).toString('hex');
+            this.seedName = "custom" + id;
         }
 
         this.finished = false;
@@ -221,7 +247,7 @@ module.exports = class Race {
 
         const exampleEmbed = new EmbedBuilder()
             .setColor(0x1f0733)
-            .setTitle(((this.ranked ? 'RANKED ' : '') + this.status))
+            .setTitle(((this.ranked ? 'RANKED \n' : '') + this.status))
             .setFooter({ text: 'Category: ' + this.category });
 
         this.channel.then(channel => {
@@ -234,8 +260,10 @@ module.exports = class Race {
     }
 
     async start() {
-        this.audioPlayer.play();
         const sleep = m => new Promise(r => setTimeout(r, m));
+        this.audioPlayer.connectToChannel();
+        await sleep(1700);
+        this.audioPlayer.play();
         this.status = 'GET READY';
         this.updateMessage()
         await sleep(1700);
@@ -293,7 +321,7 @@ module.exports = class Race {
         const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
-        this.retry(() => { this.message.edit({ components: [buttons] }) }, 3);
+        this.message.edit({ components: [buttons] });
 
         lockVoiceChannel(this.client);
     }
@@ -313,6 +341,12 @@ module.exports = class Race {
         this.finished = true;
         this.updateMessage();
         unlockVoiceChannel(this.client);
+
+        if (this.allReplaysSubmitted()) {
+            this.channel.then(channel => {
+                zipReplays(channel, this);
+            }).catch(console.error);
+        }
 
         let buttonComponents = [];
 
@@ -335,17 +369,17 @@ module.exports = class Race {
         const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
-        this.retry(() => { this.message.edit({ components: [buttons] }) }, 3);
+        this.message.edit({ components: [buttons] });
     }
 
     async update() {
         this.sortPlayers();
 
-        if (!this.started && this.playersReady() && this.players.length > 1) {
+        if (!this.started && !this.finished && this.playersReady() && this.players.length > 1) {
             await this.start();
         }
 
-        if (this.started && this.playersFinished()) {
+        if (this.started && !this.finished && this.playersFinished()) {
             this.end();
         }
 
@@ -384,7 +418,7 @@ module.exports = class Race {
         const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
-        this.retry(() => { this.message.edit({ components: [buttons] }) }, 3);
+        this.message.edit({ components: [buttons] });
     }
 
     updateMessage() {
@@ -393,21 +427,30 @@ module.exports = class Race {
 
         for (let i = 0; i < this.players.length; i++) {
             output += '\n';
-            output += ('  ' + this.players[i].username.replace(/\W/gi, "")).padEnd(20, " ");
+            output += (' ' + this.players[i].username.replace(/\W/gi, "")).padEnd(20, " ");
 
             if (this.players[i].time || this.players[i].forfeited) {
-                let rightCol = (this.players[i].forfeited) ? 'forfeited' : this.players[i].hours().toString().padStart(2, "0") + ':' + this.players[i].minutes().toString().padStart(2, "0") + ':' + this.players[i].seconds().toString().padStart(2, "0");
-                if (this.finished && this.players[i].adjustment) {
-                    rightCol += '   ' + ((this.players[i].adjustment > 0) ? '+' + this.players[i].adjustment : this.players[i].adjustment);
+                let rightCol = (this.players[i].forfeited) ? 'forfeited' : this.players[i].hours().toString().padStart(2, "0") + ':' + this.players[i].minutes().toString().padStart(2, "0") + ':' + this.players[i].seconds().toString().padStart(2, "0") + ' ';
+                if (this.players[i].replaySubmitted) {
+                    rightCol += ' (R)  ' 
+                } else {
+                    rightCol += '      '
                 }
-                output += (rightCol).padEnd(20, " ");
+                if (this.finished && this.players[i].adjustment) {
+                    rightCol += '      ' + ((this.players[i].adjustment > 0) ? '+' + this.players[i].adjustment : this.players[i].adjustment);
+                }
+                output += (rightCol).padEnd(22, " ");
             } else {
                 let rightCol = '';
                 if (!this.started) {
                     rightCol = (this.players[i].ready) ? 'ready ' : ' ';
                 }
-                output += (rightCol).padEnd(20, " ");
+                output += (rightCol).padEnd(22, " ");
             }
+        }
+        if (this.players.length < 1) {
+            output += ' ';
+
         }
         output += '```';
 
@@ -417,47 +460,7 @@ module.exports = class Race {
             .setDescription(output)
             .setFooter({ text: 'Category: ' + this.category });
 
-        this.retry(() => { this.message.edit({ embeds: [exampleEmbed] }) }, 3);
-    }
-
-    updateMessageOld() {
-        this.sortPlayers();
-        let output = '-';
-
-        const centerPad = (str, length, char = ' ') => str.padStart((str.length + length) / 2, char).padEnd(length, char);
-        output += '\n       `' + centerPad(((this.ranked ? 'RANKED ' : '') + this.status), 33) + '`';
-        output += '\n       `' + centerPad(('Category: ' + this.category), 33) + '`';
-
-        for (let i = 0; i < this.players.length; i++) {
-            if (i == 0 && this.players[i].time && this.finished) {
-                output += '\n :first_place:';
-            } else if (i == 1 && this.players[i].time && this.finished) {
-                output += '\n :second_place:';
-            } else if (i == 2 && this.players[i].time && this.finished) {
-                output += '\n :third_place:';
-            } else {
-                output += '\n       ';
-            }
-
-            output += ('` ' + this.players[i].username.replace(/\W/gi, "")).padEnd(20, " ");
-
-            if (this.players[i].time || this.players[i].forfeited) {
-                let rightCol = (this.players[i].forfeited) ? 'forfeited' : this.players[i].hours().toString().padStart(2, "0") + ':' + this.players[i].minutes().toString().padStart(2, "0") + ':' + this.players[i].seconds().toString().padStart(2, "0") + ' ';
-                if (this.finished && this.players[i].adjustment) {
-                    rightCol += ' ' + ((this.players[i].adjustment > 0) ? '+' + this.players[i].adjustment : this.players[i].adjustment);
-                }
-                output += (rightCol).padEnd(14, " ");
-            } else {
-                let rightCol = '';
-                if (!this.started) {
-                    rightCol = (this.players[i].ready) ? 'ready ' : ' ';
-                }
-                output += (rightCol).padEnd(14, " ");
-            }
-            output += '`';
-        }
-
-        this.retry(() => { this.message.edit(output) }, 3);
+        this.message.edit({ embeds: [exampleEmbed] });
     }
 
     restart() {
@@ -520,9 +523,11 @@ module.exports = class Race {
         const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
-        this.retry(() => { this.message.edit({ components: [buttons] }) }, 3);
+        this.message.edit({ components: [buttons] });
     }
 
+    /*
+    Discord.js internally retries API calls
     async retry(apiCall, retries) {
         const sleep = m => new Promise(r => setTimeout(r, m));
         for (let i = 0; i < retries; i++) {
@@ -535,4 +540,5 @@ module.exports = class Race {
             }
         }
     }
+    */
 }

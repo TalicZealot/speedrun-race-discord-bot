@@ -3,7 +3,7 @@ const cp = require('child_process');
 const fs = require('fs');
 const simpleGit = require('simple-git');
 
-module.exports = (seed, seedName, channel) => {
+module.exports = async (seed, seedName, channel) => {
     console.log(seedName);
     let patchFileName = seedName + ".ppf";
     let randoPath = config.randoPath;
@@ -11,36 +11,41 @@ module.exports = (seed, seedName, channel) => {
     const git = simpleGit({
         baseDir: randoPath
     });
-    git.pull().then(() => {
-        console.log("generating seed...");
 
-        let logs = '';
+    await git.pull().catch( () => {
+        git.fetch().catch(e => {
+            console.log('There has been a problem with your git operation: ' + e.message);
+            return;
+        });;
+        git.reset(simpleGit.ResetMode.HARD, ['origin/master']);
+    });
 
-        let randomizer = cp.fork(randoPath + "randomize", ["-o", config.patchFolder + patchFileName, seed], { cwd: randoPath, stdio: ['ignore', 'pipe', 'pipe', 'ipc'] });
+    console.log("generating seed...");
 
-        randomizer.stdout.on('data', (outdata) => {
-            logs += outdata;
-        });
+    let logs = '';
 
-        randomizer.on('exit', (m) => {
-            console.log('logged: ' + logs);
-            let output = 'https://ppf.sotn.io/';
-            logs = logs.replace(/(?:\r\n|\r|\n)/g, ',').replace(/\s\s+/g, ' ');
-            let items = logs.split('Starting equipment:, ')[1];
-            output += '\n Starting equipment: ||' + items + '||';
-            if (fs.existsSync(config.patchFolder + patchFileName)) {
-                channel.then(ch => {
-                    ch.send({
-                        content: output,
-                        files: [{
-                            attachment: config.patchFolder + patchFileName,
-                            name: patchFileName
-                        }]
-                    })
-                }).catch(console.error);
-            }
-        });
-    }).catch(e => {
-        console.log('There has been a problem with your git operation: ' + e.message);
+    let randomizer = cp.fork(randoPath + "randomize", ["-o", config.patchFolder + patchFileName, seed], { cwd: randoPath, stdio: ['ignore', 'pipe', 'pipe', 'ipc'] });
+
+    randomizer.stdout.on('data', (outdata) => {
+        logs += outdata;
+    });
+
+    randomizer.on('exit', () => {
+        console.log('logged: ' + logs);
+        let output = 'https://ppf.sotn.io/';
+        logs = logs.replace(/(?:\r\n|\r|\n)/g, ',').replace(/\s\s+/g, ' ');
+        let items = logs.split('Starting equipment:, ')[1];
+        output += '\n Starting equipment: ||' + items + '||';
+        if (fs.existsSync(config.patchFolder + patchFileName)) {
+            channel.then(ch => {
+                ch.send({
+                    content: output,
+                    files: [{
+                        attachment: config.patchFolder + patchFileName,
+                        name: patchFileName
+                    }]
+                })
+            }).catch(console.error);
+        }
     });
 };

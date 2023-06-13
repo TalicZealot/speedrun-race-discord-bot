@@ -16,13 +16,13 @@ module.exports = {
             .setRequired(true)
         ),
     async execute(interaction, client, race) {
-        if (!race.finished || race.seedName === "") {
-            await interaction.reply({ content: `Race has to be finished!`, ephemeral: true });
+        if (!race.includes(interaction.user.id)) {
+            await interaction.reply({ content: `Can't submit replays if you are not in the race!`, ephemeral: true });
             return;
         }
 
-        if (!race.includes(interaction.user.id)) {
-            await interaction.reply({ content: `Can't set the seed if you are not in the race!`, ephemeral: true });
+        if (!race.playerHasFinished(interaction.user)) {
+            await interaction.reply({ content: `Can't submit replays if you haven't finished the race!`, ephemeral: true });
             return;
         }
 
@@ -63,13 +63,13 @@ module.exports = {
             await interaction.reply({ content: `Invalid. File already submitted!`, ephemeral: true });
             return;
         }
-
-        await downloadReplay(replay.url, replay.name, race);
+        await interaction.reply({ content: 'Replay submitted!', ephemeral: true });
+        await downloadReplay(replay.url, replay.name, race, interaction.user);
 
         if (race.allReplaysSubmitted()) {
             zipReplays(interaction.channel, race);
         }
-
-        await interaction.reply({ content: 'Replay submitted!', ephemeral: true });
+        
+        race.update();
     },
 };

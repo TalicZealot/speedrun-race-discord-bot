@@ -5,6 +5,7 @@ module.exports = class Player {
         this.ready = false;
         this.time = null;
         this.forfeited = false;
+        this.replaySubmitted = false;
     }
 
     unready() {

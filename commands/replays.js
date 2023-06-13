@@ -10,14 +10,11 @@ module.exports = {
             await interaction.reply({ content: `Race has to be finished!`, ephemeral: true });
             return;
         }
-
-        if (race.replays.lenght == 1) {
-            await interaction.reply({ content: `Only one replay submitted.`, ephemeral: true });
+        if (race.replays.lenght < 2) {
+            await interaction.reply({ content: `At least 2 replays need to be submitted.`, ephemeral: true });
             return;
         }
-
-        zipReplays(interaction.channel, race);
-
         await interaction.reply({ content: 'Zip generated!', ephemeral: true });
+        zipReplays(interaction.channel, race);
     },
 };

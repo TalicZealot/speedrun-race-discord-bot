@@ -1,0 +1,485 @@
+[
+  {
+    "username": "TalicZealot",
+    "id": "99230602464628736",
+    "Casual": {
+      "elo": 1145,
+      "matches": 11
+    }
+  },
+  {
+    "username": "dr4gonblitz",
+    "id": "114785502850187270",
+    "Casual": {
+      "elo": 1360,
+      "matches": 7
+    },
+    "Lycanthrope": {
+      "elo": 950,
+      "matches": 1
+    }
+  },
+  {
+    "username": "Ben",
+    "twitch": "benauton"
+  },
+  {
+    "username": "cerealmasticator"
+  },
+  {
+    "username": "Rats",
+    "twitch": "ratslul"
+  },
+  {
+    "username": "PCTrax"
+  },
+  {
+    "username": "Aldriel",
+    "id": "133361692473032705"
+  },
+  {
+    "username": "Kris_NagaXIV"
+  },
+  {
+    "username": "Manlynessness"
+  },
+  {
+    "username": "Kai",
+    "twitch": "epikkai_"
+  },
+  {
+    "username": "3snow_p7im",
+    "id": "96322709499170816"
+  },
+  {
+    "username": "TubePowered",
+    "twitch": "tubesy"
+  },
+  {
+    "username": "NightwolfXVI"
+  },
+  {
+    "username": "MASH",
+    "twitch": "ez0mash"
+  },
+  {
+    "username": "Stew",
+    "twitch": "ssbstew",
+    "id": "115655542617145352"
+  },
+  {
+    "username": "fatihG_"
+  },
+  {
+    "username": "Diagon",
+    "twitch": "Diagongdx",
+    "id": "259736995994140672",
+    "Casual": {
+      "elo": 970,
+      "matches": 4
+    },
+    "Safe": {
+      "elo": 1050,
+      "matches": 1
+    },
+    "Expedition": {
+      "elo": 950,
+      "matches": 1
+    },
+    "Guarded-OG": {
+      "elo": 1050,
+      "matches": 1
+    }
+  },
+  {
+    "username": "dontevorgil"
+  },
+  {
+    "username": "asdheyb",
+    "id": "361628571610906624",
+    "Casual": {
+      "elo": 1195,
+      "matches": 1
+    }
+  },
+  {
+    "username": "romscout"
+  },
+  {
+    "username": "RaneofSoTN"
+  },
+  {
+    "username": "PalmyMKGames",
+    "id": "685804633503039488"
+  },
+  {
+    "username": "thesylo",
+    "twitch": "the_real_sylo"
+  },
+  {
+    "username": "Keremene",
+    "twitch": "keremene440"
+  },
+  {
+    "username": "knox"
+  },
+  {
+    "username": "Dyson",
+    "twitch": "Dyson_Bladeless"
+  },
+  {
+    "username": "Epic"
+  },
+  {
+    "username": "Keremene440",
+    "id": "614192504782323747"
+  },
+  {
+    "username": "Dinner Dog",
+    "twitch": "dinnerdog",
+    "id": "724749246431101089",
+    "Casual": {
+      "elo": 1270,
+      "matches": 12
+    },
+    "Guarded-OG": {
+      "elo": 1100,
+      "matches": 1
+    }
+  },
+  {
+    "username": "MrRazzio",
+    "id": "504296925357670412",
+    "Casual": {
+      "elo": 1055,
+      "matches": 4
+    }
+  },
+  {
+    "username": "chrisaegrimm",
+    "id": "425732685714161675"
+  },
+  {
+    "username": "Crystal_Gamer",
+    "twitch": "crystalgamerag"
+  },
+  {
+    "username": "freeland",
+    "twitch": "freeland1787",
+    "id": "225405208174395392",
+    "Casual": {
+      "elo": 505,
+      "matches": 6
+    },
+    "Guarded-OG": {
+      "elo": 950,
+      "matches": 1
+    },
+    "Safe": {
+      "elo": 1050,
+      "matches": 1
+    },
+    "Lycanthrope": {
+      "elo": 950,
+      "matches": 1
+    }
+  },
+  {
+    "username": "Blackfox42",
+    "twitch": "blackfox424",
+    "id": "163471516065988608"
+  },
+  {
+    "username": "Alucyrs",
+    "id": "475446832231874571"
+  },
+  {
+    "username": "Cryomonoxide",
+    "id": "267516619117428736"
+  },
+  {
+    "username": "MT_Fun",
+    "id": "178992162841559040",
+    "Casual": {
+      "elo": 1165,
+      "matches": 1
+    },
+    "Safe": {
+      "elo": 950,
+      "matches": 1
+    },
+    "Lycanthrope": {
+      "elo": 1050,
+      "matches": 1
+    }
+  },
+  {
+    "username": "Doozy",
+    "twitch": "doozyzood",
+    "id": "777312183449026561",
+    "Warlock": {
+      "elo": 950,
+      "matches": 1
+    },
+    "Custom": {
+      "elo": 1120,
+      "matches": 3
+    },
+    "Casual": {
+      "elo": 985,
+      "matches": 1
+    }
+  },
+  {
+    "username": "RefinedHornet",
+    "id": "276222379175313408"
+  },
+  {
+    "username": "Chuckle",
+    "twitch": "Chuckle_1"
+  },
+  {
+    "username": "Gods666thChild",
+    "id": "374400995301654529",
+    "Casual": {
+      "elo": 690,
+      "matches": 13
+    },
+    "Randomizer Casual": {
+      "elo": 750,
+      "matches": 1
+    },
+    "Custom": {
+      "elo": 880,
+      "matches": 3
+    }
+  },
+  {
+    "username": "DiscoCokkroach",
+    "id": "200429196336431107"
+  },
+  {
+    "username": "JupiterClimb",
+    "id": "568111139830104076",
+    "Casual": {
+      "elo": 1805,
+      "matches": 17
+    },
+    "Lycanthrope": {
+      "elo": 1050,
+      "matches": 1
+    },
+    "Safe": {
+      "elo": 950,
+      "matches": 1
+    }
+  },
+  {
+    "username": "DinnerDog"
+  },
+  {
+    "username": "Superds_1",
+    "id": "281602836784218112"
+  },
+  {
+    "username": "sin_pyro",
+    "twitch": "sin_pyro",
+    "id": "177474349526155266"
+  },
+  {
+    "username": "APandaSol",
+    "id": "285574104407474180",
+    "Casual": {
+      "elo": 955,
+      "matches": 1
+    }
+  },
+  {
+    "username": "Sestren",
+    "id": "123976690945884161",
+    "twitch": "sestrenexsis"
+  },
+  {
+    "username": "Danozuke",
+    "id": "183020263879868417"
+  },
+  {
+    "username": "Z3R0L1M1T",
+    "id": "574057116650700803"
+  },
+  {
+    "username": "Nijoja",
+    "id": "228668983975477251"
+  },
+  {
+    "username": "eldri7ch",
+    "id": "104994192576544768",
+    "Casual": {
+      "elo": 620,
+      "matches": 7
+    },
+    "Warlock": {
+      "elo": 1050,
+      "matches": 1
+    }
+  },
+  {
+    "username": "ggchucksy",
+    "id": "203453181236215808"
+  },
+  {
+    "username": "Cecil King of Baron",
+    "id": "433524197353062420"
+  },
+  {
+    "username": "Goku Black9974",
+    "id": "433524197353062420"
+  },
+  {
+    "username": "Matheus DeGiovanni",
+    "id": "950914588579344454",
+    "twitch": "matheusdegiovanni",
+    "Casual": {
+      "elo": 1055,
+      "matches": 18
+    },
+    "Guarded-OG": {
+      "elo": 950,
+      "matches": 1
+    }
+  },
+  {
+    "username": "compacta_D",
+    "id": "273536754466816000",
+    "Casual": {
+      "elo": 290,
+      "matches": 8
+    }
+  },
+  {
+    "username": "Fire1520",
+    "id": "130864133473173504",
+    "Casual": {
+      "elo": 1205,
+      "matches": 11
+    }
+  },
+  {
+    "username": "TheCalvitium",
+    "id": "519694614509125634"
+  },
+  {
+    "username": "D MAS",
+    "id": "137645694356946944",
+    "twitch": "D_MAS_6"
+  },
+  {
+    "username": "Superds",
+    "twitch": "superds_1",
+    "Casual": {
+      "elo": 980,
+      "matches": 12
+    },
+    "id": "281602836784218112",
+    "Safe": {
+      "elo": 950,
+      "matches": 1
+    },
+    "Expedition": {
+      "elo": 1050,
+      "matches": 1
+    },
+    "Guarded-OG": {
+      "elo": 950,
+      "matches": 1
+    }
+  },
+  {
+    "username": "Kostas_Kirby",
+    "twitch": "Kostas_Kirby"
+  },
+  {
+    "username": "Shrikelet"
+  },
+  {
+    "username": "OmegaKaotix"
+  },
+  {
+    "username": "50keyz"
+  },
+  {
+    "username": "CountCranberry"
+  },
+  {
+    "username": "Titus G (LynxTomboyLover)"
+  },
+  {
+    "username": "Lack"
+  },
+  {
+    "username": "Elpinchelack"
+  },
+  {
+    "username": "Mott",
+    "twitch": "mottzilla0"
+  },
+  {
+    "username": "Bar_Keep"
+  },
+  {
+    "username": "Dylicious",
+    "twitch": "dylicious1364"
+  },
+  {
+    "username": "Binitch"
+  },
+  {
+    "username": "Muraky",
+    "twitch": "Muraky"
+  },
+  {
+    "username": "Mars Aderon",
+    "twitch": "marsaderon"
+  },
+  {
+    "username": "SKRIMPZ",
+    "twitch": "skrimpzpls"
+  },
+  {
+    "username": "Tripwick",
+    "twitch": "The_Tripwick"
+  },
+  {
+    "username": "SKR!MPZ",
+    "twitch": "skrimpzpls",
+    "Safe": {
+      "elo": 1050,
+      "matches": 1
+    },
+    "id": "255827780388913153"
+  },
+  {
+    "username": "VaeVictus",
+    "twitch": "vaevictusbr"
+  },
+  {
+    "username": "cisco"
+  },
+  {
+    "username": "harutoes"
+  },
+  {
+    "username": "traiLZ"
+  },
+  {
+    "username": "Morgiliath"
+  },
+  {
+    "username": "chris*+!",
+    "twitch": "arkhaos1"
+  },
+  {
+    "username": "MainMemory",
+    "twitch": "mainmemory_"
+  }
+]

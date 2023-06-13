@@ -4,7 +4,7 @@ const data = require('../data/data.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('stream')
-        .setDescription(`Sets a stream link for the user's profile. Used for multitwitch link generation.`)
+        .setDescription(`Sets a Twitch username for the user's profile. Used for multitwitch link generation.`)
         .addStringOption(option =>
             option.setName('stream')
                 .setDescription('Twitch username')

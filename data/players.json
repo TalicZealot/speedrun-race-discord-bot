@@ -2,21 +2,21 @@
   {
     "username": "TalicZealot",
     "id": "99230602464628736",
-    "Casual": {
-      "elo": 1145,
-      "matches": 11
+    "Lycanthrope": {
+      "elo": 1345,
+      "matches": 9
+    },
+    "Custom": {
+      "elo": 1000,
+      "matches": 7
     }
   },
   {
     "username": "dr4gonblitz",
     "id": "114785502850187270",
-    "Casual": {
-      "elo": 1360,
-      "matches": 7
-    },
     "Lycanthrope": {
-      "elo": 950,
-      "matches": 1
+      "elo": 1775,
+      "matches": 31
     }
   },
   {
@@ -64,32 +64,16 @@
   },
   {
     "username": "Stew",
-    "twitch": "ssbstew",
-    "id": "115655542617145352"
+    "id": "115655542617145352",
+    "twitch": "ssbstew"
   },
   {
     "username": "fatihG_"
   },
   {
     "username": "Diagon",
-    "twitch": "Diagongdx",
     "id": "259736995994140672",
-    "Casual": {
-      "elo": 970,
-      "matches": 4
-    },
-    "Safe": {
-      "elo": 1050,
-      "matches": 1
-    },
-    "Expedition": {
-      "elo": 950,
-      "matches": 1
-    },
-    "Guarded-OG": {
-      "elo": 1050,
-      "matches": 1
-    }
+    "twitch": "Diagongdx"
   },
   {
     "username": "dontevorgil"
@@ -97,9 +81,9 @@
   {
     "username": "asdheyb",
     "id": "361628571610906624",
-    "Casual": {
-      "elo": 1195,
-      "matches": 1
+    "Lycanthrope": {
+      "elo": 1105,
+      "matches": 3
     }
   },
   {
@@ -136,28 +120,40 @@
   },
   {
     "username": "Dinner Dog",
-    "twitch": "dinnerdog",
     "id": "724749246431101089",
+    "twitch": "dinnerdog",
+    "Lycanthrope": {
+      "elo": 1525,
+      "matches": 29
+    },
     "Casual": {
-      "elo": 1270,
-      "matches": 12
+      "elo": 1150,
+      "matches": 1
     },
     "Guarded-OG": {
-      "elo": 1100,
-      "matches": 1
+      "elo": 1150,
+      "matches": 2
     }
   },
   {
     "username": "MrRazzio",
     "id": "504296925357670412",
+    "Lycanthrope": {
+      "elo": 1005,
+      "matches": 19
+    },
     "Casual": {
-      "elo": 1055,
-      "matches": 4
+      "elo": 950,
+      "matches": 1
     }
   },
   {
     "username": "chrisaegrimm",
-    "id": "425732685714161675"
+    "id": "425732685714161675",
+    "Lycanthrope": {
+      "elo": 685,
+      "matches": 15
+    }
   },
   {
     "username": "Crystal_Gamer",
@@ -165,29 +161,17 @@
   },
   {
     "username": "freeland",
-    "twitch": "freeland1787",
     "id": "225405208174395392",
-    "Casual": {
-      "elo": 505,
-      "matches": 6
-    },
-    "Guarded-OG": {
-      "elo": 950,
-      "matches": 1
-    },
-    "Safe": {
-      "elo": 1050,
-      "matches": 1
-    },
-    "Lycanthrope": {
-      "elo": 950,
-      "matches": 1
-    }
+    "twitch": "freeland1787"
   },
   {
     "username": "Blackfox42",
+    "id": "163471516065988608",
     "twitch": "blackfox424",
-    "id": "163471516065988608"
+    "Lycanthrope": {
+      "elo": 790,
+      "matches": 2
+    }
   },
   {
     "username": "Alucyrs",
@@ -200,35 +184,39 @@
   {
     "username": "MT_Fun",
     "id": "178992162841559040",
-    "Casual": {
-      "elo": 1165,
-      "matches": 1
-    },
-    "Safe": {
-      "elo": 950,
-      "matches": 1
-    },
     "Lycanthrope": {
-      "elo": 1050,
-      "matches": 1
-    }
-  },
-  {
-    "username": "Doozy",
-    "twitch": "doozyzood",
-    "id": "777312183449026561",
-    "Warlock": {
-      "elo": 950,
-      "matches": 1
+      "elo": 1090,
+      "matches": 11
     },
     "Custom": {
-      "elo": 1120,
+      "elo": 1050,
+      "matches": 1
+    },
+    "Bat-master": {
+      "elo": 1260,
       "matches": 3
     }
   },
   {
+    "username": "Doozy",
+    "id": "777312183449026561",
+    "twitch": "doozyzood",
+    "Lycanthrope": {
+      "elo": 1030,
+      "matches": 1
+    },
+    "Casual": {
+      "elo": 970,
+      "matches": 2
+    }
+  },
+  {
     "username": "RefinedHornet",
-    "id": "276222379175313408"
+    "id": "276222379175313408",
+    "Custom": {
+      "elo": 1050,
+      "matches": 1
+    }
   },
   {
     "username": "Chuckle",
@@ -237,17 +225,21 @@
   {
     "username": "Gods666thChild",
     "id": "374400995301654529",
-    "Casual": {
-      "elo": 690,
-      "matches": 13
-    },
-    "Randomizer Casual": {
-      "elo": 750,
-      "matches": 1
+    "Lycanthrope": {
+      "elo": 1190,
+      "matches": 31
     },
     "Custom": {
-      "elo": 880,
-      "matches": 3
+      "elo": 950,
+      "matches": 1
+    },
+    "Casual": {
+      "elo": 1150,
+      "matches": 1
+    },
+    "Bat-master": {
+      "elo": 940,
+      "matches": 1
     }
   },
   {
@@ -257,13 +249,9 @@
   {
     "username": "JupiterClimb",
     "id": "568111139830104076",
-    "Casual": {
-      "elo": 1795,
-      "matches": 16
-    },
     "Lycanthrope": {
-      "elo": 1050,
-      "matches": 1
+      "elo": 1660,
+      "matches": 17
     }
   },
   {
@@ -275,20 +263,17 @@
   },
   {
     "username": "sin_pyro",
-    "twitch": "sin_pyro",
-    "id": "177474349526155266"
+    "id": "177474349526155266",
+    "twitch": "sin_pyro"
   },
   {
     "username": "APandaSol",
-    "id": "285574104407474180",
-    "Casual": {
-      "elo": 955,
-      "matches": 1
-    }
+    "id": "285574104407474180"
   },
   {
     "username": "Sestren",
-    "id": "123976690945884161"
+    "id": "123976690945884161",
+    "twitch": "sestrenexsis"
   },
   {
     "username": "Danozuke",
@@ -305,18 +290,30 @@
   {
     "username": "eldri7ch",
     "id": "104994192576544768",
-    "Casual": {
-      "elo": 620,
-      "matches": 7
+    "Lycanthrope": {
+      "elo": 615,
+      "matches": 19
     },
-    "Warlock": {
-      "elo": 1050,
+    "Guarded-OG": {
+      "elo": 1095,
+      "matches": 2
+    },
+    "Custom": {
+      "elo": 750,
+      "matches": 1
+    },
+    "Bat-master": {
+      "elo": 1140,
       "matches": 1
     }
   },
   {
     "username": "ggchucksy",
-    "id": "203453181236215808"
+    "id": "203453181236215808",
+    "Casual": {
+      "elo": 910,
+      "matches": 2
+    }
   },
   {
     "username": "Cecil King of Baron",
@@ -324,35 +321,43 @@
   },
   {
     "username": "Goku Black9974",
-    "id": "433524197353062420"
+    "id": "433524197353062420",
+    "Lycanthrope": {
+      "elo": 950,
+      "matches": 1
+    }
   },
   {
     "username": "Matheus DeGiovanni",
     "id": "950914588579344454",
     "twitch": "matheusdegiovanni",
-    "Casual": {
-      "elo": 1055,
-      "matches": 18
+    "Lycanthrope": {
+      "elo": 1305,
+      "matches": 30
     },
-    "Guarded-OG": {
-      "elo": 950,
+    "Custom": {
+      "elo": 1250,
       "matches": 1
     }
   },
   {
     "username": "compacta_D",
     "id": "273536754466816000",
-    "Casual": {
-      "elo": 290,
-      "matches": 8
+    "Lycanthrope": {
+      "elo": 600,
+      "matches": 7
     }
   },
   {
     "username": "Fire1520",
     "id": "130864133473173504",
+    "Lycanthrope": {
+      "elo": 1595,
+      "matches": 27
+    },
     "Casual": {
-      "elo": 1205,
-      "matches": 11
+      "elo": 1050,
+      "matches": 1
     }
   },
   {
@@ -366,23 +371,11 @@
   },
   {
     "username": "Superds",
-    "twitch": "superds_1",
-    "Casual": {
-      "elo": 980,
-      "matches": 12
-    },
     "id": "281602836784218112",
-    "Safe": {
-      "elo": 950,
-      "matches": 1
-    },
-    "Expedition": {
-      "elo": 1050,
-      "matches": 1
-    },
-    "Guarded-OG": {
-      "elo": 950,
-      "matches": 1
+    "twitch": "superds_1",
+    "Lycanthrope": {
+      "elo": 1065,
+      "matches": 20
     }
   },
   {
@@ -396,10 +389,36 @@
     "username": "OmegaKaotix"
   },
   {
-    "username": "50keyz"
+    "username": "50keyz",
+    "Lycanthrope": {
+      "elo": 465,
+      "matches": 15
+    },
+    "id": "269646976704839680",
+    "Casual": {
+      "elo": 850,
+      "matches": 1
+    }
   },
   {
-    "username": "CountCranberry"
+    "username": "CountCranberry",
+    "Lycanthrope": {
+      "elo": 580,
+      "matches": 9
+    },
+    "id": "228716045186105344",
+    "Guarded-OG": {
+      "elo": 1045,
+      "matches": 1
+    },
+    "Nimble": {
+      "elo": 1050,
+      "matches": 1
+    },
+    "Bat-master": {
+      "elo": 1055,
+      "matches": 2
+    }
   },
   {
     "username": "Titus G (LynxTomboyLover)"
@@ -419,7 +438,12 @@
   },
   {
     "username": "Dylicious",
-    "twitch": "dylicious1364"
+    "twitch": "dylicious1364",
+    "Lycanthrope": {
+      "elo": 440,
+      "matches": 14
+    },
+    "id": "270740466155257856"
   },
   {
     "username": "Binitch"
@@ -435,5 +459,222 @@
   {
     "username": "SKRIMPZ",
     "twitch": "skrimpzpls"
+  },
+  {
+    "username": "Tripwick",
+    "twitch": "The_Tripwick"
+  },
+  {
+    "username": "SKR!MPZ",
+    "id": "255827780388913153",
+    "twitch": "skrimpzpls",
+    "Lycanthrope": {
+      "elo": 1070,
+      "matches": 36
+    },
+    "Casual": {
+      "elo": 1050,
+      "matches": 1
+    }
+  },
+  {
+    "username": "VaeVictus",
+    "twitch": "vaevictusbr",
+    "Lycanthrope": {
+      "elo": 865,
+      "matches": 39
+    },
+    "id": "193524233865920512"
+  },
+  {
+    "username": "cisco"
+  },
+  {
+    "username": "harutoes"
+  },
+  {
+    "username": "traiLZ"
+  },
+  {
+    "username": "Morgiliath",
+    "Lycanthrope": {
+      "elo": 585,
+      "matches": 21
+    },
+    "id": "284499763112443914"
+  },
+  {
+    "username": "chris*+!",
+    "twitch": "arkhaos1"
+  },
+  {
+    "username": "MainMemory",
+    "twitch": "mainmemory_"
+  },
+  {
+    "username": "ChaosVania",
+    "twitch": "chaosvania",
+    "Guarded-OG": {
+      "elo": 1100,
+      "matches": 1
+    },
+    "id": "1037361743850115142"
+  },
+  {
+    "username": "MichaelMcD",
+    "twitch": "castlefreeland",
+    "Lycanthrope": {
+      "elo": 790,
+      "matches": 6
+    },
+    "id": "225405208174395392",
+    "Custom": {
+      "elo": 950,
+      "matches": 1
+    },
+    "Casual": {
+      "elo": 950,
+      "matches": 1
+    },
+    "Guarded-OG": {
+      "elo": 950,
+      "matches": 1
+    },
+    "Bat-master": {
+      "elo": 870,
+      "matches": 2
+    }
+  },
+  {
+    "username": "SaintVonJester",
+    "twitch": "saintvonjester",
+    "Guarded-OG": {
+      "elo": 1000,
+      "matches": 1
+    },
+    "id": "112013344449265664"
+  },
+  {
+    "username": "Raxphiel",
+    "twitch": "Raxphiel",
+    "Guarded-OG": {
+      "elo": 900,
+      "matches": 1
+    },
+    "id": "158324813037830144"
+  },
+  {
+    "username": "Jammer",
+    "Lycanthrope": {
+      "elo": 915,
+      "matches": 26
+    },
+    "id": "83901311518507008",
+    "Guarded-OG": {
+      "elo": 900,
+      "matches": 1
+    },
+    "Casual": {
+      "elo": 1090,
+      "matches": 2
+    },
+    "twitch": "JammerLamm",
+    "Custom": {
+      "elo": 1150,
+      "matches": 1
+    }
+  },
+  {
+    "username": "TeraJuice",
+    "twitch": "terajuice",
+    "Guarded-OG": {
+      "elo": 860,
+      "matches": 2
+    },
+    "id": "685636171681759356",
+    "Nimble": {
+      "elo": 950,
+      "matches": 1
+    },
+    "Lycanthrope": {
+      "elo": 635,
+      "matches": 4
+    },
+    "Casual": {
+      "elo": 1030,
+      "matches": 2
+    },
+    "Bat-master": {
+      "elo": 795,
+      "matches": 3
+    }
+  },
+  {
+    "username": "Kotone",
+    "Lycanthrope": {
+      "elo": 710,
+      "matches": 8
+    },
+    "id": "716778029921206282",
+    "twitch": "Rosefell12",
+    "Custom": {
+      "elo": 850,
+      "matches": 1
+    }
+  },
+  {
+    "username": "TheBlacktastic"
+  },
+  {
+    "username": "Vaernos",
+    "twitch": "vaernos",
+    "Casual": {
+      "elo": 850,
+      "matches": 1
+    },
+    "id": "251547093154529281",
+    "Lycanthrope": {
+      "elo": 915,
+      "matches": 1
+    }
+  },
+  {
+    "username": "Rosefell",
+    "twitch": "rosefell12",
+    "Lycanthrope": {
+      "elo": 885,
+      "matches": 1
+    },
+    "id": "924056332544405536"
+  },
+  {
+    "username": "the_swarm",
+    "twitch": "the_swarm",
+    "Lycanthrope": {
+      "elo": 945,
+      "matches": 6
+    },
+    "id": "165950520190566400"
+  },
+  {
+    "username": "jammerlammer",
+    "Lycanthrope": {
+      "elo": 1260,
+      "matches": 4
+    },
+    "id": "83901311518507008",
+    "twitch": "jammerlamm"
+  },
+  {
+    "username": "mt_fun",
+    "Bat-master": {
+      "elo": 940,
+      "matches": 1
+    },
+    "id": "178992162841559040"
+  },
+  {
+    "username": "michaelmcd",
+    "twitch": "castlefreeland"
   }
 ]

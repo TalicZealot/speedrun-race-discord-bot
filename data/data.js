@@ -15,30 +15,30 @@ function savePlayer(player) {
     } else {
         players.push(player);
     }
-    fs.writeFileSync(path.join(__dirname, '../data/players.json'), JSON.stringify(players, null, 2));
+    fs.writeFileSync(path.join(__dirname, playersDb), JSON.stringify(players, null, 2));
     players = playersDb;
 }
 
-function getPlayerIndexByName(username) {
+function getPlayerIndexById(id) {
     if (players.length < 1) {
         players = playersDb;
     }
-    if (username.length < 3) {
-        console.log("Username" + username + " is shorter than 4 characters!");
+    if (id < 1) {
+        console.log("Invalid id");
         return null;
     }
-    let player = players.find(x => x.username == username);
+    let player = players.find(x => x.id == id);
     if (player) {
-        return players.findIndex(x => x.username == username);
+        return players.findIndex(x => x.id == id);
     } else {
-        savePlayer({ username: username });
+        savePlayer({ id: id });
     }
-    return players.findIndex(x => x.username == username);
+    return players.findIndex(x => x.id == id);
 }
 
 module.exports = {
-    checkPlayerRanked: function(username, category) {
-        let playerIndex = getPlayerIndexByName(username);
+    checkPlayerRanked: function(id, category) {
+        let playerIndex = getPlayerIndexById(id);
         if (!players[playerIndex][category]) {
             players[playerIndex][category] = {};
             players[playerIndex][category].matches = 0;
@@ -46,22 +46,22 @@ module.exports = {
         }
         return (players[playerIndex][category].matches >= placementMatches);
     },
-    getPlayerTwitch: function(username) {
-        let playerIndex = getPlayerIndexByName(username);
+    getPlayerTwitch: function(id) {
+        let playerIndex = getPlayerIndexById(id);
         return players[playerIndex].twitch;
     },
-    setPlayerTwitch: function(username, twitch) {
-        let playerIndex = getPlayerIndexByName(username);
+    setPlayerTwitch: function(id, twitch) {
+        let playerIndex = getPlayerIndexById(id);
         players[playerIndex].twitch = twitch;
         savePlayer(players[playerIndex]);
     },
-    setPlayerId: function(username, id) {
-        let playerIndex = getPlayerIndexByName(username);
-        players[playerIndex].id = id;
+    setPlayerUsername: function(id, username) {
+        let playerIndex = getPlayerIndexById(id);
+        players[playerIndex].username = username;
         savePlayer(players[playerIndex]);
     },
-    getPlayerElo: function(username, category) {
-        let playerIndex = getPlayerIndexByName(username);
+    getPlayerElo: function(id, category) {
+        let playerIndex = getPlayerIndexById(id);
         if (!players[playerIndex][category]) {
             players[playerIndex][category] = {};
         }
@@ -74,8 +74,8 @@ module.exports = {
             return 1000;
         }
     },
-    adjustElo: function(player, category, adjustment) {
-        let playerIndex = getPlayerIndexByName(player);
+    adjustElo: function(id, category, adjustment) {
+        let playerIndex = getPlayerIndexById(id);
         if (players[playerIndex][category].elo) {
             players[playerIndex][category].elo += adjustment;
         } else {
@@ -89,7 +89,7 @@ module.exports = {
         savePlayer(players[playerIndex]);
     },
     adjustPb: function(player, category, time) {
-        let playerIndex = getPlayerIndexByName(player.username);
+        let playerIndex = getPlayerIndexById(player.id);
         if (playerIndex > -1) {
             players[playerIndex][category].pb = time;
         }
@@ -184,9 +184,17 @@ module.exports = {
         fs.writeFileSync(path.join(__dirname, '../data/season-' + seasonNumber + '.json'), JSON.stringify(players, null, 2));
         let newSeason = [];
         players.forEach(player => {
-            newSeason.push({username: player.username, id: player.id, twitch: player.twitch})
+            let lastSeasonPlayer = {username: player.username, id: player.id, twitch: player.twitch};
+            if (player.elo < eloConfig.defaultElo - 100) {
+                lastSeasonPlayer.elo = eloConfig.defaultEloLow;
+            } else if (player.elo > eloConfig.defaultElo + 100) {
+                lastSeasonPlayer.elo = eloConfig.defaultEloHigh;
+            } else {
+                lastSeasonPlayer.elo = eloConfig.defaultElo;
+            }
+            newSeason.push(lastSeasonPlayer)
         });
 
-        fs.writeFileSync(path.join(__dirname, '../data/players.json'), JSON.stringify(newSeason, null, 2));
+        fs.writeFileSync(path.join(__dirname, playersDb), JSON.stringify(newSeason, null, 2));
     }
 };

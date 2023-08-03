@@ -1,5 +1,6 @@
 module.exports = {
     name: 'race',
+    description: 'Display data for the current race.',
     execute(client, race) {
         let output = "Race properties\n";
         output += "";

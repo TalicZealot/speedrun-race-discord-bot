@@ -148,6 +148,10 @@ module.exports = class Race {
         return this.players.every(x => x.time != null || x.forfeited === true);
     }
 
+    playersForfeited() {
+        return this.players.every(x => x.forfeited === true);
+    }
+
     generateMultistream() {
         this.multistream = 'https://multistre.am/';
         this.players.forEach(player => {
@@ -170,7 +174,7 @@ module.exports = class Race {
     }
 
     allReplaysSubmitted() {
-        if (!this.finished) {
+        if (!this.finished || this.playersForfeited()) {
             return false;
         }
 
@@ -245,13 +249,13 @@ module.exports = class Race {
         const buttons = new ActionRowBuilder()
             .addComponents(buttonComponents);
 
-        const exampleEmbed = new EmbedBuilder()
+        const raceEmbed = new EmbedBuilder()
             .setColor(0x1f0733)
             .setTitle(((this.ranked ? 'RANKED \n' : '') + this.status))
             .setFooter({ text: 'Category: ' + this.category });
 
         this.channel.then(channel => {
-            channel.send({ embeds: [exampleEmbed], components: [buttons] }).then(msg => {
+            channel.send({ embeds: [raceEmbed], components: [buttons] }).then(msg => {
                 this.message = msg;
                 this.messageId = msg.id;
                 this.updateMessage();
@@ -327,11 +331,11 @@ module.exports = class Race {
     }
 
     end() {
-        if (this.ranked) {
+        if (this.ranked && !this.playersForfeited()) {
             let adjustments = elo.resolveMatch(this.players, this.category);
             for (let i = 0; i < this.players.length; i++) {
                 this.players[i].adjustment = adjustments[i];
-                data.setPlayerId(this.players[i].username, this.players[i].id);
+                data.setPlayerUsername(this.players[i].id, this.players[i].username);
             }
             updateLeaderboard(this.client, this.category);
         }
@@ -454,13 +458,13 @@ module.exports = class Race {
         }
         output += '```';
 
-        const exampleEmbed = new EmbedBuilder()
+        const raceEmbed = new EmbedBuilder()
             .setColor(0x1f0733)
             .setTitle(((this.ranked ? 'RANKED ' : '') + this.status))
             .setDescription(output)
             .setFooter({ text: 'Category: ' + this.category });
 
-        this.message.edit({ embeds: [exampleEmbed] });
+        this.message.edit({ embeds: [raceEmbed] });
     }
 
     restart() {

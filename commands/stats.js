@@ -74,10 +74,10 @@ module.exports = {
         if (category) {
             stats = data.getCategoryStats(category);
         } else if (player) {
-            stats = data.getPlayerStats(player.username);
+            stats = data.getPlayerStats(player.id);
             isPlayer = true;
         } else {
-            stats = data.getPlayerStats(interaction.user.username);
+            stats = data.getPlayerStats(interaction.user.id);
             isPlayer = true;
         }
 

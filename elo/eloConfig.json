@@ -3,5 +3,7 @@
     "KPlacement": "100",
     "N": "1000",
     "placementMatches": "3",
-    "defaultElo": "1000"
+    "defaultElo": "1000",
+    "defaultEloLow": "750",
+    "defaultEloHigh": "1250"
 }

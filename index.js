@@ -44,16 +44,27 @@ rl.on('line', (input) => {
     for (const file of cliFiles) {
         const command = require(`./cli/${file}`);
         if (input.startsWith(command.name)) {
-            command.execute(client, race, input);
+            if (input.includes("-h") || input.includes("-help")) {
+                console.log(command.description);
+            } else {
+                command.execute(client, race, input);
             break;
+            }
         }
     }
 });
 
 client.once(Events.ClientReady, c => {
-	console.log(`Ready! Logged in as ${c.user.tag}`);
+	console.log(`Ready! Logged in as ${c.user.tag} \n`);
     audioPlayer = new AudioPlayer(client);
     race = new Race(client, audioPlayer);
+    console.log('CLI commands:');
+    for (const file of cliFiles) {
+        const command = require(`./cli/${file}`);
+        console.log(command.name);
+        console.log('\x1b[36m%s\x1b[0m', "    " + command.description);
+
+    }
 });
 
 client.login(process.env.BOT_TOKEN);

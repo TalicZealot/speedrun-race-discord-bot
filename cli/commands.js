@@ -1,13 +1,16 @@
 module.exports = {
     name: 'commands',
+    description: 'Outputs a list of slash commands in the server and their ids.',
     execute(client) {
-        client.guilds.cache.get('625294110139482113')?.commands.fetch().then(
+        client.guilds.cache.first(1)[0].commands.fetch().then(
             commands => {
+                let output = '';
                 commands.forEach(command => {
-                    console.log(`id:${command.id}`);
-                    console.log(`name:${command.name}`);
-                    console.log(`--------------------------`);
+                    output += "Name: " + command.name + "\n";
+                    output += "Id:   " + command.id + "\n";
+                    output += "\n";
                 });
+                console.log(output);
             }
         );
     },

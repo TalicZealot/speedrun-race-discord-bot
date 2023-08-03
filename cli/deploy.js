@@ -13,6 +13,7 @@ const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
 
 module.exports = {
     name: 'deploy',
+	description: 'Deploys any changes to slash commands.',
     async execute(client) {
 	try {
 		console.log(`Started refreshing ${commands.length} application (/) commands.`);

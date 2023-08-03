@@ -10,12 +10,18 @@ module.exports = {
                 .setDescription('Twitch username')
                 .setRequired(true)),
     async execute(interaction, client, race) {
+        let match = interaction.options.getString('stream').match(/(http|:|twitch|www)/i);
+        if (match) {
+            await interaction.reply({ content: 'Invalid username!', ephemeral: true });
+            return;
+        }
+
+        data.setPlayerTwitch(interaction.user.id, interaction.options.getString('stream'));
+
         if (!race.finished && !race.started && race.includes(interaction.user.id)) {
             race.generateMultistream();
             race.updateSeed();
         }
-
-        data.setPlayerTwitch(interaction.user.username, interaction.options.getString('stream'));
 
         await interaction.reply({ content: 'Stream set!', ephemeral: true });
     },

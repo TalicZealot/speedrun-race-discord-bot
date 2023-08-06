@@ -16,7 +16,7 @@ module.exports = async (seed, seedName, channel) => {
         git.fetch().catch(e => {
             console.log('There has been a problem with your git operation: ' + e.message);
             return;
-        });;
+        });
         git.reset(simpleGit.ResetMode.HARD, ['origin/master']);
     });
 

@@ -9,13 +9,13 @@ const placementMatches = (eloConfig.placementMatches);
 let players = [];
 
 function savePlayer(player) {
-    let playerIndex = players.findIndex(x => x.username == player.username);
+    let playerIndex = players.findIndex(x => x.id == player.id);
     if (playerIndex > -1) {
         players[playerIndex] = player;
     } else {
         players.push(player);
     }
-    fs.writeFileSync(path.join(__dirname, playersDb), JSON.stringify(players, null, 2));
+    fs.writeFileSync(path.join(__dirname, '../data/players.json'), JSON.stringify(players, null, 2));
     players = playersDb;
 }
 

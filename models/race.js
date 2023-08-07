@@ -155,7 +155,7 @@ module.exports = class Race {
     generateMultistream() {
         this.multistream = 'https://multistre.am/';
         this.players.forEach(player => {
-            let userTwitch = data.getPlayerTwitch(player.username);
+            let userTwitch = data.getPlayerTwitch(player.id);
             if (userTwitch) {
                 this.multistream += userTwitch + '/';
             } else {

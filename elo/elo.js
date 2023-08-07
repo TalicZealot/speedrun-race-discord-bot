@@ -36,24 +36,24 @@ module.exports = {
         let adjustments = [];
         for (let i = 0; i < matchPlayers.length; i++) {
             let adjustment = 0;
-            let playerElo = data.getPlayerElo(matchPlayers[i].username, category);
-            let playerK = data.checkPlayerRanked(matchPlayers[i].username, category) ? K : KPlacement;
+            let playerElo = data.getPlayerElo(matchPlayers[i].id, category);
+            let playerK = data.checkPlayerRanked(matchPlayers[i].id, category) ? K : KPlacement;
 
             for (let j = 0; j < i; j++) {
                 if (matchPlayers[i].forfeited && matchPlayers[j].forfeited) {
-                    let opponentElo = data.getPlayerElo(matchPlayers[j].username, category);
+                    let opponentElo = data.getPlayerElo(matchPlayers[j].id, category);
                     adjustment += calculatePoints(playerElo, opponentElo, playerK, 0.5);
                 } else {
-                    let opponentElo = data.getPlayerElo(matchPlayers[j].username, category);
+                    let opponentElo = data.getPlayerElo(matchPlayers[j].id, category);
                     adjustment += calculatePoints(playerElo, opponentElo, playerK, 0);
                 }
             }
             for (let j = i + 1; j < matchPlayers.length; j++) {
                 if (matchPlayers[i].forfeited && matchPlayers[j].forfeited) {
-                    let opponentElo = data.getPlayerElo(matchPlayers[j].username, category);
+                    let opponentElo = data.getPlayerElo(matchPlayers[j].id, category);
                     adjustment += calculatePoints(playerElo, opponentElo, playerK, 0.5);
                 } else {
-                    let opponentElo = data.getPlayerElo(matchPlayers[j].username, category);
+                    let opponentElo = data.getPlayerElo(matchPlayers[j].id, category);
                     adjustment += calculatePoints(playerElo, opponentElo, playerK, 1);
                 }
             }
@@ -61,9 +61,9 @@ module.exports = {
         }
 
         for (let i = 0; i < matchPlayers.length; i++) {
-            data.adjustElo(matchPlayers[i].username, category, adjustments[i]);
+            data.adjustElo(matchPlayers[i].id, category, adjustments[i]);
             if (local) {
-                console.log(matchPlayers[i].username + ' ' + adjustments[i]);
+                console.log(matchPlayers[i].id + ' ' + adjustments[i]);
             }
         }
         return adjustments;

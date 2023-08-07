@@ -1,10 +1,11 @@
 {
+    "token": "MTEyNjE0ODE2MTYwMjMzMDgzNQ.Gpatck.CGwOtZBpLrA84dPk_QZNwIWu4tnwsdo4C-vfO0",
     "raceChannelId": "566486385377280001",
     "raceVoiceChannelId": "407763206564741120",
     "pagerRoleId": "632571703398105098",
     "refereeRoleId": "876383410212462602",
-    "GuildId": "",
-    "ClientId": "",
+    "GuildId": "407759960588419073",
+    "ClientId": "1126148161602330835",
     "maxOffsetSeconds": "15",
     "timeoutMinutes": "45",
     "minimumNewIntervalMinutes": "1",
@@ -12,9 +13,9 @@
     "defaultOffset": "10400",
     "rematchTimeoutSeconds": "8000",
     "generatePPF": true,
-    "randoPath": "D:/Programming/SotN-Randomizer/",
-    "patchFolder": "D:/Programming/speedrun-race-discord-bot/patches/",
-    "replaysFolder": "D:/Programming/speedrun-race-discord-bot/replays/",
+    "randoPath": "D:/SotN-Randomizer-master/",
+    "patchFolder": "D:/speedrun-race-discord-bot-master/patches/",
+    "replaysFolder": "D:/speedrun-race-discord-bot-master/replays/",
     "countdownFiles": [
         "../audio/countdown1.mp3",
         "../audio/countdown2.mp3",
@@ -22,13 +23,6 @@
         "../audio/countdown4.mp3"
     ],
     "leaderboardmessages": [
-        {
-            "name": "Casual",
-            "id": "876325364333420574"
-        },
-        {
-            "name": "Lycanthrope",
-            "id": "1078661871520981032"
-        }
+        
     ]
 }

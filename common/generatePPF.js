@@ -12,13 +12,13 @@ module.exports = async (seed, seedName, channel) => {
         baseDir: randoPath
     });
 
-    await git.pull().catch( () => {
-        git.fetch().catch(e => {
-            console.log('There has been a problem with your git operation: ' + e.message);
-            return;
-        });;
-        git.reset(simpleGit.ResetMode.HARD, ['origin/master']);
-    });
+    // await git.pull().catch( () => {
+    //     git.fetch().catch(e => {
+    //         console.log('There has been a problem with your git operation: ' + e.message);
+    //         return;
+    //     });;
+    //     git.reset(simpleGit.ResetMode.HARD, ['origin/master']);
+    // });
 
     console.log("generating seed...");
 

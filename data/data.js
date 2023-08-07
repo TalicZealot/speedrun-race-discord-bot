@@ -9,13 +9,13 @@ const placementMatches = (eloConfig.placementMatches);
 let players = [];
 
 function savePlayer(player) {
-    let playerIndex = players.findIndex(x => x.username == player.username);
+    let playerIndex = players.findIndex(x => x.id == player.id);
     if (playerIndex > -1) {
         players[playerIndex] = player;
     } else {
         players.push(player);
     }
-    fs.writeFileSync(path.join(__dirname, playersDb), JSON.stringify(players, null, 2));
+    fs.writeFileSync(path.join(__dirname, '../data/players.json'), JSON.stringify(players, null, 2));
     players = playersDb;
 }
 
@@ -76,12 +76,13 @@ module.exports = {
     },
     adjustElo: function(id, category, adjustment) {
         let playerIndex = getPlayerIndexById(id);
-        if (players[playerIndex][category].elo) {
+        console.log(`Index: ${playerIndex}\nCatagory: ${category}`);
+        if (players[playerIndex][category]?.elo) {
             players[playerIndex][category].elo += adjustment;
         } else {
             players[playerIndex][category].elo = defaultELO + adjustment;
         }
-        if (players[playerIndex][category].matches) {
+        if (players[playerIndex][category]?.matches) {
             players[playerIndex][category].matches += 1;
         } else {
             players[playerIndex][category].matches = 1;

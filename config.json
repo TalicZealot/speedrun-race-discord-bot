@@ -12,23 +12,65 @@
     "defaultOffset": "10400",
     "rematchTimeoutSeconds": "8000",
     "generatePPF": true,
-    "randoPath": "D:/Programming/SotN-Randomizer/",
-    "patchFolder": "D:/Programming/speedrun-race-discord-bot/patches/",
-    "replaysFolder": "D:/Programming/speedrun-race-discord-bot/replays/",
+    "randoPath": "",
+    "patchFolder": "../patches/",
+    "replaysFolder": "../replays/",
     "countdownFiles": [
         "../audio/countdown1.mp3",
         "../audio/countdown2.mp3",
         "../audio/countdown3.mp3",
         "../audio/countdown4.mp3"
     ],
-    "leaderboardmessages": [
+    "categories": [
+        {
+            "name": "Guarded OG",
+            "value": "Guarded-OG"
+        },
+        {
+            "name": "Safe",
+            "value": "Safe"
+        },
         {
             "name": "Casual",
-            "id": "876325364333420574"
+            "value": "Casual"
+        },
+        {
+            "name": "Nimble",
+            "value": "Nimble"
         },
         {
             "name": "Lycanthrope",
-            "id": "1078661871520981032"
+            "value": "Lycanthrope"
+        },
+        {
+            "name": "Expedition",
+            "value": "Expedition"
+        },
+        {
+            "name": "Warlock",
+            "value": "Warlock"
+        },
+        {
+            "name": "Adventure",
+            "value": "Adventure"
+        },
+        {
+            "name": "OG",
+            "value": "OG"
+        },
+        {
+            "name": "Speedrun",
+            "value": "Speedrun"
+        },
+        {
+            "name": "Bat master",
+            "value": "Bat-master",
         }
+        {
+            "name": "Custom",
+            "value": "Custom"
+        }
+    ],
+    "leaderboardmessages": [
     ]
 }

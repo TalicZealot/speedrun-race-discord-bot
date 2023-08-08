@@ -1,5 +1,6 @@
 const playersDb = require('../data/players.json');
 const eloConfig = require('../elo/eloConfig.json');
+const config = require('../config.json');
 const path = require('path');
 const fs = require('fs');
 
@@ -185,13 +186,15 @@ module.exports = {
         let newSeason = [];
         players.forEach(player => {
             let lastSeasonPlayer = {username: player.username, id: player.id, twitch: player.twitch};
-            if (player.elo < eloConfig.defaultElo - 100) {
-                lastSeasonPlayer.elo = eloConfig.defaultEloLow;
-            } else if (player.elo > eloConfig.defaultElo + 100) {
-                lastSeasonPlayer.elo = eloConfig.defaultEloHigh;
-            } else {
-                lastSeasonPlayer.elo = eloConfig.defaultElo;
-            }
+            config.categories.forEach(category => {
+                if (player[category].elo && player[category].elo < eloConfig.defaultElo - 100) {
+                    lastSeasonPlayer[category].elo = eloConfig.defaultEloLow;
+                } else if (player[category].elo && player[category].elo > eloConfig.defaultElo + 100) {
+                    lastSeasonPlayer[category].elo = eloConfig.defaultEloHigh;
+                } else {
+                    lastSeasonPlayer[category].elo = eloConfig.defaultElo;
+                }
+            });
             newSeason.push(lastSeasonPlayer)
         });
 

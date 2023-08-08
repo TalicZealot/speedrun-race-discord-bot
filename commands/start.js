@@ -10,56 +10,7 @@ module.exports = {
             option.setName('category')
                 .setDescription('Category of the race')
                 .setRequired(true)
-                .addChoices(
-                    {
-                        name: 'Guarded OG',
-                        value: 'Guarded-OG',
-                    },
-                    {
-                        name: 'Safe',
-                        value: 'Safe',
-                    },
-                    {
-                        name: 'Casual',
-                        value: 'Casual',
-                    },
-                    {
-                        name: 'Nimble',
-                        value: 'Nimble',
-                    },
-                    {
-                        name: 'Lycanthrope',
-                        value: 'Lycanthrope',
-                    },
-                    {
-                        name: 'Expedition',
-                        value: 'Expedition',
-                    },
-                    {
-                        name: 'Warlock',
-                        value: 'Warlock',
-                    },
-                    {
-                        name: 'Adventure',
-                        value: 'Adventure',
-                    },
-                    {
-                        name: 'OG',
-                        value: 'OG',
-                    },
-                    {
-                        name: 'Speedrun',
-                        value: 'Speedrun',
-                    },
-                    {
-                        name: 'Bat master',
-                        value: 'Bat-master',
-                    },
-                    {
-                        name: 'Custom',
-                        value: 'Custom',
-                    },
-                ))
+                .addChoices(config.categories))
         .addBooleanOption(option =>
             option.setName('unranked')
                 .setDescription('Unranked races don\'t get tracked on the leaderboards.')

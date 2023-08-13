@@ -193,11 +193,12 @@ module.exports = class Race {
         this.seedName = name;
     }
 
-    initiate(category, unranked, tournament, user) {
+    initiate(category, unranked, tournament, interaction, raceChannel) {
         this.defaults();
         this.status = 'RACE: WAITING FOR PLAYERS';
         this.category = category;
         this.ranked = !unranked;
+        let user = interaction.user;
         unlockVoiceChannel(this.client);
 
         if (!category.includes('Custom')) {
@@ -205,7 +206,7 @@ module.exports = class Race {
             this.seed = seedData.link;
             this.seedName = seedData.name;
             if (config.generatePPF) {
-                generatePPF(this.seed, this.seedName, this.channel);
+                generatePPF(this.seed, this.seedName, raceChannel, category.toLowerCase(), tournament, interaction,interaction.options.getBoolean('randomize-music'),true );
             }
         } else {
             var crypto = require("crypto");

@@ -77,12 +77,13 @@ module.exports = {
     },
     adjustElo: function(id, category, adjustment) {
         let playerIndex = getPlayerIndexById(id);
+        console.log(`Index: ${playerIndex}\nCatagory: ${category}`);
         if (players[playerIndex][category].elo) {
             players[playerIndex][category].elo += adjustment;
         } else {
             players[playerIndex][category].elo = defaultELO + adjustment;
         }
-        if (players[playerIndex][category].matches) {
+        if (players[playerIndex][category]?.matches) {
             players[playerIndex][category].matches += 1;
         } else {
             players[playerIndex][category].matches = 1;

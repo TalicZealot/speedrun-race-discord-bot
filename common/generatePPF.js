@@ -73,30 +73,6 @@ module.exports = async (seed, seedName, channel, catagory, tournament,interactio
             });
             ppfApplier.on('exit', () => {
                 console.log(newlogs);
-                // if (fs.existsSync(config.patchFolder + patchFileName)) {
-                //     console.log("here");
-                //     let files = []
-                //     if(!isRace){
-                //         files = [{
-                //             attachment: config.patchFolder + patchFileName,
-                //             name: patchFileName
-                //         }]
-                //     }
-                //     else{
-                //         ch.send({
-                //             content: output,
-                //             files: [{
-                //                 attachment: config.patchFolder + patchFileName,
-                //                 name: patchFileName
-                //             }],
-                //         })
-                //     }
-                //     interaction.editReply({ 
-                //         content: output,
-                //         files: files
-                //     ,});
-                //     // }).catch(console.error);
-                // }
                 sendReply(config.patchFolder + patchFileName,patchFileName,output,channel.fetch(config.raceChannelId),interaction, isRace)
             });
         }
@@ -104,7 +80,4 @@ module.exports = async (seed, seedName, channel, catagory, tournament,interactio
             sendReply(config.patchFolder + patchFileName,patchFileName,output,channel.fetch(config.raceChannelId),interaction, isRace)
         }
     });
-
-        // });
-
 };

@@ -3,6 +3,8 @@ const config = require('../config.json');
 const generatePPF = require('../common/generatePPF.js');
 const seed = require('../common/seed.js');
 
+
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('generate')

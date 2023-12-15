@@ -46,10 +46,21 @@ function sendReply(patchFilePath,patchFileName,output, channel, interaction,isRa
     }
 }
 
+function sendErrorReply(interaction) {
+    interaction.editReply({
+        content: "TinMan Encountered an error, please try again!",
+    });
+}
+
 module.exports = async (seed, seedName, channel, catagory, tournament,interaction, randoMusic, isRace) => {
     console.log(seedName);
     let patchFileName = seedName + ".ppf";
     let randoPath = config.randoPath;
+
+
+    const git = simpleGit({
+        baseDir: randoPath
+    });
 
     console.log("generating seed...");
 
@@ -81,7 +92,7 @@ module.exports = async (seed, seedName, channel, catagory, tournament,interactio
     randomizer.stderr.on('data' ,  (outdata) => {
         console.log(outdata);
     });
-    randomizer.on('exit', () => {
+    randomizer.on('exit', async () => {
         console.log('logged: ' + logs);
         let output = `Successfully generated seed ${seedName} of preset ${catagory}!\n`;
         logs = logs.replace(/(?:\r\n|\r|\n)/g, ',').replace(/\s\s+/g, ' ');
@@ -96,13 +107,21 @@ module.exports = async (seed, seedName, channel, catagory, tournament,interactio
             ppfApplier.stderr.on('data', (outdata) => {
                 newlogs += outdata;
             });
-            ppfApplier.on('exit', () => {
+            ppfApplier.on('exit', async () => {
                 console.log(newlogs);
-                sendReply(config.patchFolder + patchFileName,patchFileName,output,channel.fetch(config.raceChannelId),interaction, isRace)
+                try {
+                    sendReply(config.patchFolder + patchFileName,patchFileName,output,channel.fetch(config.raceChannelId),interaction, isRace)
+                } catch{
+                    await sendErrorReply(interaction);
+                }
             });
         }
         else {
-            sendReply(config.patchFolder + patchFileName,patchFileName,output,channel.fetch(config.raceChannelId),interaction, isRace)
+            try {
+                sendReply(config.patchFolder + patchFileName,patchFileName,output,channel.fetch(config.raceChannelId),interaction, isRace)
+            } catch{
+                await sendErrorReply(interaction);
+            }
         }
     });
 };

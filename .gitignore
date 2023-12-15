@@ -4,3 +4,5 @@ replays/
 .env
 .jshintrc
 countdown.mp3
+config.json
+*.bin

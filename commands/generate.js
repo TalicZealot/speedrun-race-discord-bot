@@ -13,60 +13,68 @@ module.exports = {
                 .setRequired(true)
                 .addChoices(
                     {
-                        name: 'Guarded OG',
-                        value: 'Guarded-OG',
+                        name: 'guarded-og',
+                        value: 'guarded-og',
                     },
                     {
-                        name: 'Safe',
-                        value: 'Safe',
+                        name: 'safe',
+                        value: 'safe',
                     },
                     {
-                        name: 'Casual',
-                        value: 'Casual',
+                        name: 'casual',
+                        value: 'casual',
                     },
                     {
-                        name: 'Nimble',
-                        value: 'Nimble',
+                        name: 'nimble',
+                        value: 'nimble',
                     },
                     {
-                        name: 'Lycanthrope',
-                        value: 'Lycanthrope',
+                        name: 'lycanthrope',
+                        value: 'lycanthrope',
                     },
                     {
-                        name: 'Expedition',
-                        value: 'Expedition',
+                        name: 'expedition',
+                        value: 'expedition',
                     },
                     {
-                        name: 'Warlock',
-                        value: 'Warlock',
+                        name: 'warlock',
+                        value: 'warlock',
                     },
                     {
-                        name: 'Adventure',
-                        value: 'Adventure',
+                        name: 'adventure',
+                        value: 'adventure',
                     },
                     {
-                        name: 'OG',
-                        value: 'OG',
+                        name: 'og',
+                        value: 'og',
                     },
                     {
-                        name: 'Speedrun',
-                        value: 'Speedrun',
+                        name: 'speedrun',
+                        value: 'speedrun',
                     },
                     {
-                        name: 'Bat master',
-                        value: 'Bat-master',
+                        name: 'bat-master',
+                        value: 'bat-master',
                     },
                     {
-                        name: 'Boss Rush',
-                        value: 'Boss-Rush',
+                        name: 'boss-rush',
+                        value: 'boss-rush',
                     },
                     {
-                        name: 'Hunter',
-                        value: 'Hunter',
+                        name: 'bounty-hunter',
+                        value: 'bountyhunter',
                     },
                     {
-                        name: 'Bounty Hunter',
-                        value: 'BountyHunter',
+                        name: 'summoner',
+                        value: 'summoner',
+                    },
+                    {
+                        name: 'scavenger',
+                        value: 'scavenger',
+                    },
+                    {
+                        name: 'aperture',
+                        value: 'aperture',
                     },
                     {
                         name: 'Custom',
@@ -76,20 +84,20 @@ module.exports = {
         .addBooleanOption(option =>
             option.setName('tournament')
                 .setDescription('Tournament races have more restrictions for non-referees.')
-                .setRequired(false))
+                .setRequired(true))
         .addBooleanOption(option =>
             option.setName('public')
                 .setDescription('Determines whether resulting seed will be private or public.')
                 .setRequired(false))
         .addBooleanOption(option =>
-            option.setName('randomize-music')
+            option.setName('vanilla-music')
                 .setDescription('Determines whether resulting seed will have randomized OST.')
                 .setRequired(false)),
     async execute(interaction, client, race) {
         let catagory = interaction.options.getString('category');
         let ppfSeed = seed(catagory);
         let raceChannel = client.guilds.cache.first(1)[0].channels;
-        generatePPF(ppfSeed, ppfSeed.name,raceChannel,catagory.toLowerCase(),interaction.options.getBoolean('tournament'), interaction,interaction.options.getBoolean('randomize-music'),false);
+        generatePPF(ppfSeed, ppfSeed.name,raceChannel,catagory.toLowerCase(),interaction.options.getBoolean('tournament'), interaction,!interaction.options.getBoolean('vanilla-music'),false);
         await interaction.deferReply({ ephemeral: !interaction.options.getBoolean('public') });
     },
 };

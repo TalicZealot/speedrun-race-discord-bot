@@ -199,14 +199,15 @@ module.exports = class Race {
         this.category = category;
         this.ranked = !unranked;
         let user = interaction.user;
+        this.randomusic = !interaction.options.getBoolean('vanilla-music');
         unlockVoiceChannel(this.client);
 
         if (!category.includes('Custom')) {
             let seedData = seed(category.toLowerCase());
-            this.seed = seedData.link;
+            this.seed = seedData;
             this.seedName = seedData.name;
             if (config.generatePPF) {
-                generatePPF(this.seed, this.seedName, raceChannel, category.toLowerCase(), tournament, interaction,interaction.options.getBoolean('randomize-music'),true );
+                generatePPF(this.seed, this.seedName, raceChannel, category.toLowerCase(), tournament, interaction,this.randomusic,true );
             }
         } else {
             var crypto = require("crypto");
@@ -231,12 +232,12 @@ module.exports = class Race {
                 .setStyle(ButtonStyle.Success)
         ];
 
-        if (this.seed) {
+        if (this.seed && this.randomusic) {
             buttonComponents.push(
                 new ButtonBuilder()
                     .setLabel('Seed')
                     .setStyle(ButtonStyle.Link)
-                    .setURL(this.seed),
+                    .setURL(this.seed.link),
             );
         }
 
@@ -305,12 +306,12 @@ module.exports = class Race {
                 .setStyle(ButtonStyle.Danger),
         ];
 
-        if (this.seed) {
+        if (this.seed && this.randomusic) {
             buttonComponents.push(
                 new ButtonBuilder()
                     .setLabel('Seed')
                     .setStyle(ButtonStyle.Link)
-                    .setURL(this.seed),
+                    .setURL(this.seed.link),
             );
         }
 
@@ -355,12 +356,12 @@ module.exports = class Race {
 
         let buttonComponents = [];
 
-        if (this.seed) {
+        if (this.seed && this.randomusic) {
             buttonComponents.push(
                 new ButtonBuilder()
                     .setLabel('Seed')
                     .setStyle(ButtonStyle.Link)
-                    .setURL(this.seed),
+                    .setURL(this.seed.link),
             );
         }
 
@@ -404,12 +405,12 @@ module.exports = class Race {
                 .setStyle(ButtonStyle.Success)
         ];
 
-        if (this.seed) {
+        if (this.seed && this.randomusic) {
             buttonComponents.push(
                 new ButtonBuilder()
                     .setLabel('Seed')
                     .setStyle(ButtonStyle.Link)
-                    .setURL(this.seed),
+                    .setURL(this.seed.link),
             );
         }
 
@@ -509,12 +510,12 @@ module.exports = class Race {
 
         let buttonComponents = [];
 
-        if (this.seed) {
+        if (this.seed && this.randomusic) {
             buttonComponents.push(
                 new ButtonBuilder()
                     .setLabel('Seed')
                     .setStyle(ButtonStyle.Link)
-                    .setURL(this.seed),
+                    .setURL(this.seed.link),
             );
         }
 

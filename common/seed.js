@@ -575,7 +575,14 @@ module.exports = (preset) => {
         "Warm",
         "Sparkly",
         "Wintry",
-        "Joyful"
+        "Joyful",
+        "Snow",
+        "Giving",
+        "Celebratory",
+        "Joyous",
+        "Yule",
+        "Frosty",
+        "Jingly"
     ];
 
     let adjectives = [];

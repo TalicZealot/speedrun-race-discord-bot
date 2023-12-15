@@ -51,6 +51,11 @@ module.exports = async (seed, seedName, channel, catagory, tournament,interactio
     let patchFileName = seedName + ".ppf";
     let randoPath = config.randoPath;
 
+
+    const git = simpleGit({
+        baseDir: randoPath
+    });
+
     console.log("generating seed...");
 
     let logs = '';

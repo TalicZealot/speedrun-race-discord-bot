@@ -74,22 +74,22 @@ module.exports = {
         if (category) {
             stats = data.getCategoryStats(category);
         } else if (player) {
-            stats = data.getPlayerStats(player.username);
+            stats = data.getPlayerStats(player.id);
             isPlayer = true;
         } else {
-            stats = data.getPlayerStats(interaction.user.username);
+            stats = data.getPlayerStats(interaction.user.id);
             isPlayer = true;
         }
 
         let output = '';
         if (stats && isPlayer) {
             output += category + ' stats';
-            output += '\n Stream: <' + stats.twitch + '>';
-            stats.categories.forEach(element => {
-                output += '\n' + ('`Category: ' + element.name).padEnd(35, " ") + '`';
-                output += '\n' + ('`  Rank: ' + element.rank).padEnd(35, " ") + '`';
-                output += '\n' + ('`  Elo: ' + element.elo).padEnd(35, " ") + '`';
-                output += '\n' + ('`  Matches: ' + element.matches).padEnd(35, " ") + '`';
+            output += '\n Stream: <' + player.twitch + '>';
+            stats.categories.forEach(category => {
+                output += '\n' + ('`Category: ' + category.name).padEnd(35, " ") + '`';
+                output += '\n' + ('`  Rank: ' + category.rank).padEnd(35, " ") + '`';
+                output += '\n' + ('`  Elo: ' + category.elo).padEnd(35, " ") + '`';
+                output += '\n' + ('`  Matches: ' + category.matches).padEnd(35, " ") + '`';
             });
         } else if (stats) {
             output += 'Stats:';

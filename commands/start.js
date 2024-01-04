@@ -76,6 +76,18 @@ module.exports = {
                         value: 'aperture',
                     },
                     {
+                        name: 'breach',
+                        value: 'breach',
+                    },
+                    {
+                        name: 'forge',
+                        value: 'forge',
+                    },
+                    {
+                        name: 'big-toss',
+                        value: 'big-toss',
+                    },
+                    {
                         name: 'Custom',
                         value: 'Custom',
                     },

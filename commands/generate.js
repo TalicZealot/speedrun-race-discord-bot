@@ -2,8 +2,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const config = require('../config.json');
 const generatePPF = require('../common/generatePPF.js');
 const seed = require('../common/seed.js');
-
-
+const data = require('../data/data.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -111,6 +110,7 @@ module.exports = {
         let catagory = interaction.options.getString('category');
         let ppfSeed = seed(catagory);
         let raceChannel = client.guilds.cache.first(1)[0].channels;
+        console.log('Seed Generated For: ' + data.getPlayerUsername(interaction.user.id))
         generatePPF(ppfSeed, ppfSeed.name,raceChannel,catagory.toLowerCase(),interaction.options.getBoolean('tournament'), interaction,!interaction.options.getBoolean('vanilla-music'),false);
         await interaction.deferReply({ ephemeral: !interaction.options.getBoolean('public') });
     },

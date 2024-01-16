@@ -57,12 +57,16 @@
       "matches": 3
     },
     "lycanthrope": {
-      "elo": 1045,
-      "matches": 3
+      "elo": 1270,
+      "matches": 5
+    },
+    "scavenger": {
+      "elo": 1050,
+      "matches": 1
     }
   },
   {
-    "username": "dinnerdog",
+    "username": ".dinnerdog",
     "id": "724749246431101089",
     "twitch": "dinnerdog",
     "Lycanthrope": {
@@ -98,8 +102,8 @@
       "matches": 3
     },
     "nimble": {
-      "elo": 1085,
-      "matches": 4
+      "elo": 1185,
+      "matches": 6
     },
     "safe": {
       "elo": 1245,
@@ -110,8 +114,8 @@
       "matches": 2
     },
     "lycanthrope": {
-      "elo": 1145,
-      "matches": 5
+      "elo": 1220,
+      "matches": 7
     },
     "warlock": {
       "elo": 1095,
@@ -123,6 +127,14 @@
     },
     "bat-master": {
       "elo": 1110,
+      "matches": 1
+    },
+    "speedrun": {
+      "elo": 1000,
+      "matches": 1
+    },
+    "scavenger": {
+      "elo": 1150,
       "matches": 1
     }
   },
@@ -193,8 +205,8 @@
       "matches": 11
     },
     "Custom": {
-      "elo": 1050,
-      "matches": 8
+      "elo": 930,
+      "matches": 9
     },
     "Bat-master": {
       "elo": 1140,
@@ -221,8 +233,8 @@
       "matches": 5
     },
     "lycanthrope": {
-      "elo": 1105,
-      "matches": 5
+      "elo": 1110,
+      "matches": 6
     },
     "safe": {
       "elo": 730,
@@ -233,8 +245,8 @@
       "matches": 2
     },
     "nimble": {
-      "elo": 1185,
-      "matches": 1
+      "elo": 915,
+      "matches": 3
     },
     "casual": {
       "elo": 910,
@@ -266,8 +278,8 @@
       "matches": 1
     },
     "lycanthrope": {
-      "elo": 790,
-      "matches": 1
+      "elo": 745,
+      "matches": 2
     },
     "nimble": {
       "elo": 695,
@@ -585,7 +597,7 @@
     }
   },
   {
-    "username": "Vaernos",
+    "username": "vaernos",
     "twitch": "vaernos",
     "Casual": {
       "elo": 775,
@@ -630,6 +642,10 @@
     },
     "nimble": {
       "elo": 790,
+      "matches": 1
+    },
+    "lycanthrope": {
+      "elo": 770,
       "matches": 1
     }
   },
@@ -925,16 +941,16 @@
       "matches": 1
     },
     "safe": {
-      "elo": 1070,
-      "matches": 32
+      "elo": 1095,
+      "matches": 33
     },
     "nimble": {
-      "elo": 1330,
-      "matches": 21
+      "elo": 1410,
+      "matches": 22
     },
     "lycanthrope": {
-      "elo": 1135,
-      "matches": 30
+      "elo": 1270,
+      "matches": 32
     },
     "guarded-og": {
       "elo": 1165,
@@ -953,12 +969,16 @@
       "matches": 2
     },
     "bountyhunter": {
-      "elo": 1040,
-      "matches": 4
+      "elo": 1070,
+      "matches": 5
     },
     "aperture": {
       "elo": 1200,
       "matches": 2
+    },
+    "speedrun": {
+      "elo": 1100,
+      "matches": 1
     }
   },
   {
@@ -1005,8 +1025,8 @@
       "matches": 1
     },
     "Custom": {
-      "elo": 820,
-      "matches": 2
+      "elo": 760,
+      "matches": 3
     },
     "Lycanthrope": {
       "elo": 990,
@@ -1123,6 +1143,14 @@
     },
     "nimble": {
       "elo": 1020,
+      "matches": 1
+    },
+    "lycanthrope": {
+      "elo": 970,
+      "matches": 1
+    },
+    "speedrun": {
+      "elo": 900,
       "matches": 1
     }
   },
@@ -1297,6 +1325,10 @@
     "Guarded-OG": {
       "elo": 800,
       "matches": 1
+    },
+    "lycanthrope": {
+      "elo": 670,
+      "matches": 1
     }
   },
   {
@@ -1332,16 +1364,16 @@
       "matches": 10
     },
     "Custom": {
-      "elo": 505,
-      "matches": 5
+      "elo": 625,
+      "matches": 6
     },
     "Bat-master": {
       "elo": 965,
       "matches": 1
     },
     "nimble": {
-      "elo": 840,
-      "matches": 18
+      "elo": 875,
+      "matches": 19
     },
     "safe": {
       "elo": 680,
@@ -1368,12 +1400,16 @@
       "matches": 1
     },
     "bountyhunter": {
-      "elo": 1035,
-      "matches": 3
+      "elo": 1005,
+      "matches": 4
     },
     "casual": {
       "elo": 775,
       "matches": 2
+    },
+    "scavenger": {
+      "elo": 950,
+      "matches": 1
     }
   },
   {
@@ -1432,6 +1468,14 @@
     "username": "drelladan",
     "lycanthrope": {
       "elo": 850,
+      "matches": 1
+    },
+    "safe": {
+      "elo": 955,
+      "matches": 1
+    },
+    "nimble": {
+      "elo": 875,
       "matches": 1
     }
   },
@@ -1509,8 +1553,8 @@
   {
     "id": "124298268187426816",
     "nimble": {
-      "elo": 790,
-      "matches": 10
+      "elo": 810,
+      "matches": 11
     },
     "username": "derdrach",
     "warlock": {
@@ -1522,16 +1566,16 @@
       "matches": 11
     },
     "lycanthrope": {
-      "elo": 800,
-      "matches": 9
+      "elo": 755,
+      "matches": 10
     },
     "aperture": {
       "elo": 1105,
       "matches": 1
     },
     "Custom": {
-      "elo": 735,
-      "matches": 1
+      "elo": 795,
+      "matches": 2
     },
     "casual": {
       "elo": 1005,
@@ -1539,6 +1583,10 @@
     },
     "bountyhunter": {
       "elo": 1045,
+      "matches": 1
+    },
+    "scavenger": {
+      "elo": 850,
       "matches": 1
     }
   },
@@ -1574,6 +1622,10 @@
     "nimble": {
       "elo": 790,
       "matches": 2
+    },
+    "guarded-og": {
+      "elo": 1050,
+      "matches": 1
     }
   },
   {
@@ -1591,5 +1643,13 @@
       "matches": 1
     },
     "username": "creator_ypsilon"
+  },
+  {
+    "id": "134826386010537984",
+    "guarded-og": {
+      "elo": 950,
+      "matches": 1
+    },
+    "username": "_alexp_"
   }
 ]

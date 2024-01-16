@@ -61,6 +61,10 @@ module.exports = {
         players[playerIndex].username = username;
         savePlayer(players[playerIndex]);
     },
+    getPlayerUsername: function(id) {
+        let playerIndex = getPlayerIndexById(id);
+        return players[playerIndex].username;
+    },
     getPlayerElo: function(id, category) {
         let playerIndex = getPlayerIndexById(id);
         if (!players[playerIndex][category]) {
@@ -145,7 +149,7 @@ module.exports = {
             return null;
         }
         board.sort((a, b) => (a.elo > b.elo) ? -1 : 1);
-        stats.top = board.slice(0, 4);
+        stats.top = board.slice(0, 50);
         return stats;
     },
     getPlayerStats: function(player) {
@@ -154,17 +158,17 @@ module.exports = {
         if (players.length < 1) {
             players = playersDb;
         }
-        let playerIndex = players.findIndex(x => x.username == player);
+        let playerIndex = players.findIndex(x => x.id == player);
         if (playerIndex < 0) {
             return stats;
         }
         stats.twitch = 'https://www.twitch.tv/' + ((players[playerIndex].twitch) ? players[playerIndex].twitch : player);
         Object.keys(players[playerIndex]).forEach(key => {
-            if (key != "username" && key != "twitch" && key != "id") {
+            if (key != "id" && key != "twitch" && key != "username") {
                 let board = this.getCategoryLeaderboard(key);
                 let rank = 0;
                 if (board) {
-                    rank = board.findIndex(x => x.username == player) + 1;
+                    rank = board.findIndex(x => x.id == player) + 1;
                 }
                 if (rank < 1) {
                     rank = 'unranked';
